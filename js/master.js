@@ -19,28 +19,21 @@ function menuToggle() {
   responsive_menu_btn.classList.toggle('active');
 }
 
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  /*　仮フォーム１のurl
-    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQNO7w4N3S8LqTHigAnUygflNpqnMZKXSD-azc2o8W-m4R4_Slp4VP6E6y1a03zcXugMeITlDyUBdEw/pub?gid=972364105&single=true&output=csv' ;
+    /* 仮フォーム１のurl
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQNO7w4N3S8LqTHigAnUygflNpqnMZKXSD-azc2o8W-m4R4_Slp4VP6E6y1a03zcXugMeITlDyUBdEw/pub?gid=972364105&single=true&output=csv';
     */
 
-//　仮フォーム2（5/2更新）
-const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRNecFBsyhfwYntqbckMYHdCS66A8NDkxyDkYujReyz0b4VTVl2TUpDCp50TSIL1AZ0S6UDhAKL0g9q/pub?gid=1374982249&single=true&output=csv' ;
+    // 仮フォーム2（5/2更新）
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRNecFBsyhfwYntqbckMYHdCS66A8NDkxyDkYujReyz0b4VTVl2TUpDCp50TSIL1AZ0S6UDhAKL0g9q/pub?gid=1374982249&single=true&output=csv';
 
-  
-  
     const container = document.getElementById('zemi-results-container');
     if(!container) return;
 
     container.innerHTML = '<p style="text-align: center; color: #cecece;">現在の希望状況を読み込んでいます...</p>';
 
-fetch(sheetUrl)
+    fetch(sheetUrl)
         .then(response => response.text())
         .then(csvText => {
             const allRows = parseCSV(csvText);
@@ -57,14 +50,13 @@ fetch(sheetUrl)
                 const first = row[1] || 0;
                 const second = row[2] || 0;
                 
-            //  const third = row[3] || 0;
+                // 5/2更新: 概要の処理（空欄や #N/A の場合の対策）
+                let description = (row[3] || '').trim();
+                if (description === '' || description === '#N/A') {
+                    description = '概要はまだありません。';
+                }
 
-
-              
-      //　5/2更新
-              const description = row[3] || '概要はまだありません。';
-
-              // --- 枠線の色を決定するロジック ---
+                // --- 枠線の色を決定するロジック ---
                 let borderColor = '#555'; // デフォルト（0〜2人）
                 let badgeHtml = '';
 
@@ -76,23 +68,8 @@ fetch(sheetUrl)
                     badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もうすぐ！</span>';
                 }
 
-
-            /*  
+                // 5/2更新
                 const cardHtml = `
-                <div class="zemi-card-sp" style="margin-bottom: 1rem; background: rgba(255,255,255,0.05); border: 1px solid #555; border-radius: 8px; padding: 1rem;">
-                    <h3 style="margin: 0.8rem 0; font-size: 1.1rem; color: #fff; border-left: 4px solid #91b825; padding-left: 0.8rem;">
-                        ${fieldName}
-                    </h3>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <span style="background: #e6b422; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第1希望: ${first}人</span>
-                        <span style="background: #999; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第2希望: ${second}人</span>
-                        <span style="background: #c57f2e; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第3希望: ${third}人</span>
-                    </div>
-                </div>`;
-　　　　　　　*/　　　　
-
-              //　5/2更新
-　　　　　　　　const cardHtml = `
                 <div class="zemi-card-sp" style="margin-bottom: 1rem; background: rgba(255,255,255,0.05); border: 2px solid ${borderColor}; border-radius: 8px; padding: 1rem;">
                     <h3 style="margin: 0 0 0.8rem 0; font-size: 1.1rem; color: #fff;">
                         ${fieldName} ${badgeHtml}
@@ -110,10 +87,6 @@ fetch(sheetUrl)
                         </p>
                     </details>
                 </div>`;
-
-
-              
-              
 
                 if (index < 3) {
                     top3Html += cardHtml;
@@ -146,7 +119,7 @@ fetch(sheetUrl)
                 toggleBtn.addEventListener('click', () => {
                     const isHidden = otherFields.style.display === 'none';
                     otherFields.style.display = isHidden ? 'block' : 'none';
-                    toggleBtn.textContent = isHidden ? '表示を戻す' : 'すべての希望分野を表示';
+                    toggleBtn.textContent = isHidden ? '表示を戻す' : 'すべての提案を表示';
                 });
             }
         })
@@ -156,7 +129,7 @@ fetch(sheetUrl)
         });
 });
 
-// CSVパース関数
+// CSVパース関数（重複していたので1つにまとめました）
 function parseCSV(str) {
     const result = [];
     let row = [], inQuotes = false, val = "";
@@ -179,48 +152,6 @@ function parseCSV(str) {
     if (val || row.length > 0) { row.push(val); result.push(row); }
     return result;
 }
-
-// CSVパース関数（ここは共通）
-function parseCSV(str) {
-    const result = [];
-    let row = [], inQuotes = false, val = "";
-    for (let i = 0; i < str.length; i++) {
-        let c = str[i];
-        if (inQuotes) {
-            if (c === '"' && str[i+1] === '"') { val += '"'; i++; }
-            else if (c === '"') { inQuotes = false; }
-            else { val += c; }
-        } else {
-            if (c === '"') { inQuotes = true; }
-            else if (c === ',') { row.push(val); val = ""; }
-            else if (c === '\n' || c === '\r') {
-                row.push(val); val = ""; result.push(row); row = [];
-                if (c === '\r' && str[i+1] === '\n') i++;
-            }
-            else { val += c; }
-        }
-    }
-    if (val || row.length > 0) { row.push(val); result.push(row); }
-    return result;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // ゼミ班アコーディオン
 function setupAccordion(headerClass, itemClass, contentClass) {
