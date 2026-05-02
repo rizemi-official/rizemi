@@ -25,9 +25,16 @@ function menuToggle() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
+  /*　仮フォーム１のurl
     const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQNO7w4N3S8LqTHigAnUygflNpqnMZKXSD-azc2o8W-m4R4_Slp4VP6E6y1a03zcXugMeITlDyUBdEw/pub?gid=972364105&single=true&output=csv' ;
-    
+    */
+
+//　仮フォーム2（5/2更新）
+const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRNecFBsyhfwYntqbckMYHdCS66A8NDkxyDkYujReyz0b4VTVl2TUpDCp50TSIL1AZ0S6UDhAKL0g9q/pub?gid=1374982249&single=true&output=csv' ;
+
+  
+  
     const container = document.getElementById('zemi-results-container');
     if(!container) return;
 
@@ -49,8 +56,28 @@ fetch(sheetUrl)
                 const fieldName = row[0];
                 const first = row[1] || 0;
                 const second = row[2] || 0;
-                const third = row[3] || 0;
+                
+            //  const third = row[3] || 0;
 
+
+              
+      //　5/2更新
+              const description = row[3] || '概要はまだありません。';
+
+              // --- 枠線の色を決定するロジック ---
+                let borderColor = '#555'; // デフォルト（0〜2人）
+                let badgeHtml = '';
+
+                if (first >= 5) {
+                    borderColor = '#ff6b6b'; // 5人以上：成立（赤/ピンク系）
+                    badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">成立！</span>';
+                } else if (first >= 3) {
+                    borderColor = '#91b825'; // 3〜4人：もうすぐ（りゼミグリーン系）
+                    badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もうすぐ！</span>';
+                }
+
+
+            /*  
                 const cardHtml = `
                 <div class="zemi-card-sp" style="margin-bottom: 1rem; background: rgba(255,255,255,0.05); border: 1px solid #555; border-radius: 8px; padding: 1rem;">
                     <h3 style="margin: 0.8rem 0; font-size: 1.1rem; color: #fff; border-left: 4px solid #91b825; padding-left: 0.8rem;">
@@ -62,6 +89,31 @@ fetch(sheetUrl)
                         <span style="background: #c57f2e; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第3希望: ${third}人</span>
                     </div>
                 </div>`;
+　　　　　　　*/　　　　
+
+              //　5/2更新
+　　　　　　　　const cardHtml = `
+                <div class="zemi-card-sp" style="margin-bottom: 1rem; background: rgba(255,255,255,0.05); border: 2px solid ${borderColor}; border-radius: 8px; padding: 1rem;">
+                    <h3 style="margin: 0 0 0.8rem 0; font-size: 1.1rem; color: #fff;">
+                        ${fieldName} ${badgeHtml}
+                    </h3>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem;">
+                        <span style="background: #e6b422; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第1希望: ${first}人</span>
+                        <span style="background: #999; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第2希望: ${second}人</span>
+                    </div>
+                    
+                    <!-- 概要（折りたたみ） -->
+                    <details style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                        <summary style="cursor: pointer; font-weight: bold; color: #cecece; font-size: 0.9rem; outline: none;">概要を見る</summary>
+                        <p style="margin-top: 0.5rem; margin-bottom: 0; color: #bbb; font-size: 0.85rem; line-height: 1.5;">
+                            ${description.replace(/\n/g, '<br>')}
+                        </p>
+                    </details>
+                </div>`;
+
+
+              
+              
 
                 if (index < 3) {
                     top3Html += cardHtml;
@@ -79,7 +131,7 @@ fetch(sheetUrl)
                     <div id="other-zemi-fields" style="display: none;">${otherHtml}</div>
                     <div style="text-align: center; margin-top: 1rem;">
                         <button id="toggle-zemi-btn" class="btn" style="font-size: 0.9rem; padding: 0.5rem 1rem; background: #555;">
-                            すべての希望分野を表示
+                            すべての提案を表示
                         </button>
                     </div>
                 `;
