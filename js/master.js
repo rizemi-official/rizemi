@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div id="other-zemi-fields" style="display: none;">${otherHtml}</div>
                     <div style="text-align: center; margin-top: 1rem;">
                         <button id="toggle-zemi-btn" class="btn" style="font-size: 0.9rem; padding: 0.5rem 1rem; background: #555;">
-                            すべての提案を表示
+                            もっと見る
                         </button>
                     </div>
                 `;
