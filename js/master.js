@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleBtn.addEventListener('click', () => {
                     const isHidden = otherFields.style.display === 'none';
                     otherFields.style.display = isHidden ? 'block' : 'none';
-                    toggleBtn.textContent = isHidden ? '開く' : 'もっと見る';
+                    toggleBtn.textContent = isHidden ? '閉じる' : 'もっと見る';
                 });
             }
         })
