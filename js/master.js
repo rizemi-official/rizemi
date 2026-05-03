@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 let badgeHtml = '';
 
                 if (first >= 5) {
-                    borderColor = '#ff6b6b'; // 5人以上：成立（赤/ピンク系）
+                    borderColor = '#ff6b6b'; // 5人以上：成立（赤/ピンク）
                     badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">成立！</span>';
                 } else if (first >= 3) {
-                    borderColor = '#91b825'; // 3〜4人：もうすぐ（りゼミグリーン系）
+                    borderColor = '#91b825'; // 3〜4人：もうすぐ（緑）
                     badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もうすぐ！</span>';
                 }
 
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleBtn.addEventListener('click', () => {
                     const isHidden = otherFields.style.display === 'none';
                     otherFields.style.display = isHidden ? 'block' : 'none';
-                    toggleBtn.textContent = isHidden ? '表示を戻す' : 'すべての提案を表示';
+                    toggleBtn.textContent = isHidden ? '開く' : 'もっと見る';
                 });
             }
         })
