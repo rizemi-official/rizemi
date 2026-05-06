@@ -926,9 +926,20 @@ body.r6-sp {
     /*NEWS*/
     .news {
         margin: 2rem auto 0;
+        width: 90%;          /* 横幅を画面の90%まで広げる */
+        max-width: 1000px;   /* 横幅の最大値を1000pxに拡大（元は736px） */
+        max-height: 600px;   /* 縦幅を600pxに拡大（元は300px） */
+        padding: 2rem;       /* 枠の内側の余白を広げて窮屈さをなくす */
     }
     .news ul {
         padding-left: 2rem;
+    }
+    
+    /* パソコン版だけニュースの文字を少し大きく・余白を広くして見やすくする */
+    .news li {
+        font-size: 1.2rem;   /* 文字サイズを少し大きく */
+        line-height: 1.8;    /* 行間を少し広げる */
+        padding-bottom: 1.5rem; /* ニュース同士の間隔を広げる */
     }
 
     /*Twitter*/
