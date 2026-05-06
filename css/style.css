@@ -1011,6 +1011,22 @@ body.r6-sp {
     .about-text {
         display: inline;
     }
+
+    /* =========================================
+   ニュースの「New」バッジ自動付与
+========================================= */
+/* ニュースリストの「1番上の項目（first-child）」の「最初の日付（span）」の「後ろ（::after）」に自動で表示 */
+.news ul li:first-child > span:first-child::after {
+    content: "New";
+    background-color: #e60012; /* 目立つ赤色 */
+    color: #fff;               /* 文字は白 */
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 4px;        /* 角を少し丸く */
+    margin-left: 10px;         /* 日付との隙間 */
+    font-weight: bold;
+    vertical-align: text-bottom;
+}
     
     /*特設ページ*/
     
