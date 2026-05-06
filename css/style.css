@@ -651,8 +651,8 @@ body.r6-sp {
 /*ニュース*/
 .news {
     max-width: 736px;
-    width: 80%;
-    max-height: 300px;
+    width: 90%;          /* スマホの画面幅に合わせて少し横にも広げました */
+    max-height: 600px;   /* ← 300px から 600px（お好みで増減）に大きくしました！ */
     justify-content: center;
     margin: 1rem auto;
     border: 2px solid #ccc;/* 枠線 */
