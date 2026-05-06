@@ -123,7 +123,7 @@ img {
 }
 
 /*本体*/
-body.r5-sp {
+body.r6-sp {
     background-color: #46454B;
     color: #cecece;
 }
@@ -149,7 +149,7 @@ body.r5-sp {
     color: #cecece;
 }
 .head-sp a:hover {
-    color: #C0A313;
+    color: #2A91D3;
 }
 .main-nav-sp {
     justify-content: center;
@@ -179,7 +179,7 @@ body.r5-sp {
     color: #cecece;
 }
 .main-nav-sp a:hover {
-    color: #C0A313;
+    color: #2A91D3;
 }
 .main-nav-sp.menu_active {
     right: 0;
@@ -260,18 +260,26 @@ body.r5-sp {
   background: #cecece;
 }
 .detail-sp th ,.detail-sp td {
-  text-align: left;
-  padding: 12px 20px 12px 0;
-  vertical-align: top;
+  /*text-align: left; */
+  padding: 20px 10px;
+  vertical-align: middle;
   color: #cecece;
 }
 .detail-sp th {
-  width: 110px;
+  width: 140px;
+    padding-left: 50px;
+    padding-right: 40px;
   text-align: center;
   font-weight: normal;
   white-space: nowrap;
   color: #cecece;
 }
+
+.detail-sp td {
+    text-align: left;
+    padding-left: 0;
+}
+
 .detail-sp a {
     color: #e3acae;
 }
@@ -467,7 +475,7 @@ body.r5-sp {
     color: black;
 }
 .head a:hover {
-    color: #C0A313;
+    color: #2A91D3;
 }
 .logo {
     height: 2em;
@@ -571,7 +579,7 @@ body.r5-sp {
     color: black;
 }
 .main-nav a:hover {
-    color: #C0A313;
+    color: #2A91D3;
 }
 .main-nav.menu_active {
     right: 0;
@@ -643,8 +651,8 @@ body.r5-sp {
 /*ニュース*/
 .news {
     max-width: 736px;
-    width: 80%;
-    max-height: 300px;
+    width: 90%;          /* スマホの画面幅に合わせて少し横にも広げました */
+    max-height: 600px;   /* ← 300px から 600px（お好みで増減）に大きくしました！ */
     justify-content: center;
     margin: 1rem auto;
     border: 2px solid #ccc;/* 枠線 */
@@ -862,11 +870,12 @@ body.r5-sp {
     color: #fff;
 }
 .info a:hover {
-    color: #C8A978;
+    color: #2A91D3;
 }
 .sns img {
     height: 1.5em;
     vertical-align: middle;
+    margin-left: 0.8rem;
 }
 .copyright {
     background-color: #596144;
@@ -876,8 +885,36 @@ body.r5-sp {
     color: #fff; 
 }
 
+ /* =========================================
+   ニュースの「New」バッジ自動付与
+========================================= */
+/* ニュースリストの「1番上の項目（first-child）」の「最初の日付（span）」の「後ろ（::after）」に自動で表示 */
+.news ul li:first-child > span:first-child::after {
+    content: "New";
+    background-color: #e60012; /* 目立つ赤色 */
+    color: #fff;               /* 文字は白 */
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 4px;        /* 角を少し丸く */
+    margin-left: 10px;         /* 日付との隙間 */
+    font-weight: bold;
+    vertical-align: text-bottom;
+}
+
+
+
+
+
+
 /*デスクトップ版*/
 @media (min-width: 1000px) {
+
+    .wrapper {
+        max-width: 1300px; /* 元の1120pxから少し広くしました */
+    }
+
+    
+    
     /* 見出し */
     .page-title {
         font-size: 1.5rem;
@@ -917,9 +954,20 @@ body.r5-sp {
     /*NEWS*/
     .news {
         margin: 2rem auto 0;
+        width: 90%;
+        max-width: 600px;    /* ← Xの埋め込み幅(最大550px)＋余白にピッタリ合わせる */
+        max-height: 800px;   /* ← 縦幅を大きく増やす（足りなければ1000px等に増やしてOK） */
+        padding: 2rem;
     }
     .news ul {
         padding-left: 2rem;
+    }
+    
+    /* パソコン版だけニュースの文字を少し大きく・余白を広くして見やすくする */
+    .news li {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        padding-bottom: 1.5rem;
     }
 
     /*Twitter*/
@@ -952,8 +1000,8 @@ body.r5-sp {
     background: none;
     display: flex;             /* 横並びに */
     justify-content: center;
-    gap: 2.5rem;
-    font-size: 1.5rem;
+    gap: 4rem;
+
     padding: 0;
     transition: none;
     color: #91B825;
@@ -991,6 +1039,8 @@ body.r5-sp {
     .about-text {
         display: inline;
     }
+
+   
     
     /*特設ページ*/
     
