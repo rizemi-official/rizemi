@@ -887,6 +887,13 @@ body.r6-sp {
 
 /*デスクトップ版*/
 @media (min-width: 1000px) {
+
+    .wrapper {
+        max-width: 1300px; /* 元の1120pxから少し広くしました */
+    }
+
+    
+    
     /* 見出し */
     .page-title {
         font-size: 1.5rem;
@@ -972,8 +979,8 @@ body.r6-sp {
     background: none;
     display: flex;             /* 横並びに */
     justify-content: center;
-    gap: 2.5rem;
-    font-size: 1.5rem;
+    gap: 4rem;
+
     padding: 0;
     transition: none;
     color: #91B825;
