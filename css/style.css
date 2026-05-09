@@ -1070,7 +1070,7 @@ body.r6-sp {
 
 .intro-text-box h3 {
     font-size: 1.8rem;
-    color: #91B825; /* テーマカラー */
+    color: #0066cc; /* テーマカラー */
     margin-bottom: 1.5rem;
 }
 
@@ -1085,13 +1085,13 @@ body.r6-sp {
 .btn-detail {
     display: inline-block;
     padding: 1rem 2.5rem;
-    background-color: #91B825;
+    background-color: #0066cc;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     border-radius: 50px; /* 角を丸くしてボタンらしく */
     transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 15px rgba(145, 184, 37, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
 }
 
 .btn-detail:hover {
