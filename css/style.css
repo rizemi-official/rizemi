@@ -1095,8 +1095,8 @@ body.r6-sp {
 }
 
 .btn-detail:hover {
-    background-color: #7a9c1f; /* ホバー時に少し暗く */
-    transform: translateY(-2px); /* 少し浮き上がる演出 */
+    background-color: #004c99; /* マウスを乗せた時は少し濃い青に */
+    transform: translateY(-2px); 
     color: #fff;
 }
 
