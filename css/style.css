@@ -1040,7 +1040,75 @@ body.r6-sp {
         display: inline;
     }
 
-   
+
+
+    
+/* =========================================
+   トップページ：紹介セクション
+========================================= */
+.top-introduction {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.intro-header {
+    margin-bottom: 2rem;
+}
+
+.intro-big-logo {
+    width: 120px; /* ロゴの大きさ（お好みで調整） */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.intro-title {
+    font-size: 3rem; /* 「りゼミ」のタイトルサイズ */
+    font-weight: bold;
+    color: #333;
+    letter-spacing: 0.2rem;
+}
+
+.intro-text-box h3 {
+    font-size: 1.8rem;
+    color: #91B825; /* テーマカラー */
+    margin-bottom: 1.5rem;
+}
+
+.intro-text-box p {
+    font-size: 1.1rem;
+    line-height: 2;
+    margin-bottom: 2.5rem;
+    color: #555;
+}
+
+/* ボタンのデザイン */
+.btn-detail {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: #91B825;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px; /* 角を丸くしてボタンらしく */
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(145, 184, 37, 0.3);
+}
+
+.btn-detail:hover {
+    background-color: #7a9c1f; /* ホバー時に少し暗く */
+    transform: translateY(-2px); /* 少し浮き上がる演出 */
+    color: #fff;
+}
+
+/* スマホ版の調整 */
+@media (max-width: 999px) {
+    .intro-title {
+        font-size: 2.2rem;
+    }
+    .intro-big-logo {
+        width: 80px;
+    }
+}
     
     /*特設ページ*/
     
