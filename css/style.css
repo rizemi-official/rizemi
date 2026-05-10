@@ -1013,180 +1013,74 @@ body.r6-sp {
 
 
 
-
 /*デスクトップ版*/
 @media (min-width: 1000px) {
 
     .wrapper {
         max-width: 1300px;
     }
-    
-    /* 見出し */
-    .heading-large {
-        font-size: 2rem;
-    }
-    .kaisei-opti-regular {
-        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif;
-    }
-    
-    /* ヘッダー */
+
+    /* ヘッダー：上下の余白(padding)を増やして「厚み」を出す */
     .page-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 1.5rem;
+        padding-top: 2.5rem;    /* 1.5remから2.5remに増やしました */
+        padding-bottom: 2.5rem; /* 下側の余白も追加 */
         border-bottom: 2px solid #c9c2bc;
+        position: static;
     }
+
+    /* ロゴのサイズを少し大きく戻す */
     .logo {
-        height: 2.5em;
+        height: 3.5em; /* 2.5emから3.5emに大きくしました */
     }
+    
     .logo-top {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
-    .page-title {
-        height: 70vh;
-        font-size: 4rem;
-    }
-
-    .page-header-sp {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 1.5rem;
+    
+    .logo-btm {
+        font-size: 3rem;
     }
 
-    /*NEWS*/
+    /* NEWSエリアの調整 */
     .news {
-        margin: 2rem auto 0;
-        width: 90%;
-        max-width: 600px;
-        max-height: 800px;
-        padding: 2rem;
-    }
-    .news ul {
-        padding-left: 2rem;
-    }
-    .news li {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        padding-bottom: 1.5rem;
+        margin: 3rem auto 0;
+        max-width: 650px;
+        max-height: 900px;
+        padding: 2.5rem;
     }
 
-    /* メニューやSNS */
-    .main-menu {
-        display: none;
-    }
-    .main-sns {
-        display: none;
-    }
-    .responsive_btn {
-        display: none;
-    }
-
-    .container {
-        justify-content: center;
-        align-items: flex-start;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-    .container section {
-        border-radius: 8px;
-        padding: 1rem;
-        width: 650px;
-    }
-
+    /* メニューの文字と隙間 */
     .main-nav {
         position: static;
-        height: auto;
-        width: auto;
-        background: none;
         display: flex;
-        justify-content: center;
-        gap: 4rem;
-        padding: 0;
-        transition: none;
-        color: #91B825;
-        border: none;
-        font-size: 2rem;
-        margin-bottom: 0;
-    }
-    .main-nav li {
-        margin: 0;
+        gap: 5rem; /* メニュー同士の隙間を広げてゆとりを出す */
+        font-size: 2.2rem; /* 文字を少し大きく見やすく */
     }
 
-    .main-nav-sp {
-        position: static;
-        height: auto;
-        width: auto;
-        background: none;
-        display: flex;
-        justify-content: center;
-        gap: 2.5rem;
-        font-size: 1.5rem;
-        padding: 0;
-        transition: none;
-        color: #91B825;
-        border: none;
-        margin-bottom: 0;
+    /* =========================================
+       「りゼミとは」ページ：PC版の写真サイズを大きく戻す
+    ========================================= */
+    .about-img img {
+        max-width: 550px; /* 350pxの制限を解除し、550pxまで大きく表示させます */
     }
-    .main-nav-sp li {
-        margin: 0;
+    
+    .about-text h3 {
+        font-size: 2.2rem; /* PCでは見出しも大きく */
     }
 
-    .about-text {
-        display: inline;
+    .about-text p {
+        font-size: 1.2rem; /* PCでは本文も少し大きく */
     }
 
-    /* トップページ：紹介セクション */
-    .top-introduction {
-        padding: 4rem 0;
-        text-align: center;
-    }
-    .intro-header {
-        margin-bottom: 2rem;
-    }
-    .intro-big-logo {
-        width: 120px;
-        height: auto;
-        margin-bottom: 1rem;
-    }
-    .intro-title {
-        font-size: 3rem;
-        font-weight: bold;
-        color: #333;
-        letter-spacing: 0.2rem;
-    }
-    .intro-text-box h3 {
-        font-size: 1.8rem;
-        color: #0066cc;
-        margin-bottom: 1.5rem;
-    }
-    .intro-text-box p {
-        font-size: 1.1rem;
-        line-height: 2;
-        margin-bottom: 2.5rem;
-        color: #555;
+    /* 不要な要素を非表示にする */
+    .responsive_btn, .main-menu, .main-sns {
+        display: none;
     }
 
-    /* ボタンのデザイン */
-    .btn-detail {
-        display: inline-block;
-        padding: 1rem 2.5rem;
-        background-color: #0066cc;
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 50px;
-        transition: background-color 0.3s, transform 0.2s;
-        box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
-    }
-    .btn-detail:hover {
-        background-color: #004c99;
-        transform: translateY(-2px); 
-        color: #fff;
-    }
-
-} 
+}
 
 
 
