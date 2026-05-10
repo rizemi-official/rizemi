@@ -1015,26 +1015,21 @@ body.r6-sp {
 
 
 
-
 /*デスクトップ版*/
 @media (min-width: 1000px) {
 
     .wrapper {
-        max-width: 1300px; /* 元の1120pxから少し広くしました */
+        max-width: 1300px;
     }
-
-    
     
     /* 見出し */
-    .page-title {
-        font-size: 1.5rem;
-    }
     .heading-large {
         font-size: 2rem;
     }
     .kaisei-opti-regular {
-        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif;;
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif;
     }
+    
     /* ヘッダー */
     .page-header {
         display: flex;
@@ -1044,7 +1039,7 @@ body.r6-sp {
         border-bottom: 2px solid #c9c2bc;
     }
     .logo {
-    height: 2.5em;
+        height: 2.5em;
     }
     .logo-top {
         font-size: 1rem;
@@ -1065,152 +1060,134 @@ body.r6-sp {
     .news {
         margin: 2rem auto 0;
         width: 90%;
-        max-width: 600px;    /* ← Xの埋め込み幅(最大550px)＋余白にピッタリ合わせる */
-        max-height: 800px;   /* ← 縦幅を大きく増やす（足りなければ1000px等に増やしてOK） */
+        max-width: 600px;
+        max-height: 800px;
         padding: 2rem;
     }
     .news ul {
         padding-left: 2rem;
     }
-    
-    /* パソコン版だけニュースの文字を少し大きく・余白を広くして見やすくする */
     .news li {
         font-size: 1.2rem;
         line-height: 1.8;
         padding-bottom: 1.5rem;
     }
 
-    /*Twitter*/
-
+    /* メニューやSNS */
     .main-menu {
         display: none;
-    }
-    .container {
-           /* 横並びにする */
-        justify-content: center; /* 横方向の中央寄せ */
-        align-items: flex-start; /* 高さを上に揃える */
-        gap: 1rem;               /* 各ボックスの間隔 */
-        flex-wrap: wrap;         /* 画面が狭いときは折り返す */
     }
     .main-sns {
         display: none;
     }
+    .responsive_btn {
+        display: none;
+    }
 
+    .container {
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
     .container section {
-        
         border-radius: 8px;
         padding: 1rem;
-        width: 650px;            /* 各セクションの横幅 */
-
+        width: 650px;
     }
-    .main-nav {
-    position: static;          /* 固定解除 */
-    height: auto;
-    width: auto;
-    background: none;
-    display: flex;             /* 横並びに */
-    justify-content: center;
-    gap: 4rem;
 
-    padding: 0;
-    transition: none;
-    color: #91B825;
-    border: none;
-    font-size: 2rem;
-    margin-bottom: 0;
+    .main-nav {
+        position: static;
+        height: auto;
+        width: auto;
+        background: none;
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        padding: 0;
+        transition: none;
+        color: #91B825;
+        border: none;
+        font-size: 2rem;
+        margin-bottom: 0;
     }
     .main-nav li {
         margin: 0;
     }
+
     .main-nav-sp {
-    position: static;          /* 固定解除 */
-    height: auto;
-    width: auto;
-    background: none;
-    display: flex;             /* 横並びに */
-    justify-content: center;
-    gap: 2.5rem;
-    font-size: 1.5rem;
-    padding: 0;
-    transition: none;
-    color: #91B825;
-    border: none;
-    font-size: 2rem;
-    margin-bottom: 0;
+        position: static;
+        height: auto;
+        width: auto;
+        background: none;
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        font-size: 1.5rem;
+        padding: 0;
+        transition: none;
+        color: #91B825;
+        border: none;
+        margin-bottom: 0;
     }
     .main-nav-sp li {
         margin: 0;
-    }
-
-    .responsive_btn {
-    display: none;
     }
 
     .about-text {
         display: inline;
     }
 
+    /* トップページ：紹介セクション */
+    .top-introduction {
+        padding: 4rem 0;
+        text-align: center;
+    }
+    .intro-header {
+        margin-bottom: 2rem;
+    }
+    .intro-big-logo {
+        width: 120px;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+    .intro-title {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #333;
+        letter-spacing: 0.2rem;
+    }
+    .intro-text-box h3 {
+        font-size: 1.8rem;
+        color: #0066cc;
+        margin-bottom: 1.5rem;
+    }
+    .intro-text-box p {
+        font-size: 1.1rem;
+        line-height: 2;
+        margin-bottom: 2.5rem;
+        color: #555;
+    }
 
+    /* ボタンのデザイン */
+    .btn-detail {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background-color: #0066cc;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+    .btn-detail:hover {
+        background-color: #004c99;
+        transform: translateY(-2px); 
+        color: #fff;
+    }
 
-    
-/* =========================================
-   トップページ：紹介セクション
-========================================= */
-.top-introduction {
-    padding: 4rem 0;
-    text-align: center;
-}
-
-.intro-header {
-    margin-bottom: 2rem;
-}
-
-.intro-big-logo {
-    width: 120px; /* ロゴの大きさ（お好みで調整） */
-    height: auto;
-    margin-bottom: 1rem;
-}
-
-.intro-title {
-    font-size: 3rem; /* 「りゼミ」のタイトルサイズ */
-    font-weight: bold;
-    color: #333;
-    letter-spacing: 0.2rem;
-}
-
-.intro-text-box h3 {
-    font-size: 1.8rem;
-    color: #0066cc; /* テーマカラー */
-    margin-bottom: 1.5rem;
-}
-
-.intro-text-box p {
-    font-size: 1.1rem;
-    line-height: 2;
-    margin-bottom: 2.5rem;
-    color: #555;
-}
-
-/* ボタンのデザイン */
-.btn-detail {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background-color: #0066cc;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px; /* 角を丸くしてボタンらしく */
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
-}
-
-.btn-detail:hover {
-    background-color: #004c99; /* マウスを乗せた時は少し濃い青に */
-    transform: translateY(-2px); 
-    color: #fff;
-}
-
-
+} 
 }
 
 
