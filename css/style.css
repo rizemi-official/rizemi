@@ -456,13 +456,14 @@ body.r6-sp {
 /*ヘッダー*/
 .page-header {
     background-color: #fff;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 1.5rem;    /* 1remから増やしてゆとりを出す */
+    padding-bottom: 1.5rem; /* 下側にもゆとりを出す */
     border-bottom: 2px solid #c9c2bc;
     position: static;
     top: 0;
     z-index: 1000;
 }
+
 .head {
     display:  flex;
     align-items: center;
@@ -1020,20 +1021,20 @@ body.r6-sp {
         max-width: 1300px;
     }
 
-    /* ヘッダー：上下の余白(padding)を増やして「厚み」を出す */
+   /* ヘッダー：上下の余白(padding)を増やして「厚み」を出す */
     .page-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 2.5rem;    /* 1.5remから2.5remに増やしました */
-        padding-bottom: 2.5rem; /* 下側の余白も追加 */
+        padding-top: 3.5rem;    /* 2.5rem → 3.5rem にして、さらに厚みを出します！ */
+        padding-bottom: 3.5rem; /* 下側も同様に広くします */
         border-bottom: 2px solid #c9c2bc;
         position: static;
     }
 
     /* ロゴのサイズを少し大きく戻す */
     .logo {
-        height: 3.5em; /* 2.5emから3.5emに大きくしました */
+        height: 4.5em; /* 余白が広がった分、ロゴも大きくしてバランスを取ります */
     }
     
     .logo-top {
