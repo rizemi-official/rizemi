@@ -287,7 +287,7 @@ body.r6-sp {
     color: #C0A313;
 }
 
-/*ゼミ班*
+/*ゼミ班*/
 .speace-sp {
   margin: 1rem auto 0;
 }
@@ -1052,12 +1052,22 @@ body.r6-sp {
         padding: 2.5rem;
     }
 
-    /* メニューの文字と隙間 */
+
+    /* メニューの文字と隙間（リセット含む） */
     .main-nav {
         position: static;
+        width: auto;         /* スマホの60%幅を解除 */
+        background: none;    /* スマホの背景色を解除 */
+        border: none;        /* スマホの黒い枠線を解除 */
+        padding: 0;          /* スマホの余白を解除 */
         display: flex;
-        gap: 5rem; /* メニュー同士の隙間を広げてゆとりを出す */
-        font-size: 2.2rem; /* 文字を少し大きく見やすく */
+        justify-content: center;
+        gap: 5rem;           /* メニュー同士の隙間 */
+        font-size: 2.2rem;   /* 文字の大きさ */
+        margin-bottom: 0;
+    }
+    .main-nav li {
+        margin: 0;
     }
 
     /* =========================================
@@ -1099,4 +1109,4 @@ body.r6-sp {
     
     
     /*フッター*/
-}
+
