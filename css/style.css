@@ -287,9 +287,9 @@ body.r6-sp {
     color: #C0A313;
 }
 
-/*ゼミ班*/
+/*ゼミ班*
 .speace-sp {
-  margin: rem auto 0;
+  margin: 1rem auto 0;
 }
 .zemi-sp {
   width: 90%;
@@ -486,7 +486,7 @@ body.r6-sp {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    line-height: 1,2;
+    line-height: 1.2;
 }
 .logo-top {
     font-size: 0.6rem;
@@ -1002,7 +1002,14 @@ body.r6-sp {
 }
 
 
-
+/* スマホ版の調整 */
+@media (max-width: 999px) {
+    .intro-title {
+        font-size: 2.2rem;
+    }
+    .intro-big-logo {
+        width: 80px;
+    }
 
 
 
@@ -1203,14 +1210,7 @@ body.r6-sp {
     color: #fff;
 }
 
-/* スマホ版の調整 */
-@media (max-width: 999px) {
-    .intro-title {
-        font-size: 2.2rem;
-    }
-    .intro-big-logo {
-        width: 80px;
-    }
+
 }
 
 
