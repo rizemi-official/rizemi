@@ -84,7 +84,7 @@ img {
   height: 220px;
   margin: 40px auto 0;
 
-  background-image: url("../images/5th/5th_4.jpg"); /* ←ここを画像パスに変更 */
+  background-image: url("../images/5th/5th_4.jpg"); 
   background-size: cover;
   background-position: center;
 
@@ -157,13 +157,11 @@ body.r6-sp {
     font-size: 1.5rem;
     list-style: none;
     background: #77767F;
-    background-image: none/*url("../images/Gx6Z6pIbMAAbvJa.jpg")*/;
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 10px;
     border: 2px solid black;
     width: 60%;
-    /*height: 70%;*/
     padding: 40px 0 0 0;
     margin-top: 0;
     position: fixed;
@@ -260,7 +258,6 @@ body.r6-sp {
   background: #cecece;
 }
 .detail-sp th ,.detail-sp td {
-  /*text-align: left; */
   padding: 20px 10px;
   vertical-align: middle;
   color: #cecece;
@@ -347,9 +344,9 @@ body.r6-sp {
     display: inline-block;
     width: 8px;
     height: 8px;
-    border-right: 2px solid #cecece;  /* ＞ の右側ライン */
-    border-bottom: 2px solid #cecece; /* ＞ の下側ライン */
-    transform: rotate(45deg);      /* ＞ を下向きに倒した形に */
+    border-right: 2px solid #cecece;
+    border-bottom: 2px solid #cecece; 
+    transform: rotate(45deg);     
     transition: transform 0.3s ease;
 }
 .accordion-content-sp {
@@ -363,7 +360,7 @@ body.r6-sp {
   padding: 1rem 1.2rem;
 }
 .accordion-item-sp.active .accordion-icon-sp {
-  transform: rotate(225deg); /* ＋ → × */
+  transform: rotate(225deg); 
 }
 .zemi-detail-top {
     font-size: 1.2rem;
@@ -396,7 +393,7 @@ body.r6-sp {
     width: 60%;
     height: auto;
     display: block;
-    margin: 0 auto; /* 中央揃えしたい場合 */
+    margin: 0 auto;
 }
 .event-sp blockquote {
     font-size: 0.8rem;
@@ -453,39 +450,47 @@ body.r6-sp {
 
 /*--------------------------------------------------------------------------------------*/
 
-/*ヘッダー*/
-
-
-
-
-
-/* ヘッダー：上下の余白(padding)を元のスッキリしたサイズに戻す */
-    .page-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 1.5rem;    /* 3.5rem から 1.5rem に戻す！ */
-        padding-bottom: 1.5rem; /* ここも 1.5rem に戻す！ */
-        border-bottom: 2px solid #c9c2bc;
-        position: static;
-    }
-
-    /* ロゴのサイズを元の大きさに戻す */
-    .logo {
-        height: 2.5em; /* 4.5em から 2.5em に戻す！ */
-    }
-    
-    .logo-top {
-        font-size: 1rem; /* 少し小さく戻す */
-    }
-    
-    .logo-btm {
-        font-size: 2.5rem; /* 少し小さく戻す */
-    }
-
-
-
-
+/*ヘッダー（ここで消えていた共通の黒文字設定などを復活！）*/
+.page-header {
+    background-color: #fff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #c9c2bc;
+    position: static;
+    top: 0;
+    z-index: 1000;
+}
+.head {
+    display:  flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.head a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: black;
+}
+.head a:hover {
+    color: #2A91D3;
+}
+.logo {
+    height: 2em;
+    width: auto;
+    vertical-align: middle;
+}
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+.logo-top {
+    font-size: 0.6rem;
+}
+.logo-btm {
+    font-size: 2.5rem;
+}
 
 /* Responsive menu button */
 .responsive_btn {
@@ -549,13 +554,11 @@ body.r6-sp {
     font-size: 1.5rem;
     list-style: none;
     background: #fffcf9;
-    background-image: none/*url("../images/Gx6Z6pIbMAAbvJa.jpg")*/;
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 10px;
     border: 2px solid black;
     width: 60%;
-    /*height: 70%;*/
     padding: 40px 0 0 0;
     margin-top: 0;
     position: fixed;
@@ -625,7 +628,7 @@ body.r6-sp {
 
 /*スライドショー*/
 .your-class .slick-slide {
-  height: 250px;           /* ← 好きな高さに調整 */
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -634,7 +637,7 @@ body.r6-sp {
 .your-class img {
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* ← はみ出た部分は自動でトリミング */
+  object-fit: cover;
 }
 .slick-next {
     display: none !important;
@@ -643,15 +646,15 @@ body.r6-sp {
 /*ニュース*/
 .news {
     max-width: 736px;
-    width: 90%;          /* スマホの画面幅に合わせて少し横にも広げました */
-    max-height: 600px;   /* ← 300px から 600px（お好みで増減）に大きくしました！ */
+    width: 90%;
+    max-height: 600px;
     justify-content: center;
     margin: 1rem auto;
-    border: 2px solid #ccc;/* 枠線 */
-    border-radius: 10px;    /* 角を少し丸く */
-    padding: 1rem;         /* 内側の余白 */
-    overflow-y: auto;      /* ← 縦方向にだけスクロールを出す */
-    background-color: #fafafa; /* 背景色 */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #fafafa;
 }
 .news-title {
     border-bottom: 1px solid #c9c2bc;
@@ -668,18 +671,17 @@ body.r6-sp {
 
 /*詳細*/
 .detail {
-  text-align: center;        /* 全体を中央揃え */
-  max-width: 800px;          /* 横幅を制限（読みやすく） */
-  margin: 1rem auto;           /* 上下に余白＋中央寄せ */
+  text-align: center;
+  max-width: 800px;
+  margin: 1rem auto;
   padding: 1.5rem;
   line-height: 1.8;
 }
 .detail-title {
-  display: block;            /* 上下に分けて表示 */
-  font-size: 1.8rem;         /* 少し大きめに */
+  display: block;
+  font-size: 1.8rem;
   font-weight: bold;
-  /*color: #607133;*/            /* 少し落ち着いた色（りゼミのトーンに合わせ） */
-  margin-bottom: 0.8rem;     /* 下に少し余白 */
+  margin-bottom: 0.8rem;
   background-color: #bed778;
   border-radius: 8px;   
 }
@@ -687,7 +689,6 @@ body.r6-sp {
   display: block;
   font-size: 1rem;
   padding-top: 1rem;
-  /*color: #333;*/
 }
 .detail-text a {
     color: #2A91D3;
@@ -709,7 +710,6 @@ body.r6-sp {
     color: white;
 }
 .r1 {
-    /*background-image: url(..//images/1st_1.jpg);*/
     background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(..//images/1st/1st_1.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
@@ -783,8 +783,8 @@ body.r6-sp {
   padding: 1rem;
 }
 .accordion {
-  max-width: 550px;   /* 好きな幅 */
-  margin: 0 auto;     /* ← これが中央寄せの決め手 */
+  max-width: 550px;
+  margin: 0 auto;
 }
 .accordion-item {
   border: 2px solid #ddd;
@@ -823,7 +823,7 @@ body.r6-sp {
   padding: 1rem 1.2rem;
 }
 .accordion-item.active .accordion-icon {
-  transform: rotate(45deg); /* ＋ → × */
+  transform: rotate(45deg);
 }
 
 /*フッター*/
@@ -880,15 +880,14 @@ body.r6-sp {
  /* =========================================
    ニュースの「New」バッジ自動付与
 ========================================= */
-/* ニュースリストの「1番上の項目（first-child）」の「最初の日付（span）」の「後ろ（::after）」に自動で表示 */
 .news ul li:first-child > span:first-child::after {
     content: "New";
-    background-color: #e60012; /* 目立つ赤色 */
-    color: #fff;               /* 文字は白 */
+    background-color: #e60012; 
+    color: #fff;               
     font-size: 0.8rem;
     padding: 2px 8px;
-    border-radius: 4px;        /* 角を少し丸く */
-    margin-left: 10px;         /* 日付との隙間 */
+    border-radius: 4px;        
+    margin-left: 10px;         
     font-weight: bold;
     vertical-align: text-bottom;
 }
@@ -925,7 +924,7 @@ body.r6-sp {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px; /* 写真と文章の隙間 */
+    gap: 40px; 
     margin-bottom: 5rem;
 }
 
@@ -936,13 +935,13 @@ body.r6-sp {
 
 /* 画像エリアの設定 */
 .about-img {
-    flex: 1; /* 写真と文章の幅を1:1にする */
+    flex: 1; 
 }
 .about-img img {
     width: 100%;
     height: auto;
-    border-radius: 12px; /* 写真の角を少し丸く */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* 影をつける */
+    border-radius: 12px; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
 }
 
 /* 文章エリアの設定 */
@@ -951,9 +950,9 @@ body.r6-sp {
 }
 .about-text h3 {
     font-size: 1.8rem;
-    color: #91B825; /* りゼミカラー */
+    color: #91B825; 
     margin-bottom: 1.2rem;
-    border-left: 5px solid #91B825; /* 左側に緑の線 */
+    border-left: 5px solid #91B825; 
     padding-left: 10px;
 }
 .about-text p {
@@ -982,13 +981,13 @@ body.r6-sp {
 @media (max-width: 768px) {
     .about-block, 
     .about-block.reverse {
-        flex-direction: column; /* スマホでは反転をやめて、写真→文章の縦並びに統一 */
+        flex-direction: column; 
         gap: 20px;
         margin-bottom: 4rem;
     }
     
     .about-intro p {
-        text-align: left; /* スマホだと中央揃えは読みにくいので左揃え */
+        text-align: left; 
     }
 }
 
@@ -1005,35 +1004,35 @@ body.r6-sp {
 
 
 
-/*デスクトップ版*/
+/*デスクトップ版（ここで公開済みのスッキリヘッダーに戻します！）*/
 @media (min-width: 1000px) {
 
     .wrapper {
         max-width: 1300px;
     }
 
-   /* ヘッダー：上下の余白(padding)を増やして「厚み」を出す */
+   /* ヘッダー：上下の余白(padding)を元のスッキリしたサイズに戻す */
     .page-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 3.5rem;    /* 2.5rem → 3.5rem にして、さらに厚みを出します！ */
-        padding-bottom: 3.5rem; /* 下側も同様に広くします */
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
         border-bottom: 2px solid #c9c2bc;
         position: static;
     }
 
-    /* ロゴのサイズを少し大きく戻す */
+    /* ロゴのサイズを元の大きさに戻す */
     .logo {
-        height: 4.5em; /* 余白が広がった分、ロゴも大きくしてバランスを取ります */
+        height: 2.5em; 
     }
     
     .logo-top {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .logo-btm {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     /* NEWSエリアの調整 */
@@ -1044,37 +1043,29 @@ body.r6-sp {
         padding: 2.5rem;
     }
 
-
     /* メニューの文字と隙間（リセット含む） */
     .main-nav {
         position: static;
-        width: auto;         /* スマホの60%幅を解除 */
-        background: none;    /* スマホの背景色を解除 */
-        border: none;        /* スマホの黒い枠線を解除 */
-        padding: 0;          /* スマホの余白を解除 */
+        width: auto;         
+        background: none;    
+        border: none;        
+        padding: 0;          
         display: flex;
         justify-content: center;
-        gap: 5rem;           /* メニュー同士の隙間 */
-        font-size: 2.2rem;   /* 文字の大きさ */
+        gap: 5rem;           
+        font-size: 2.2rem;   
         margin-bottom: 0;
     }
     .main-nav li {
         margin: 0;
     }
 
-    /* =========================================
-       「りゼミとは」ページ：PC版の写真サイズを大きく戻す
-    ========================================= */
-    .about-img img {
-        max-width: 550px; /* 350pxの制限を解除し、550pxまで大きく表示させます */
-    }
-    
     .about-text h3 {
-        font-size: 2.2rem; /* PCでは見出しも大きく */
+        font-size: 2.2rem; 
     }
 
     .about-text p {
-        font-size: 1.2rem; /* PCでは本文も少し大きく */
+        font-size: 1.2rem; 
     }
 
     /* 不要な要素を非表示にする */
@@ -1083,22 +1074,3 @@ body.r6-sp {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    /*特設ページ*/
-    
-    
-    /*フッター*/
-
