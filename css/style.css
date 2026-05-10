@@ -454,47 +454,38 @@ body.r6-sp {
 /*--------------------------------------------------------------------------------------*/
 
 /*ヘッダー*/
-.page-header {
-    background-color: #fff;
-    padding-top: 1.5rem;    /* 1remから増やしてゆとりを出す */
-    padding-bottom: 1.5rem; /* 下側にもゆとりを出す */
-    border-bottom: 2px solid #c9c2bc;
-    position: static;
-    top: 0;
-    z-index: 1000;
-}
 
-.head {
-    display:  flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.head a {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    color: black;
-}
-.head a:hover {
-    color: #2A91D3;
-}
-.logo {
-    height: 2em;
-    width: auto;
-    vertical-align: middle;
-}
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1.2;
-}
-.logo-top {
-    font-size: 0.6rem;
-}
-.logo-btm {
-    font-size: 2.5rem;
-}
+
+
+
+
+/* ヘッダー：上下の余白(padding)を元のスッキリしたサイズに戻す */
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1.5rem;    /* 3.5rem から 1.5rem に戻す！ */
+        padding-bottom: 1.5rem; /* ここも 1.5rem に戻す！ */
+        border-bottom: 2px solid #c9c2bc;
+        position: static;
+    }
+
+    /* ロゴのサイズを元の大きさに戻す */
+    .logo {
+        height: 2.5em; /* 4.5em から 2.5em に戻す！ */
+    }
+    
+    .logo-top {
+        font-size: 1rem; /* 少し小さく戻す */
+    }
+    
+    .logo-btm {
+        font-size: 2.5rem; /* 少し小さく戻す */
+    }
+
+
+
+
 
 /* Responsive menu button */
 .responsive_btn {
