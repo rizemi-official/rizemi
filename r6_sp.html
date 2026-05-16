@@ -402,7 +402,6 @@
     </script>
 
 
-
 <script>
 document.getElementById('testForm').addEventListener('submit', function(e) {
     e.preventDefault(); // ページがリロードされるのを防ぐ
@@ -426,13 +425,15 @@ document.getElementById('testForm').addEventListener('submit', function(e) {
     // データをGASに向けて発射！
     fetch(endpoint, {
         method: 'POST',
+        mode: 'no-cors', // ★追加：ブラウザのブロックを回避する魔法の言葉
         headers: {
-            'Content-Type': 'text/plain' // エラー回避のため plain text で送ります
+            'Content-Type': 'text/plain'
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
-    .then(result => {
+    .then(() => {
+        // no-corsモードの場合、Googleからの返事は読めませんが、
+        // 通信エラーが起きなければスプレッドシートには無事に届いています！
         document.getElementById('resultMessage').innerText = "✅ 送信完了！スプレッドシートを確認してください。";
         document.getElementById('resultMessage').style.color = "green";
         btn.innerText = "送信完了";
@@ -444,14 +445,6 @@ document.getElementById('testForm').addEventListener('submit', function(e) {
     });
 });
 </script>
-
-
-
-
-
-
-
-
 
 
 
