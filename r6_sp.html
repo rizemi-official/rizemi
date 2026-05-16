@@ -309,6 +309,43 @@
         </section>
         </div>
 
+
+
+
+        <div style="max-width: 500px; margin: 3rem auto; padding: 2rem; border: 2px solid #91B825; border-radius: 10px; background: #fafafa;">
+    <h3 style="text-align: center; margin-bottom: 1.5rem;">ゼミ提案テスト</h3>
+    
+    <form id="testForm">
+        <label style="font-weight: bold;">大カテゴリ</label><br>
+        <select id="category" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
+            <option value="物理">物理</option>
+            <option value="数学">数学</option>
+            <option value="その他">その他</option>
+        </select><br>
+
+        <label style="font-weight: bold;">分野名</label><br>
+        <input type="text" id="fieldName" placeholder="例：相転移と臨界現象" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"><br>
+
+        <label style="font-weight: bold;">概要・読みたい本</label><br>
+        <textarea id="description" rows="3" placeholder="例：清水明の熱力学を読みたい" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"></textarea><br>
+
+        <button type="submit" style="width: 100%; padding: 1rem; background-color: #0066cc; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">送信する</button>
+    </form>
+    
+    <div id="resultMessage" style="text-align: center; margin-top: 1rem; font-weight: bold; color: red;"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
         <div class="speace-sp">
         <h2 class="zemi-title-sp">EVENT</h2>
         <section class="event-sp" id="event-sp">
@@ -363,6 +400,64 @@
           });
        });
     </script>
+
+
+
+<script>
+document.getElementById('testForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // ページがリロードされるのを防ぐ
+
+    // 送信ボタンを無効化（連打防止）
+    const btn = e.target.querySelector('button');
+    btn.disabled = true;
+    btn.innerText = "送信中...";
+    document.getElementById('resultMessage').innerText = "";
+
+    // 入力されたデータをまとめる
+    const data = {
+        category: document.getElementById('category').value,
+        field_name: document.getElementById('fieldName').value,
+        description: document.getElementById('description').value
+    };
+
+    
+    const endpoint = "https://script.google.com/macros/s/AKfycbyNi8NvY742nOer-g_O-vSokbS_-90vR2z106Xd3EuDxwwbJL-uHzqAzipIla2K3zND/exec";
+
+    // データをGASに向けて発射！
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain' // エラー回避のため plain text で送ります
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        document.getElementById('resultMessage').innerText = "✅ 送信完了！スプレッドシートを確認してください。";
+        document.getElementById('resultMessage').style.color = "green";
+        btn.innerText = "送信完了";
+    })
+    .catch(error => {
+        document.getElementById('resultMessage').innerText = "❌ エラーが発生しました。";
+        btn.disabled = false;
+        btn.innerText = "送信する";
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     </body>
 
 </html>
