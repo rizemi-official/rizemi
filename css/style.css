@@ -1025,7 +1025,7 @@ body.r6-sp {
         font-size: 2rem;
     }
 
-    /* -------------------------------------
+/* -------------------------------------
        ヘッダーの美しいレイアウト（通常＆特設）
     ------------------------------------- */
     /* 通常ページのヘッダー */
@@ -1034,15 +1034,17 @@ body.r6-sp {
         justify-content: space-between;
         align-items: center;
         padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
         border-bottom: 2px solid #c9c2bc;
     }
 
-    /* 特設ページのヘッダー（上の余白のみ指定） */
+    /* 特設ページのヘッダー */
     .page-header-sp {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
     }
 
     /* ヘッダー内のロゴ設定 */
