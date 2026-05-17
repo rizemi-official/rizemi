@@ -487,7 +487,7 @@ body.r6-sp {
 .logo-top {
     font-size: 0.6rem;
     line-height: 1.4;   /* 💡「～のための〜」が2行に折り返した時の行間を作ります */
-    margin-bottom: -2px; /* 💡「りぜみ」との間隔を少し狭く（マイナスで引き寄せる）します */
+    margin-bottom: 2px;
 }
 .logo-btm {
     font-size: 2.5rem;
@@ -1113,26 +1113,9 @@ body.r6-sp .page-header-sp .logo-btm {
     color: #ffffff !important;
 }
 
-/* スマホ版特設ヘッダーの横並びを綺麗に維持 */
-body.r6-sp .head-sp {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 1.5rem; /* 💡通常ページと同じ「1.5rem」に揃えることで位置が完全一致します */
-    box-sizing: border-box;
-}
-
 /* 特設ページのスマホ用ハンバーガーボタン（三本線）を白くする */
 body.r6-sp .menu_line {
     background: #ffffff !important;
-}
-
-@media (min-width: 1000px) {
-    body.r6-sp .head-sp {
-        width: auto;
-        padding: 0;
-    }
 }
 
 
