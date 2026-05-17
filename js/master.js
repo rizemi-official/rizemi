@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span style="background: #999; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第2希望: ${second}人</span>
                     </div>
                     
-                    <!-- 概要（折りたたみ） -->
                     <details style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
                         <summary style="cursor: pointer; font-weight: bold; color: #cecece; font-size: 0.9rem; outline: none;">概要を見る</summary>
                         <p style="margin-top: 0.5rem; margin-bottom: 0; color: #bbb; font-size: 0.85rem; line-height: 1.5;">
@@ -247,3 +246,114 @@ setupAccordion(
   window.addEventListener('resize', closeAll);
   window.addEventListener('scroll', closeAll);
 })();
+
+
+/* =========================================================
+   ここから追加：新システム（提案＆希望選択フォーム）の処理
+========================================================= */
+
+let kibou1 = "";
+let kibou2 = "";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const inputBunya = document.getElementById("input-bunya");
+  if (inputBunya) {
+    inputBunya.addEventListener("input", updateProposalButton);
+  }
+});
+
+function updateProposalButton() {
+  const val = document.getElementById("input-bunya").value.trim();
+  const btn = document.getElementById("btn-my-proposal");
+  if (!btn) return; // ボタンが存在しないページでのエラー回避
+
+  if (val) {
+    btn.innerText = `「${val}」を希望に設定する`;
+    btn.disabled = false;
+  } else {
+    btn.innerText = "（質問1を入力してください）";
+    btn.disabled = true;
+  }
+}
+
+// 分野ボタンが押された時の選択・記憶処理
+function selectField(fieldName) {
+  if (!fieldName || fieldName.trim() === "") return;
+  fieldName = fieldName.trim();
+
+  if (!kibou1) {
+    kibou1 = fieldName;
+  } else if (!kibou2 && kibou1 !== fieldName) {
+    kibou2 = fieldName;
+  } else if (kibou1 === fieldName || kibou2 === fieldName) {
+    alert("その分野はすでに選択されています。");
+  } else {
+    alert("すでに第2希望まで選択されています。「選び直す」を押して解除してください。");
+  }
+  updateDisplay();
+}
+
+// 選び直すボタンの処理
+function clearField(num) {
+  if (num === 1) kibou1 = "";
+  if (num === 2) kibou2 = "";
+  updateDisplay();
+}
+
+// 選択状況の文字を画面に書き換える処理
+function updateDisplay() {
+  const disp1 = document.getElementById("disp-kibou1");
+  const disp2 = document.getElementById("disp-kibou2");
+  if (disp1) disp1.innerText = kibou1 || "未選択";
+  if (disp2) disp2.innerText = kibou2 || "未選択";
+}
+
+// X宣伝欄の表示・非表示切り替え
+function toggleXDetail() {
+  const xVal = document.getElementById("input-x").value;
+  const detailBox = document.getElementById("x-detail-box");
+  if (detailBox) {
+    detailBox.style.display = (xVal === "宣伝する") ? "block" : "none";
+  }
+}
+
+// 認知経路の「その他」入力欄の表示・非表示切り替え
+function toggleRouteOther() {
+  const routeVal = document.getElementById("input-route").value;
+  const routeOther = document.getElementById("input-route-other");
+  if (routeOther) {
+    routeOther.style.display = (routeVal === "その他") ? "block" : "none";
+  }
+}
+
+// URLを合成してGoogleフォームを開くメイン処理
+function openGoogleForm() {
+  const bunya = document.getElementById("input-bunya") ? document.getElementById("input-bunya").value : "";
+  const gaiyou = document.getElementById("input-gaiyou") ? document.getElementById("input-gaiyou").value : "";
+  const kyomi = document.getElementById("input-kyomi") ? document.getElementById("input-kyomi").value : "";
+  const xSend = document.getElementById("input-x") ? document.getElementById("input-x").value : "";
+  const xDetail = document.getElementById("input-x-detail") ? document.getElementById("input-x-detail").value : "";
+  const free = document.getElementById("input-free") ? document.getElementById("input-free").value : "";
+  
+  let route = document.getElementById("input-route") ? document.getElementById("input-route").value : "";
+  if (route === "その他") {
+    route = document.getElementById("input-route-other") ? document.getElementById("input-route-other").value : "";
+  }
+
+  // ★★★ ここに取得したGoogleフォームURLを貼り付けてください ★★★
+  let targetUrl = "https://docs.google.com/forms/d/e/★★あなたのフォームのID★★/viewform?entry.1=DUMMY_BUNYA&entry.2=DUMMY_GAIYOU&entry.3=DUMMY_KIBOU1&entry.4=DUMMY_KIBOU2&entry.5=DUMMY_KYOMI&entry.6=DUMMY_X&entry.7=DUMMY_XDETAIL&entry.8=DUMMY_ROUTE&entry.9=DUMMY_FREE";
+
+  // URLの中のDUMMY文字を、入力データに綺麗に置き換える
+  targetUrl = targetUrl.replace("DUMMY_BUNYA", encodeURIComponent(bunya));
+  targetUrl = targetUrl.replace("DUMMY_GAIYOU", encodeURIComponent(gaiyou));
+  targetUrl = targetUrl.replace("DUMMY_KIBOU1", encodeURIComponent(kibou1));
+  targetUrl = targetUrl.replace("DUMMY_KIBOU2", encodeURIComponent(kibou2));
+  targetUrl = targetUrl.replace("DUMMY_KYOMI", encodeURIComponent(kyomi));
+  targetUrl = targetUrl.replace("DUMMY_X", encodeURIComponent(xSend));
+  targetUrl = targetUrl.replace("DUMMY_XDETAIL", encodeURIComponent(xDetail));
+  targetUrl = targetUrl.replace("DUMMY_ROUTE", encodeURIComponent(route));
+  targetUrl = targetUrl.replace("DUMMY_FREE", encodeURIComponent(free));
+
+  // 新しいタブでGoogleフォームを開く
+  window.open(targetUrl, "_blank");
+}
