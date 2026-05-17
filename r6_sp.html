@@ -141,40 +141,47 @@
                     <textarea id="input-gaiyou" placeholder="この分野でどのようなゼミを行いたいか、概要を記入してください。"></textarea>
                   </div>
 
-                  <div class="form-section">
-                    <h3>質問2：第1希望・第2希望の選択</h3>
-                    <p style="font-size: 14px; margin-bottom: 10px;">以下のカテゴリ、またはご自身が提案した分野から選んでください。</p>
-                    <div class="my-proposal-box">
-                      <span class="box-label">💡 自分が提案した分野を選ぶ</span>
-                      <p style="font-size: 12px; margin: 5px 0 10px 0; color: #555;">質問1に入力した分野名が自動でここに反映され、選択できるようになります。</p>
-                      <button type="button" id="btn-my-proposal" class="field-btn proposal-btn" onclick="selectField(document.getElementById('input-bunya').value)" disabled>（質問1を入力してください）</button>
-                    </div>
+                 <div class="form-section">
+    <h3>質問2：第1希望・第2希望の選択</h3>
+    <p style="font-size: 14px; margin-bottom: 10px;">以下のカテゴリ、またはご自身が提案した分野から選んでください。</p>
 
-                    <details>
-                      <summary>物理学</summary>
-                      <div style="margin-top: 10px;">
-                        <button type="button" class="field-btn" onclick="selectField('量子力学')">量子力学</button>
-                        <button type="button" class="field-btn" onclick="selectField('解析力学')">解析力学</button>
-                        <button type="button" class="field-btn" onclick="selectField('統計力学')">統計力学</button>
-                        <button type="button" class="field-btn" onclick="selectField('フェルミ液体論')">フェルミ液体論</button>
-                        <button type="button" class="field-btn" onclick="selectField('相転移の物理')">相転移の物理</button>
-                      </div>
-                    </details>
-                    <details>
-                      <summary>数学</summary>
-                      <div style="margin-top: 10px;">
-                        <button type="button" class="field-btn" onclick="selectField('代数学')">代数学</button>
-                        <button type="button" class="field-btn" onclick="selectField('幾何学')">幾何学</button>
-                        <button type="button" class="field-btn" onclick="selectField('微積分学')">微積分学</button>
-                      </div>
-                    </details>
+    <div class="my-proposal-box">
+      <span class="box-label">💡 自分が提案した分野を選ぶ</span>
+      <p style="font-size: 12px; margin: 5px 0 10px 0; color: #555;">質問1に入力した分野名が自動でここに反映され、選択できるようになります。</p>
+      <button type="button" id="btn-my-proposal" class="field-btn proposal-btn" onclick="selectField(document.getElementById('input-bunya').value)" disabled>（質問1を入力してください）</button>
+    </div>
 
-                    <div class="status-box">
-                      <p>▼ あなたの選択状況</p>
-                      <p>第1希望： <span id="disp-kibou1">未選択</span> <button class="clear-btn" onclick="clearField(1)">選び直す</button></p>
-                      <p>第2希望： <span id="disp-kibou2">未選択</span> <button class="clear-btn" onclick="clearField(2)">選び直す</button></p>
-                    </div>
-                  </div>
+    <details>
+      <summary>物理学</summary>
+      <div id="area-physics" style="margin-top: 10px;"></div>
+    </details>
+
+    <details>
+      <summary>数学</summary>
+      <div id="area-math" style="margin-top: 10px;"></div>
+    </details>
+
+    <details>
+      <summary>化学</summary>
+      <div id="area-chemistry" style="margin-top: 10px;"></div>
+    </details>
+
+    <details>
+      <summary>生物学</summary>
+      <div id="area-biology" style="margin-top: 10px;"></div>
+    </details>
+
+    <details>
+      <summary>その他</summary>
+      <div id="area-other" style="margin-top: 10px;"></div>
+    </details>
+
+    <div class="status-box">
+      <p>▼ あなたの選択状況</p>
+      <p>第1希望： <span id="disp-kibou1">未選択</span> <button class="clear-btn" onclick="clearField(1)">選び直す</button></p>
+      <p>第2希望： <span id="disp-kibou2">未選択</span> <button class="clear-btn" onclick="clearField(2)">選び直す</button></p>
+    </div>
+  </div>
 
                   <div class="form-section">
                     <h3>その他の質問</h3>
