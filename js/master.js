@@ -357,3 +357,18 @@ function openGoogleForm() {
   // 新しいタブでGoogleフォームを開く
   window.open(targetUrl, "_blank");
 }
+
+
+// =========================================================
+// フォームをスッと表示させてスクロールする処理
+// =========================================================
+function showProposalForm() {
+  const formArea = document.getElementById("proposal-form-area");
+  if (formArea) {
+    // 隠していたフォームを表示する
+    formArea.style.display = "block";
+    
+    // スムーススクロールでフォームの少し上まで自動で画面を動かす
+    formArea.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
