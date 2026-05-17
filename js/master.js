@@ -341,7 +341,7 @@ function openGoogleForm() {
   }
 
   // ★★★ ここに取得したGoogleフォームURLを貼り付けてください ★★★
-  let targetUrl = "https://docs.google.com/forms/d/e/★★あなたのフォームのID★★/viewform?entry.1=DUMMY_BUNYA&entry.2=DUMMY_GAIYOU&entry.3=DUMMY_KIBOU1&entry.4=DUMMY_KIBOU2&entry.5=DUMMY_KYOMI&entry.6=DUMMY_X&entry.7=DUMMY_XDETAIL&entry.8=DUMMY_ROUTE&entry.9=DUMMY_FREE";
+  let targetUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdi0qReWcpA1bV4G844RfWvjuudknDhM6O-fB663S6uXLpoGQ/viewform?usp=pp_url&entry.669942318=DUMMY_BUNYA&entry.2097477009=DUMMY_GAIYOU&entry.1542851026=DUMMY_KIBOU1&entry.45651459=DUMMY_KIBOU2&entry.45918589=DUMMY_KYOMI&entry.1192163566=DUMMY_X&entry.2036668219=DUMMY_XDETAIL&entry.375378926=DUMMY_ROUTE&entry.405628407=DUMMY_FREE";
 
   // URLの中のDUMMY文字を、入力データに綺麗に置き換える
   targetUrl = targetUrl.replace("DUMMY_BUNYA", encodeURIComponent(bunya));
