@@ -482,7 +482,7 @@ body.r6-sp {
     flex-direction: column;
     justify-content: center;
     line-height: 1.0;
-    gap: 0.5rem;      /* 💡ここで好きな隙間のサイズを指定する（0.2rem、0.8remなど） */
+    gap: 1.0rem;      /* 💡ここで好きな隙間のサイズを指定する（0.2rem、0.8remなど） */
 }
 .logo-top {
     font-size: 0.6rem;
