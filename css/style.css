@@ -1033,7 +1033,7 @@ body.r6-sp {
     .page-header .logo-top,
     .page-header-sp .logo-top {
         font-size: 1rem;
-        margin-bottom: 10px;  /* 💡「りぜみ」との隙間 */
+        margin-bottom: 20px;  /* 💡「りぜみ」との隙間 */
     }
 
     /* NEWSエリア（PC版） */
