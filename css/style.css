@@ -1329,3 +1329,11 @@ body.r6-sp .submit-btn {
 body.r6-sp .submit-btn:hover {
     background: #a38a0f !important;
 }
+
+
+
+
+/* 特設ページ（ダークモード）のスマホ用メニューボタン（三本線）を白くする */
+body.r6-sp .menu_line {
+    background: #ffffff !important;
+}
