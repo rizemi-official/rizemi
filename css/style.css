@@ -1019,17 +1019,21 @@ body.r6-sp {
         border-bottom: 2px solid #c9c2bc;
     }
 
-    /* ロゴ周りのPCサイズ調整 */
-    .logo {
+    /* ロゴ周りのPCサイズ調整（通常・特設両方に強制適用！） */
+    .page-header .logo,
+    .page-header-sp .logo {
         height: 2.5em;
     }
-    .logo-top {
-        font-size: 1rem;
-       margin-bottom: 10px;
+
+    .page-header .logo-text,
+    .page-header-sp .logo-text {
+        line-height: 1.0; /* 全体の無駄な行間をリセット */
     }
-    .page-title {
-        height: 70vh;
-        font-size: 4rem;
+
+    .page-header .logo-top,
+    .page-header-sp .logo-top {
+        font-size: 1rem;
+        margin-bottom: 5px;  /* 💡「りぜみ」との隙間（4pxなどにすると広がります） */
     }
 
     /* NEWSエリア（PC版） */
