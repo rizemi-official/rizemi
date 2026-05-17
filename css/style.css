@@ -477,18 +477,21 @@ body.r6-sp {
     width: auto;
     vertical-align: middle;
 }
+
 .logo-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    line-height: 1.0;
-    gap: 1.0rem;      /* 💡ここで好きな隙間のサイズを指定する（0.2rem、0.8remなど） */
+    line-height: 1.0; /* 全体の無駄な行間を一度ゼロにします */
 }
 .logo-top {
     font-size: 0.6rem;
+    line-height: 1.4;   /* 💡「～のための〜」が2行に折り返した時の行間を作ります */
+    margin-bottom: -2px; /* 💡「りぜみ」との間隔を少し狭く（マイナスで引き寄せる）します */
 }
 .logo-btm {
     font-size: 2.5rem;
+    line-height: 1.0;
 }
 
 /* Responsive menu button */
@@ -1001,14 +1004,14 @@ body.r6-sp {
         font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif;
     }
     
-    /* ヘッダー全体（通常＆特設）の上下余裕を 2.5rem に拡大！ */
+    /* ヘッダー全体（通常＆特設）*/
     .page-header,
     .page-header-sp {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 2.5rem;    
-        padding-bottom: 2.5rem; 
+        padding-top: 2.3rem;    
+        padding-bottom: 2.3rem; 
     }
     
     /* 通常ページにだけは下線を引く */
@@ -1116,7 +1119,7 @@ body.r6-sp .head-sp {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 1.5rem; /* 💡通常ページと同じ「1.5rem」に揃えることで位置が完全一致します */
     box-sizing: border-box;
 }
 
