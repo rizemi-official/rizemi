@@ -1009,7 +1009,20 @@ body.r6-sp {
 @media (min-width: 1000px) {
 
     .wrapper {
-        max-width: 1300px;
+        max-width: 1300px; /* 元の1120pxから少し広くしました */
+    }
+
+    /* 見出し・フォント設定（PC版ではゴシック体に変更） */
+    .kaisei-opti-regular {
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif;
+    }
+    
+    .page-title {
+        height: 70vh;
+        font-size: 4rem;
+    }
+    .heading-large {
+        font-size: 2rem;
     }
 
     /* -------------------------------------
@@ -1020,45 +1033,57 @@ body.r6-sp {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem 2rem;
+        padding-top: 1.5rem;
         border-bottom: 2px solid #c9c2bc;
     }
 
-    /* 特設ページのヘッダー（余白と配置を最適化！） */
+    /* 特設ページのヘッダー（上の余白のみ指定） */
     .page-header-sp {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem 2rem; /* 上下左右に美しい余白を持たせる */
-        max-width: 1300px;
-        margin: 0 auto;
+        padding-top: 1.5rem;
     }
 
     /* ヘッダー内のロゴ設定 */
     .logo { height: 2.5em; }
     .logo-top { font-size: 1rem; }
-    
-    /* 特設ページのロゴ周りのスマホ用設定をPCでは解除する */
-    body.r6-sp .head-sp { width: auto; padding: 0; }
 
-    /* PC用スッキリ横並びメニュー（通常＆特設共通） */
-    .main-nav, .main-nav-sp {
-        position: static;
+    /* PC用スッキリ横並びメニュー（通常ページ用） */
+    .main-nav {
+        position: static;          
+        height: auto;
         width: auto;
         background: none;
-        display: flex;
-        justify-content: flex-end; /* メニュー全体を右寄せに */
-        align-items: center;
-        gap: 4rem; /* メニュー同士の隙間を広くとる */
+        display: flex;             
+        justify-content: center;
+        gap: 4rem; /* 通常ページは広めの隙間 */
         padding: 0;
-        border: none;
-        font-size: 1.8rem;
-        margin-bottom: 0;
         transition: none;
+        color: #91B825; /* テーマカラー */
+        border: none;
+        font-size: 2rem;
+        margin-bottom: 0;
     }
-    .main-nav li, .main-nav-sp li {
-        margin: 0;
+    .main-nav li { margin: 0; }
+
+    /* PC用スッキリ横並びメニュー（特設ページ用） */
+    .main-nav-sp {
+        position: static;          
+        height: auto;
+        width: auto;
+        background: none;
+        display: flex;             
+        justify-content: center;
+        gap: 2.5rem; /* 特設ページは2.5remの絶妙な隙間 */
+        padding: 0;
+        transition: none;
+        color: #91B825;
+        border: none;
+        font-size: 2rem;
+        margin-bottom: 0;
     }
+    .main-nav-sp li { margin: 0; }
 
     /* PCではスマホ用ボタン類を隠す */
     .responsive_btn, .main-menu, .main-sns {
@@ -1068,10 +1093,6 @@ body.r6-sp {
     /* -------------------------------------
        その他のPCレイアウト
     ------------------------------------- */
-    .page-title { font-size: 4rem; height: 70vh; }
-    .heading-large { font-size: 2rem; }
-    .kaisei-opti-regular { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif; }
-
     .news {
         margin: 2rem auto 0;
         width: 90%;
@@ -1089,13 +1110,16 @@ body.r6-sp {
 /* 💡ここでPC用のバリアをしっかり閉じます */
 
 
+
 /* =========================================================
-   特設ページ（r6-sp）専用の文字色強制
+   特設ページ（r6-sp）専用の文字色強制とスマホ崩れ補正
 ========================================================= */
-/* 特設ページのヘッダー文字とロゴ文字を白にする */
+/* 特設ページのヘッダー文字、ロゴ、メニューをすべて白にする */
 body.r6-sp .page-header-sp a,
 body.r6-sp .page-header-sp .logo-top,
-body.r6-sp .page-header-sp .logo-btm {
+body.r6-sp .page-header-sp .logo-btm,
+body.r6-sp .main-nav-sp,
+body.r6-sp .main-nav-sp a {
     color: #ffffff !important;
 }
 
@@ -1108,6 +1132,15 @@ body.r6-sp .head-sp {
     padding: 0 1rem;
     box-sizing: border-box;
 }
+
+@media (min-width: 1000px) {
+    body.r6-sp .head-sp {
+        width: auto;
+        padding: 0;
+    }
+}
+
+
 
 /* =========================================================
    提案フォームのスマホ・PCレイアウト崩れ修正（強制力MAX）
@@ -1147,6 +1180,7 @@ body.r6-sp .form-section h3 {
     font-size: 1.3rem;
 }
 
+/* スマホで入力欄が透明になるバグを防ぐ魔法のコード */
 body.r6-sp .form-wrapper input[type="text"], 
 body.r6-sp .form-wrapper textarea, 
 body.r6-sp .form-wrapper select {
