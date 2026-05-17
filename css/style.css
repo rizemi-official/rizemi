@@ -1025,6 +1025,7 @@ body.r6-sp {
     }
     .logo-top {
         font-size: 1rem;
+       margin-bottom: 2px;
     }
     .page-title {
         height: 70vh;
@@ -1077,7 +1078,7 @@ body.r6-sp {
         display: flex;
         justify-content: flex-end; /* メニューを右側に寄せる */
         align-items: center;
-        gap: 3rem; /* メニュー同士の美しい隙間 */
+        gap: 3rem; /* メニュー同士の隙間 */
         padding: 0;
         transition: none;
         color: #91B825;
