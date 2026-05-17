@@ -107,112 +107,120 @@
             </tbody>
         </table>
 
-        <div>
+
+ <div>
         <h2 class="zemi-title-sp">ゼミ班</h2>
         <section class="zemi-sp" id="zemi-sp">
 
             <div style="padding: 1rem 0; text-align: center;">
-        <p style="font-size: 1rem; line-height: 2; color: #cecece; margin-bottom: 1rem;">
-            りゼミ6thは、現在希望分野を募集中です！
-        </p>
+                <p style="font-size: 1rem; line-height: 2; color: #cecece; margin-bottom: 1rem;">
+                    りゼミ6thは、現在希望分野を募集中です！<br>これまでに提案された分野はこちらです。
+                </p>
+            </div>
 
-    </div>
+            <div id="zemi-results-container"></div>
 
-    <div id="zemi-results-container"></div>
-            
+            <div style="text-align: center; margin: 4rem 0 2rem 0;">
+                <p style="color: #cecece; margin-bottom: 1rem; font-weight: bold; font-size: 1.1rem;">
+                    ＼ 自分の希望分野を提案・投票する方はこちら ／
+                </p>
+                <button onclick="showProposalForm()" class="submit-btn" style="width: 80%; max-width: 400px; margin: 0 auto; background-color: #C0A313;">
+                    希望調査フォームを開く ▼
+                </button>
+            </div>
+
+            <div id="proposal-form-area" style="display: none; padding-top: 2rem; border-top: 2px dashed #777;">
+                
+                <div class="form-wrapper">
+                  
+                  <div class="form-section">
+                    <h3>質問1：新たな分野を提案する</h3>
+                    <label for="input-bunya">提案分野名</label>
+                    <input type="text" id="input-bunya" placeholder="例：ランジュバン方程式、ギンツブルグ・ランダウ理論 など">
+                    <label for="input-gaiyou">提案概要</label>
+                    <textarea id="input-gaiyou" placeholder="この分野でどのようなゼミを行いたいか、概要を記入してください。"></textarea>
+                  </div>
+
+                  <div class="form-section">
+                    <h3>質問2：第1希望・第2希望の選択</h3>
+                    <p style="font-size: 14px; margin-bottom: 10px;">以下のカテゴリ、またはご自身が提案した分野から選んでください。</p>
+                    <div class="my-proposal-box">
+                      <span class="box-label">💡 自分が提案した分野を選ぶ</span>
+                      <p style="font-size: 12px; margin: 5px 0 10px 0; color: #555;">質問1に入力した分野名が自動でここに反映され、選択できるようになります。</p>
+                      <button type="button" id="btn-my-proposal" class="field-btn proposal-btn" onclick="selectField(document.getElementById('input-bunya').value)" disabled>（質問1を入力してください）</button>
+                    </div>
+
+                    <details>
+                      <summary>物理学</summary>
+                      <div style="margin-top: 10px;">
+                        <button type="button" class="field-btn" onclick="selectField('量子力学')">量子力学</button>
+                        <button type="button" class="field-btn" onclick="selectField('解析力学')">解析力学</button>
+                        <button type="button" class="field-btn" onclick="selectField('統計力学')">統計力学</button>
+                        <button type="button" class="field-btn" onclick="selectField('フェルミ液体論')">フェルミ液体論</button>
+                        <button type="button" class="field-btn" onclick="selectField('相転移の物理')">相転移の物理</button>
+                      </div>
+                    </details>
+                    <details>
+                      <summary>数学</summary>
+                      <div style="margin-top: 10px;">
+                        <button type="button" class="field-btn" onclick="selectField('代数学')">代数学</button>
+                        <button type="button" class="field-btn" onclick="selectField('幾何学')">幾何学</button>
+                        <button type="button" class="field-btn" onclick="selectField('微積分学')">微積分学</button>
+                      </div>
+                    </details>
+
+                    <div class="status-box">
+                      <p>▼ あなたの選択状況</p>
+                      <p>第1希望： <span id="disp-kibou1">未選択</span> <button class="clear-btn" onclick="clearField(1)">選び直す</button></p>
+                      <p>第2希望： <span id="disp-kibou2">未選択</span> <button class="clear-btn" onclick="clearField(2)">選び直す</button></p>
+                    </div>
+                  </div>
+
+                  <div class="form-section">
+                    <h3>その他の質問</h3>
+                    <label for="input-kyomi">どれくらい興味がありますか？ *</label>
+                    <select id="input-kyomi">
+                      <option value="">選択してください</option>
+                      <option value="ぜひとも参加したい">ぜひとも参加したい</option>
+                      <option value="参加するかもしれない">参加するかもしれない</option>
+                      <option value="参加しないかもしれない">参加しないかもしれない</option>
+                      <option value="参加しない可能性が高い">参加しない可能性が高い</option>
+                    </select>
+
+                    <label for="input-x">りゼミのXアカウントであなたの希望分野を呼び掛けますか？ *</label>
+                    <p style="font-size: 12px; color: #666; margin-top: 0;">※宣伝する場合、Xの方であなたの第1希望分野について紹介し、参加を募るポストをします。</p>
+                    <select id="input-x" onchange="toggleXDetail()">
+                      <option value="">選択してください</option>
+                      <option value="宣伝する">宣伝する</option>
+                      <option value="必要ない">必要ない</option>
+                    </select>
+                    <div id="x-detail-box" style="display: none;">
+                      <label for="input-x-detail">追加説明（宣伝するを選んだ場合）</label>
+                      <textarea id="input-x-detail" placeholder="例：～という点で興味深い分野なのでぜひ一緒にやりませんか？等"></textarea>
+                    </div>
+
+                    <label for="input-route">りゼミをどこで知りましたか？ *</label>
+                    <select id="input-route" onchange="toggleRouteOther()">
+                      <option value="">選択してください</option>
+                      <option value="X（旧Twitter）">X（旧Twitter）</option>
+                      <option value="知人・友人">知人・友人</option>
+                      <option value="大学掲示ポスター（一部大学）">大学掲示ポスター（一部大学）</option>
+                      <option value="その他">その他</option>
+                    </select>
+                    <input type="text" id="input-route-other" placeholder="その他の場合は具体的にご記入ください" style="display: none;">
+
+                    <label for="input-free">自由記述欄</label>
+                    <textarea id="input-free" placeholder="ここに入力してください"></textarea>
+                  </div>
+
+                  <button class="submit-btn" onclick="openGoogleForm()">入力内容を確認して送信画面へ進む</button>
+
+                </div>
+                </div>
         </section>
         </div>
 
-<div class="form-wrapper">
-  
-  <div class="form-section">
-    <h3>質問1：新たな分野を提案する</h3>
-    <label for="input-bunya">提案分野名</label>
-    <input type="text" id="input-bunya" placeholder="例：ランジュバン方程式、ギンツブルグ・ランダウ理論 など">
-    
-    <label for="input-gaiyou">提案概要</label>
-    <textarea id="input-gaiyou" placeholder="この分野でどのようなゼミを行いたいか、概要を記入してください。"></textarea>
-  </div>
 
-  <div class="form-section">
-    <h3>質問2：第1希望・第2希望の選択</h3>
-    <p style="font-size: 14px; margin-bottom: 10px;">以下のカテゴリ、またはご自身が提案した分野から選んでください。</p>
-
-    <div class="my-proposal-box">
-      <span class="box-label">💡 自分が提案した分野を選ぶ</span>
-      <p style="font-size: 12px; margin: 5px 0 10px 0; color: #555;">質問1に入力した分野名が自動でここに反映され、選択できるようになります。</p>
-      <button type="button" id="btn-my-proposal" class="field-btn proposal-btn" onclick="selectField(document.getElementById('input-bunya').value)" disabled>（質問1を入力してください）</button>
-    </div>
-
-    <details>
-      <summary>物理学</summary>
-      <div style="margin-top: 10px;">
-        <button type="button" class="field-btn" onclick="selectField('量子力学')">量子力学</button>
-        <button type="button" class="field-btn" onclick="selectField('解析力学')">解析力学</button>
-        <button type="button" class="field-btn" onclick="selectField('統計力学')">統計力学</button>
-        <button type="button" class="field-btn" onclick="selectField('フェルミ液体論')">フェルミ液体論</button>
-        <button type="button" class="field-btn" onclick="selectField('相転移の物理')">相転移の物理</button>
-      </div>
-    </details>
-
-    <details>
-      <summary>数学</summary>
-      <div style="margin-top: 10px;">
-        <button type="button" class="field-btn" onclick="selectField('代数学')">代数学</button>
-        <button type="button" class="field-btn" onclick="selectField('幾何学')">幾何学</button>
-        <button type="button" class="field-btn" onclick="selectField('微積分学')">微積分学</button>
-      </div>
-    </details>
-
-    <div class="status-box">
-      <p>▼ あなたの選択状況</p>
-      <p>第1希望： <span id="disp-kibou1">未選択</span> <button class="clear-btn" onclick="clearField(1)">選び直す</button></p>
-      <p>第2希望： <span id="disp-kibou2">未選択</span> <button class="clear-btn" onclick="clearField(2)">選び直す</button></p>
-    </div>
-  </div>
-
-  <div class="form-section">
-    <h3>その他の質問</h3>
-    
-    <label for="input-kyomi">どれくらい興味がありますか？ *</label>
-    <select id="input-kyomi">
-      <option value="">選択してください</option>
-      <option value="ぜひとも参加したい">ぜひとも参加したい</option>
-      <option value="参加するかもしれない">参加するかもしれない</option>
-      <option value="参加しないかもしれない">参加しないかもしれない</option>
-      <option value="参加しない可能性が高い">参加しない可能性が高い</option>
-    </select>
-
-    <label for="input-x">りゼミのXアカウントであなたの希望分野を呼び掛けますか？ *</label>
-    <p style="font-size: 12px; color: #666; margin-top: 0;">※宣伝する場合、Xの方であなたの第1希望分野について紹介し、参加を募るポストをします。</p>
-    <select id="input-x" onchange="toggleXDetail()">
-      <option value="">選択してください</option>
-      <option value="宣伝する">宣伝する</option>
-      <option value="必要ない">必要ない</option>
-    </select>
-
-    <div id="x-detail-box" style="display: none;">
-      <label for="input-x-detail">追加説明（宣伝するを選んだ場合）</label>
-      <p style="font-size: 12px; color: #666; margin-top: 0;">※必要であれば希望分野の説明等を追加でここに記してください。宣伝の際に同時に載せます。</p>
-      <textarea id="input-x-detail" placeholder="例：～という点で興味深い分野なのでぜひ一緒にやりませんか？等"></textarea>
-    </div>
-
-    <label for="input-route">りゼミをどこで知りましたか？ *</label>
-    <select id="input-route" onchange="toggleRouteOther()">
-      <option value="">選択してください</option>
-      <option value="X（旧Twitter）">X（旧Twitter）</option>
-      <option value="知人・友人">知人・友人</option>
-      <option value="大学掲示ポスター（一部大学）">大学掲示ポスター（一部大学）</option>
-      <option value="その他">その他</option>
-    </select>
-    <input type="text" id="input-route-other" placeholder="その他の場合は具体的にご記入ください" style="display: none;">
-
-    <label for="input-free">自由記述欄</label>
-    <p style="font-size: 12px; color: #666; margin-top: 0;">※意見や要望など、遠慮なくお寄せください（例：第二希望の分野も呼びかけてほしい、本名ではなくハンドルネームで参加したい等）</p>
-    <textarea id="input-free" placeholder="ここに入力してください"></textarea>
-  </div>
-
-  <button class="submit-btn" onclick="openGoogleForm()">Googleフォームに進んで送信する</button>
 
 </div>
 <div class="speace-sp">
