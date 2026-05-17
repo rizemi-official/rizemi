@@ -1003,7 +1003,6 @@ body.r6-sp {
 }
 
 
-
 /*デスクトップ版（ここで公開済みのスッキリヘッダーに戻します！）*/
 @media (min-width: 1000px) {
 
@@ -1073,12 +1072,12 @@ body.r6-sp {
         display: none;
     }
 
+} /* 💡【超重要】ここでPC用のバリアをしっかり閉じます！ */
 
 
 
-
-    /* =========================================
-   提案フォーム（特設ページ用）
+/* =========================================
+   提案フォーム（特設ページ用）※スマホ・PC両方に適用
 ========================================= */
 .form-wrapper {
   max-width: 600px;
@@ -1096,7 +1095,7 @@ body.r6-sp {
 .form-section h3 {
   margin-top: 0;
   font-size: 1.2rem;
-  border-bottom: 2px solid #C0A313; /* サイトのテーマカラー */
+  border-bottom: 2px solid #C0A313;
   padding-bottom: 5px;
   color: #333;
 }
@@ -1116,6 +1115,7 @@ body.r6-sp {
 .form-wrapper textarea {
   height: 100px;
 }
+
 /* アコーディオン */
 .form-wrapper details {
   background: #fff;
@@ -1140,6 +1140,7 @@ body.r6-sp {
 .form-wrapper details[open] summary::before {
   content: "－ ";
 }
+
 /* 分野を選択するボタン */
 .field-btn {
   display: inline-block;
@@ -1156,6 +1157,7 @@ body.r6-sp {
 .field-btn:hover:not(:disabled) {
   background: #b2ebf2;
 }
+
 /* 自分が提案した分野 */
 .my-proposal-box {
   background: #f0f4c3;
@@ -1185,6 +1187,7 @@ body.r6-sp {
   color: #9e9e9e;
   cursor: not-allowed;
 }
+
 /* 選択状況を表示するエリア */
 .status-box {
   background: #fff3e0;
@@ -1210,36 +1213,17 @@ body.r6-sp {
   margin-left: 10px;
   color: #333;
 }
-/* 一番下のGoogleフォーム送信ボタン */
-.submit-btn {
-  display: block;
-  width: 100%;
-  background: #a25768; /* joinボタンと同じえんじ色 */
-  color: white;
-  padding: 15px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: .3s;
-}
-.submit-btn:hover {
-  background: #8b4757;
-}
+
 
 /* =========================================================
    特設ページのヘッダー修正（文字色とレイアウト）
 ========================================================= */
-/* ヘッダーの文字を白にする */
 body.r6-sp .page-header-sp a,
 body.r6-sp .page-header-sp .logo-top,
 body.r6-sp .page-header-sp .logo-btm {
     color: #ffffff !important;
 }
 
-/* 縮小した時（スマホ・タブレット）のヘッダー崩れ防止 */
 body.r6-sp .head-sp {
     display: flex;
     justify-content: space-between;
@@ -1249,7 +1233,6 @@ body.r6-sp .head-sp {
     box-sizing: border-box;
 }
 
-/* PCサイズ時のヘッダー横並びレイアウト */
 @media (min-width: 1000px) {
     .page-header-sp {
         display: flex;
@@ -1269,12 +1252,11 @@ body.r6-sp .head-sp {
 }
 
 /* =========================================================
-   提案フォームのスマホ・PCレイアウト崩れ修正
+   提案フォームのスマホ・PCレイアウト崩れ修正（強制力MAX）
 ========================================================= */
-/* 背景が黒に引っ張られないよう、フォーム全体を白ベースの独立したカードにする */
-.form-wrapper {
-    background: #ffffff;
-    padding: 25px 20px;
+body.r6-sp .form-wrapper {
+    background: #ffffff !important;
+    padding: 25px 20px !important;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     max-width: 600px;
@@ -1282,85 +1264,81 @@ body.r6-sp .head-sp {
     box-sizing: border-box;
 }
 
-/* フォーム内の文字色をすべて黒（または濃いグレー）に強制 */
-.form-wrapper h3,
-.form-wrapper label,
-.form-wrapper p,
-.form-wrapper span,
-.form-wrapper summary,
-.form-wrapper details {
+body.r6-sp .form-wrapper h3,
+body.r6-sp .form-wrapper label,
+body.r6-sp .form-wrapper p,
+body.r6-sp .form-wrapper span,
+body.r6-sp .form-wrapper summary,
+body.r6-sp .form-wrapper details {
     color: #333333 !important;
 }
 
-.form-section {
-    background: #f8f9fa;
+body.r6-sp .form-section {
+    background: #f8f9fa !important;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 25px;
     border: 1px solid #e0e0e0;
 }
 
-.form-section h3 {
-    border-bottom: 2px solid #C0A313;
+body.r6-sp .form-section h3 {
+    border-bottom: 2px solid #C0A313 !important;
     padding-bottom: 8px;
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 1.3rem;
 }
 
-/* 入力欄（スマホで透明になるのを防ぐ魔法のコード） */
-.form-wrapper input[type="text"], 
-.form-wrapper textarea, 
-.form-wrapper select {
-    width: 100%;
-    padding: 12px;
+body.r6-sp .form-wrapper input[type="text"], 
+body.r6-sp .form-wrapper textarea, 
+body.r6-sp .form-wrapper select {
+    width: 100% !important;
+    padding: 12px !important;
     margin-top: 5px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc !important;
     border-radius: 6px;
     background-color: #ffffff !important;
     color: #000000 !important;
     font-size: 1rem;
-    -webkit-appearance: none; /* スマホ特有の透明化バグをリセット */
-    appearance: none;
+    -webkit-appearance: none !important;
+    appearance: none !important;
     box-sizing: border-box;
 }
 
-.form-wrapper textarea {
+body.r6-sp .form-wrapper textarea {
     height: 120px;
     resize: vertical;
 }
 
-/* アコーディオンの見た目復旧 */
-.form-wrapper details {
-    background: #ffffff;
-    border: 1px solid #ddd;
+body.r6-sp .form-wrapper details {
+    background: #ffffff !important;
+    border: 1px solid #ddd !important;
     border-radius: 6px;
     margin-bottom: 12px;
     padding: 12px;
 }
-.form-wrapper summary {
+body.r6-sp .form-wrapper summary {
     font-weight: bold;
     cursor: pointer;
     outline: none;
     font-size: 1.1rem;
 }
-.form-wrapper summary::-webkit-details-marker {
+body.r6-sp .form-wrapper summary::-webkit-details-marker {
     display: none;
 }
-.form-wrapper summary::before {
+body.r6-sp .form-wrapper summary::before {
     content: "＋ ";
     color: #C0A313;
 }
-.form-wrapper details[open] summary::before {
+body.r6-sp .form-wrapper details[open] summary::before {
     content: "－ ";
 }
 
-/* ボタン群のデザイン */
-.field-btn {
+body.r6-sp .field-btn {
     display: inline-block;
-    background: #e0f7fa;
-    border: 1px solid #00bcd4;
+    background: #e0f7fa !important;
+    border: 1px solid #00bcd4 !important;
     color: #00796b !important;
     padding: 8px 14px;
     margin: 5px;
@@ -1369,45 +1347,43 @@ body.r6-sp .head-sp {
     font-size: 0.95rem;
     transition: 0.2s;
 }
-.field-btn:hover:not(:disabled) {
-    background: #b2ebf2;
+body.r6-sp .field-btn:hover:not(:disabled) {
+    background: #b2ebf2 !important;
 }
 
-/* 自分が提案した分野のボックス */
-.my-proposal-box {
-    background: #f0f4c3;
-    border: 1px solid #d4e157;
+body.r6-sp .my-proposal-box {
+    background: #f0f4c3 !important;
+    border: 1px solid #d4e157 !important;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
 }
-.proposal-btn {
-    background: #d4e157;
-    border: 1px solid #9e9d24;
+body.r6-sp .proposal-btn {
+    background: #d4e157 !important;
+    border: 1px solid #9e9d24 !important;
     color: #33691e !important;
     font-weight: bold;
 }
-.proposal-btn:disabled {
-    background: #e0e0e0;
-    border-color: #bdbdbd;
+body.r6-sp .proposal-btn:disabled {
+    background: #e0e0e0 !important;
+    border-color: #bdbdbd !important;
     color: #9e9e9e !important;
     cursor: not-allowed;
 }
 
-/* 選択状況エリア */
-.status-box {
-    background: #fff3e0;
-    border: 1px solid #ffcc80;
+body.r6-sp .status-box {
+    background: #fff3e0 !important;
+    border: 1px solid #ffcc80 !important;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 10px;
 }
-.status-box span {
+body.r6-sp .status-box span {
     font-weight: bold;
     color: #e65100 !important;
 }
-.clear-btn {
-    background: #e0e0e0;
+body.r6-sp .clear-btn {
+    background: #e0e0e0 !important;
     border: none;
     padding: 4px 10px;
     border-radius: 4px;
@@ -1417,23 +1393,19 @@ body.r6-sp .head-sp {
     color: #333333 !important;
 }
 
-/* 送信ボタン */
-.submit-btn {
-    background: #C0A313;
+body.r6-sp .submit-btn {
+    background: #C0A313 !important;
     color: #ffffff !important;
     width: 100%;
     padding: 15px;
     font-size: 1.2rem;
     font-weight: bold;
-    border: none;
+    border: none !important;
     border-radius: 8px;
     cursor: pointer;
     margin-top: 1rem;
     transition: .3s;
 }
-.submit-btn:hover {
-    background: #a38a0f;
-}
-
-    
+body.r6-sp .submit-btn:hover {
+    background: #a38a0f !important;
 }
