@@ -243,7 +243,7 @@ function checkRequiredFields() {
       if (routeOther === "") isValid = false;
   }
 
-  // 💡【修正点】ピンポイントでIDを指定して、本物の送信ボタンだけを切り替える
+  // 💡【完全修正】ID名で本物の送信ボタンだけを100%ピンポイント制御！
   const submitBtn = document.getElementById("submit-form-btn");
   if (submitBtn) {
     if (isValid) {
