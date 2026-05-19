@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inputBunya.addEventListener("input", updateProposalButton);
   }
 
-  // 💡【追加】必須項目のリアルタイム監視設定
+  // 必須項目のリアルタイム監視設定
   const requiredIds = ["input-kyomi", "input-x", "input-route", "input-route-other"];
   requiredIds.forEach(id => {
     const el = document.getElementById(id);
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
   checkRequiredFields();
 });
 
-// 💡【追加】必須項目がすべて埋まっているか判定する関数
+// 必須項目がすべて埋まっているか判定する関数
 function checkRequiredFields() {
   const kyomi = document.getElementById("input-kyomi") ? document.getElementById("input-kyomi").value.trim() : "";
   const xSend = document.getElementById("input-x") ? document.getElementById("input-x").value.trim() : "";
@@ -243,16 +243,14 @@ function checkRequiredFields() {
       if (routeOther === "") isValid = false;
   }
 
-  // 送信ボタンの状態を切り替える
-  const submitBtn = document.querySelector(".submit-btn");
+  // 💡【修正点】ピンポイントでIDを指定して、本物の送信ボタンだけを切り替える
+  const submitBtn = document.getElementById("submit-form-btn");
   if (submitBtn) {
     if (isValid) {
-      // 必須項目がすべて埋まったらボタンを有効化
       submitBtn.disabled = false;
       submitBtn.style.opacity = "1";
       submitBtn.style.cursor = "pointer";
     } else {
-      // 1つでも空欄があれば無効化（グレーアウト）
       submitBtn.disabled = true;
       submitBtn.style.opacity = "0.5";
       submitBtn.style.cursor = "not-allowed";
@@ -306,14 +304,14 @@ function toggleXDetail() {
   const xVal = document.getElementById("input-x").value;
   const detailBox = document.getElementById("x-detail-box");
   if (detailBox) detailBox.style.display = (xVal === "宣伝する" || xVal === "はい（呼び掛けを希望する）") ? "block" : "none";
-  checkRequiredFields(); // 項目の表示が変わるので再チェック
+  checkRequiredFields(); 
 }
 
 function toggleRouteOther() {
   const routeVal = document.getElementById("input-route").value;
   const routeOther = document.getElementById("input-route-other");
   if (routeOther) routeOther.style.display = (routeVal === "その他") ? "block" : "none";
-  checkRequiredFields(); // 項目の表示が変わるので再チェック
+  checkRequiredFields(); 
 }
 
 function openGoogleForm() {
