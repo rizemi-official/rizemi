@@ -15,7 +15,7 @@ function menuToggle() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 💡公開用（Sheet2）のCSV用URLをここに貼り付けてください
+    // 💡公開用（Sheet2）のCSV用URL
     const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRXJJ0GtKGzjHujGOprGAW4Yl1StEtNqI-amqHIHvzfzsMcqqMsY0H25lMNmF6tLhv7YJzJb44CD1hp/pub?gid=1890726541&single=true&output=csv';
 
     const container = document.getElementById('zemi-results-container');
@@ -23,14 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.innerHTML = '<p style="text-align: center; color: #cecece;">現在の希望状況を読み込んでいます...</p>';
 
-    // 質問2の各ジャンルボタンを詰め込むための箱（要素）をキープ
     const areaPhysics = document.getElementById('area-physics');
     const areaMath = document.getElementById('area-math');
     const areaChemistry = document.getElementById('area-chemistry');
     const areaBiology = document.getElementById('area-biology');
     const areaOther = document.getElementById('area-other');
 
-    // 読み込み直すたびにボタンが重複しないよう、一度箱を空っぽにする
     if (areaPhysics) areaPhysics.innerHTML = '';
     if (areaMath) areaMath.innerHTML = '';
     if (areaChemistry) areaChemistry.innerHTML = '';
@@ -42,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(csvText => {
             const allRows = parseCSV(csvText);
             
-            // ヘッダー（1行目）を除外して、第1希望（B列）の多い順にソート
             const dataRows = allRows.slice(1)
                 .filter(row => row[0]) 
                 .sort((a, b) => Number(b[1]) - Number(a[1]));
@@ -60,15 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     description = '概要はまだありません。';
                 }
 
-                // 💡【追加機能】スプレッドシートからジャンルタグ（E列=インデックス4）を取得
                 const tagsField = row[4] || '';
 
-                // ---------------------------------------------------
-                // 処理A：質問2の選択肢ボタンをジャンルタグに基づいて自動生成・仕分け
-                // ---------------------------------------------------
                 const btnHtml = `<button type="button" class="field-btn" onclick="selectField('${fieldName}')">${fieldName}</button> `;
                 
-                let hasMainTag = false; // どの主要ジャンルに属したかのフラグ
+                let hasMainTag = false; 
 
                 if (tagsField.includes('物理') && areaPhysics) {
                     areaPhysics.insertAdjacentHTML('beforeend', btnHtml);
@@ -86,14 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     areaBiology.insertAdjacentHTML('beforeend', btnHtml);
                     hasMainTag = true;
                 }
-                // 「その他」タグがついている、または主要タグが1つも検出されなかった場合は「その他」の箱へ
                 if ((tagsField.includes('その他') || !hasMainTag) && areaOther) {
                     areaOther.insertAdjacentHTML('beforeend', btnHtml);
                 }
 
-                // ---------------------------------------------------
-                // 処理B：これまでのランキングカード（投票結果自動反映）の生成
-                // ---------------------------------------------------
                 let borderColor = '#555'; 
                 let badgeHtml = '';
 
@@ -129,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // ランキングHTMLの組み立て
             let finalHtml = top3Html;
             if (otherHtml !== '') {
                 finalHtml += `
@@ -144,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             container.innerHTML = finalHtml || '<p style="text-align: center; color: #cecece;">現在、希望分野はまだありません。</p>';
 
-            // 「もっと見る」ボタンのイベント設定
             const toggleBtn = document.getElementById('toggle-zemi-btn');
             const otherFields = document.getElementById('other-zemi-fields');
             if (toggleBtn && otherFields) {
@@ -222,7 +209,56 @@ document.addEventListener("DOMContentLoaded", () => {
   if (inputBunya) {
     inputBunya.addEventListener("input", updateProposalButton);
   }
+
+  // 💡【追加】必須項目のリアルタイム監視設定
+  const requiredIds = ["input-kyomi", "input-x", "input-route", "input-route-other"];
+  requiredIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("change", checkRequiredFields);
+      el.addEventListener("input", checkRequiredFields);
+    }
+  });
+
+  // 初回起動時にボタンをグレーアウト状態にしておく
+  checkRequiredFields();
 });
+
+// 💡【追加】必須項目がすべて埋まっているか判定する関数
+function checkRequiredFields() {
+  const kyomi = document.getElementById("input-kyomi") ? document.getElementById("input-kyomi").value.trim() : "";
+  const xSend = document.getElementById("input-x") ? document.getElementById("input-x").value.trim() : "";
+  const route = document.getElementById("input-route") ? document.getElementById("input-route").value.trim() : "";
+  
+  let isValid = true;
+  
+  // 未入力の項目があれば false（不可）にする
+  if (kyomi === "") isValid = false;
+  if (xSend === "") isValid = false;
+  if (route === "") isValid = false;
+
+  // もし「その他」を選んでいるのに、その他の詳細欄が空っぽなら false
+  if (route === "その他") {
+      const routeOther = document.getElementById("input-route-other") ? document.getElementById("input-route-other").value.trim() : "";
+      if (routeOther === "") isValid = false;
+  }
+
+  // 送信ボタンの状態を切り替える
+  const submitBtn = document.querySelector(".submit-btn");
+  if (submitBtn) {
+    if (isValid) {
+      // 必須項目がすべて埋まったらボタンを有効化
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = "1";
+      submitBtn.style.cursor = "pointer";
+    } else {
+      // 1つでも空欄があれば無効化（グレーアウト）
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.5";
+      submitBtn.style.cursor = "not-allowed";
+    }
+  }
+}
 
 function updateProposalButton() {
   const val = document.getElementById("input-bunya").value.trim();
@@ -269,13 +305,15 @@ function updateDisplay() {
 function toggleXDetail() {
   const xVal = document.getElementById("input-x").value;
   const detailBox = document.getElementById("x-detail-box");
-  if (detailBox) detailBox.style.display = (xVal === "宣伝する") ? "block" : "none";
+  if (detailBox) detailBox.style.display = (xVal === "宣伝する" || xVal === "はい（呼び掛けを希望する）") ? "block" : "none";
+  checkRequiredFields(); // 項目の表示が変わるので再チェック
 }
 
 function toggleRouteOther() {
   const routeVal = document.getElementById("input-route").value;
   const routeOther = document.getElementById("input-route-other");
   if (routeOther) routeOther.style.display = (routeVal === "その他") ? "block" : "none";
+  checkRequiredFields(); // 項目の表示が変わるので再チェック
 }
 
 function openGoogleForm() {
@@ -291,7 +329,6 @@ function openGoogleForm() {
     route = document.getElementById("input-route-other") ? document.getElementById("input-route-other").value : "";
   }
 
-  // 💡【重要】ここに取得したGoogleフォームURLを貼り付けてください（末尾がDUMMY...のもの）
   let targetUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdi0qReWcpA1bV4G844RfWvjuudknDhM6O-fB663S6uXLpoGQ/viewform?usp=pp_url&entry.669942318=DUMMY_BUNYA&entry.2097477009=DUMMY_GAIYOU&entry.1542851026=DUMMY_KIBOU1&entry.45651459=DUMMY_KIBOU2&entry.45918589=DUMMY_KYOMI&entry.1192163566=DUMMY_X&entry.2036668219=DUMMY_XDETAIL&entry.375378926=DUMMY_ROUTE&entry.405628407=DUMMY_FREE";
 
   targetUrl = targetUrl.replace("DUMMY_BUNYA", encodeURIComponent(bunya));
