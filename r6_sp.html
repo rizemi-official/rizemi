@@ -122,10 +122,13 @@
             <div id="zemi-results-container"></div>
 
             <div style="text-align: center; margin: 4rem 0 2rem 0;">
-                <p style="color: #cecece; margin-bottom: 1rem; font-weight: bold; font-size: 1.1rem;">
+                <p style="color: #cecece; margin-bottom: 0.5rem; font-weight: bold; font-size: 1.1rem;">
                     ＼ 自分の希望分野を提案・投票する方はこちら ／
                 </p>
-                <button onclick="showProposalForm()" class="submit-btn" style="width: 80%; max-width: 400px; margin: 0 auto; background-color: #C0A313;">
+                <p style="color: #ccff00; font-size: 0.9rem; margin-bottom: 1.5rem; font-weight: bold;">
+                    気になっている分野がある方は、お気軽にどうぞ！
+                </p>
+                <button onclick="showProposalForm()" class="submit-btn" style="width: 80%; max-width: 400px; margin: 0 auto;">
                     希望調査フォームを開く ▼
                 </button>
             </div>
@@ -133,11 +136,28 @@
             <div id="proposal-form-area" style="display: none; padding-top: 2rem; border-top: 2px dashed #777;">
                 
                 <div class="form-wrapper">
+
+                  <div style="background: rgba(204, 255, 0, 0.1); border: 1px dashed #ccff00; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+                      <p style="margin: 0; font-size: 0.95rem; color: #e4e4e7; line-height: 1.6;">
+                          <strong style="color: #ccff00;">💡 お気軽にご回答ください！</strong><br>
+                          本フォームの送信によって参加が決定するものではございません。また、合宿に参加せずオンラインでゼミに参加することもできますので、少しでも興味のある方は気軽にお答えください！
+                      </p>
+                  </div>
                   
                   <div class="form-section">
                     <h3>質問1：新たな分野を提案する</h3>
                     <label for="input-bunya">提案分野名</label>
                     <input type="text" id="input-bunya" placeholder="例：ランジュバン方程式、ギンツブルグ・ランダウ理論 など">
+
+                    <label style="margin-top: 20px; display: block; font-weight: bold;">提案された分野が該当するジャンルを選んでください（2つまで選択可能）</label>
+                    <div id="genre-buttons" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 5px; margin-bottom: 20px;">
+                        <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '物理')">物理</button>
+                        <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '数学')">数学</button>
+                        <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '化学・生物学')">化学・生物学</button>
+                        <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, 'その他')">その他</button>
+                    </div>
+                    <input type="hidden" id="input-genre" value="">
+
                     <label for="input-gaiyou">提案概要</label>
                     <textarea id="input-gaiyou" placeholder="この分野でどのようなゼミを行いたいか、概要を記入してください。"></textarea>
                   </div>
@@ -163,13 +183,8 @@
     </details>
 
     <details>
-      <summary>化学</summary>
-      <div id="area-chemistry" style="margin-top: 10px;"></div>
-    </details>
-
-    <details>
-      <summary>生物学</summary>
-      <div id="area-biology" style="margin-top: 10px;"></div>
+      <summary>化学・生物学</summary>
+      <div id="area-chem-bio" style="margin-top: 10px;"></div>
     </details>
 
     <details>
@@ -242,14 +257,12 @@
 <div class="speace-sp">
         <h2 class="zemi-title-sp">EVENT</h2>
         <section class="event-sp" id="event-sp">
-            <img src="./images/5th/5th_10.jpg">
-            <blockquote>
-                <p><cite>出典：<a href="https://www.nao.ac.jp/astro/sky/2026/03-topics02.html">国立天文台</a></cite></p>
-            </blockquote>
-            <span>
-                りぜみ5thでは参加者間の交流イベントとして天体観測を計画しています!<br>
-                なんとりゼミ期間中の2026/3/3には皆既月食がみられるそうです。
-            </span>
+            <div style="text-align: center; padding: 2rem 0;">
+                <p style="color: #e4e4e7; font-size: 1.1rem; line-height: 1.8;">
+                    りゼミ6thのイベント情報は現在未定です。<br>
+                    <span style="color: #ccff00; font-weight: bold;">決定次第、こちらでお知らせいたします！</span>
+                </p>
+            </div>
         </section>
         </div>
 
