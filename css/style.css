@@ -119,8 +119,8 @@ img {
 
 /* 本体ダークモード */
 body.r6-sp {
-    background-color: #46454B;
-    color: #cecece;
+    background-color: #121214; /* 💡元の #46454B から、さらに深い黒寄りのグレーへ */
+    color: #e4e4e7;            /* 💡文字をスッキリした白へ */
 }
 
 /* 特設ヘッダー */
@@ -1111,16 +1111,16 @@ body.r6-sp {
    特設ページ（ダークモード）専用の強制上書きデザイン
 ========================================================= */
 
-/* 特設ページのヘッダー文字とロゴ文字を白にする */
+/* 特設ヘッダーの文字 */
 body.r6-sp .page-header-sp a,
 body.r6-sp .page-header-sp .logo-top,
 body.r6-sp .page-header-sp .logo-btm {
-    color: #ffffff !important;
+    color: #ccff00 !important; /* 💡白から蛍光グリーンへ */
 }
 
-/* 特設ページのスマホ用ハンバーガーボタン（三本線）を白くする */
+/* 三本線 */
 body.r6-sp .menu_line {
-    background: #ffffff !important;
+    background: #ccff00 !important; /* 💡ここも蛍光グリーンへ */
 }
 
 
@@ -1268,8 +1268,8 @@ body.r6-sp .clear-btn {
 }
 
 body.r6-sp .submit-btn {
-    background: #C0A313 !important;
-    color: #ffffff !important;
+    background: #ccff00 !important; /* 💡蛍光ライムグリーン */
+    color: #000000 !important;      /* 💡文字は漆黒 */
     width: 100%;
     padding: 15px;
     font-size: 1.2rem;
