@@ -25,14 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const areaPhysics = document.getElementById('area-physics');
     const areaMath = document.getElementById('area-math');
-    const areaChemistry = document.getElementById('area-chemistry');
-    const areaBiology = document.getElementById('area-biology');
+    const areaChemBio = document.getElementById('area-chem-bio'); // 💡化学と生物を統合
     const areaOther = document.getElementById('area-other');
 
     if (areaPhysics) areaPhysics.innerHTML = '';
     if (areaMath) areaMath.innerHTML = '';
-    if (areaChemistry) areaChemistry.innerHTML = '';
-    if (areaBiology) areaBiology.innerHTML = '';
+    if (areaChemBio) areaChemBio.innerHTML = ''; // 💡ここも統合
     if (areaOther) areaOther.innerHTML = '';
 
     fetch(sheetUrl)
@@ -71,12 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     areaMath.insertAdjacentHTML('beforeend', btnHtml);
                     hasMainTag = true;
                 }
-                if (tagsField.includes('化学') && areaChemistry) {
-                    areaChemistry.insertAdjacentHTML('beforeend', btnHtml);
-                    hasMainTag = true;
-                }
-                if (tagsField.includes('生物') && areaBiology) {
-                    areaBiology.insertAdjacentHTML('beforeend', btnHtml);
+                // 💡化学または生物が含まれていれば、統合エリアに入れる
+                if ((tagsField.includes('化学') || tagsField.includes('生物')) && areaChemBio) {
+                    areaChemBio.insertAdjacentHTML('beforeend', btnHtml);
                     hasMainTag = true;
                 }
                 if ((tagsField.includes('その他') || !hasMainTag) && areaOther) {
@@ -243,7 +238,6 @@ function checkRequiredFields() {
       if (routeOther === "") isValid = false;
   }
 
-  // 💡【完全修正】ID名で本物の送信ボタンだけを100%ピンポイント制御！
   const submitBtn = document.getElementById("submit-form-btn");
   if (submitBtn) {
     if (isValid) {
@@ -316,6 +310,7 @@ function toggleRouteOther() {
 
 function openGoogleForm() {
   const bunya = document.getElementById("input-bunya") ? document.getElementById("input-bunya").value : "";
+  const genre = document.getElementById("input-genre") ? document.getElementById("input-genre").value : ""; // 💡ジャンルを取得
   const gaiyou = document.getElementById("input-gaiyou") ? document.getElementById("input-gaiyou").value : "";
   const kyomi = document.getElementById("input-kyomi") ? document.getElementById("input-kyomi").value : "";
   const xSend = document.getElementById("input-x") ? document.getElementById("input-x").value : "";
@@ -327,9 +322,11 @@ function openGoogleForm() {
     route = document.getElementById("input-route-other") ? document.getElementById("input-route-other").value : "";
   }
 
-  let targetUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdi0qReWcpA1bV4G844RfWvjuudknDhM6O-fB663S6uXLpoGQ/viewform?usp=pp_url&entry.669942318=DUMMY_BUNYA&entry.2097477009=DUMMY_GAIYOU&entry.1542851026=DUMMY_KIBOU1&entry.45651459=DUMMY_KIBOU2&entry.45918589=DUMMY_KYOMI&entry.1192163566=DUMMY_X&entry.2036668219=DUMMY_XDETAIL&entry.375378926=DUMMY_ROUTE&entry.405628407=DUMMY_FREE";
+  // 💡 targetUrl の中に、Googleフォームで作成した「ジャンル」の entry.XXXXX=DUMMY_GENRE を追加してください！
+  let targetUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdi0qReWcpA1bV4G844RfWvjuudknDhM6O-fB663S6uXLpoGQ/viewform?usp=pp_url&entry.669942318=DUMMY_BUNYA&entry.XXXXX=DUMMY_GENRE&entry.2097477009=DUMMY_GAIYOU&entry.1542851026=DUMMY_KIBOU1&entry.45651459=DUMMY_KIBOU2&entry.45918589=DUMMY_KYOMI&entry.1192163566=DUMMY_X&entry.2036668219=DUMMY_XDETAIL&entry.375378926=DUMMY_ROUTE&entry.405628407=DUMMY_FREE";
 
   targetUrl = targetUrl.replace("DUMMY_BUNYA", encodeURIComponent(bunya));
+  targetUrl = targetUrl.replace("DUMMY_GENRE", encodeURIComponent(genre)); // 💡ジャンルを置換して送信
   targetUrl = targetUrl.replace("DUMMY_GAIYOU", encodeURIComponent(gaiyou));
   targetUrl = targetUrl.replace("DUMMY_KIBOU1", encodeURIComponent(kibou1));
   targetUrl = targetUrl.replace("DUMMY_KIBOU2", encodeURIComponent(kibou2));
