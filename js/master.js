@@ -252,16 +252,30 @@ function checkRequiredFields() {
   }
 }
 
+// 💡 提案分野が入力されたら、ジャンル選択・概要入力欄を表示する処理
 function updateProposalButton() {
   const val = document.getElementById("input-bunya").value.trim();
   const btn = document.getElementById("btn-my-proposal");
-  if (!btn) return;
+  const hiddenArea = document.getElementById("hidden-proposal-area"); // HTMLで追加した隠しエリアのID
+
   if (val) {
-    btn.innerText = `「${val}」を希望に設定する`;
-    btn.disabled = false;
+    // 文字が1文字でも入力されていれば表示＆ボタン有効化
+    if (btn) {
+      btn.innerText = `「${val}」を希望に設定する`;
+      btn.disabled = false;
+    }
+    if (hiddenArea) {
+      hiddenArea.style.display = "block";
+    }
   } else {
-    btn.innerText = "（質問1を入力してください）";
-    btn.disabled = true;
+    // 文字が消されて空っぽになったら隠す＆ボタン無効化
+    if (btn) {
+      btn.innerText = "（質問1を入力してください）";
+      btn.disabled = true;
+    }
+    if (hiddenArea) {
+      hiddenArea.style.display = "none";
+    }
   }
 }
 
@@ -310,7 +324,7 @@ function toggleRouteOther() {
 
 function openGoogleForm() {
   const bunya = document.getElementById("input-bunya") ? document.getElementById("input-bunya").value : "";
-  const genre = document.getElementById("input-genre") ? document.getElementById("input-genre").value : ""; // 💡ジャンルを取得
+  const genre = document.getElementById("input-genre") ? document.getElementById("input-genre").value : ""; 
   const gaiyou = document.getElementById("input-gaiyou") ? document.getElementById("input-gaiyou").value : "";
   const kyomi = document.getElementById("input-kyomi") ? document.getElementById("input-kyomi").value : "";
   const xSend = document.getElementById("input-x") ? document.getElementById("input-x").value : "";
@@ -326,7 +340,7 @@ function openGoogleForm() {
   let targetUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdi0qReWcpA1bV4G844RfWvjuudknDhM6O-fB663S6uXLpoGQ/viewform?usp=pp_url&entry.669942318=DUMMY_BUNYA&entry.XXXXX=DUMMY_GENRE&entry.2097477009=DUMMY_GAIYOU&entry.1542851026=DUMMY_KIBOU1&entry.45651459=DUMMY_KIBOU2&entry.45918589=DUMMY_KYOMI&entry.1192163566=DUMMY_X&entry.2036668219=DUMMY_XDETAIL&entry.375378926=DUMMY_ROUTE&entry.405628407=DUMMY_FREE";
 
   targetUrl = targetUrl.replace("DUMMY_BUNYA", encodeURIComponent(bunya));
-  targetUrl = targetUrl.replace("DUMMY_GENRE", encodeURIComponent(genre)); // 💡ジャンルを置換して送信
+  targetUrl = targetUrl.replace("DUMMY_GENRE", encodeURIComponent(genre)); 
   targetUrl = targetUrl.replace("DUMMY_GAIYOU", encodeURIComponent(gaiyou));
   targetUrl = targetUrl.replace("DUMMY_KIBOU1", encodeURIComponent(kibou1));
   targetUrl = targetUrl.replace("DUMMY_KIBOU2", encodeURIComponent(kibou2));
