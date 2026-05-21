@@ -21,7 +21,19 @@
     
     <link rel="stylesheet" href="./slick/slick.css">
         <link rel="stylesheet" href="./slick/slick-theme.css">
-        <link rel="stylesheet" href="./css/style.css?v=21">
+        <link rel="stylesheet" href="./css/style.css?v=22"> <style>
+        .genre-btn {
+            transition: all 0.3s ease !important;
+        }
+        .genre-btn.active {
+            background: #ccff00 !important;
+            color: #000 !important;
+            border: 2px solid #9e9d24 !important;
+            font-weight: bold;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+        }
+    </style>
     </head>
     
     <body class="r6-sp">
@@ -33,7 +45,6 @@
             <h1 class="align-center head-sp">
                 <a href="index.html"><img class="logo" src="images\りゼミアイコン.png" alt="りゼミ　ホーム">
                     <div class="logo-text">
-                        <span class="logo-top">高専生・大学生・大学院生のための<span class="about-text">自主ゼミ合宿</span></span>
                         <span class="logo-btm">りゼミ</span>
                     </div>
                     </a>
@@ -45,7 +56,6 @@
             </h1>
             <nav>
                 <ul class="main-nav-sp kaisei-opti-regular">
-                    <div class="main-menu main-top">MENU</div>
                     <li><a href="index.html">ホーム</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="detail.html">りゼミとは</a></li>
@@ -110,7 +120,11 @@
 
 
  <div>
-        <h2 class="zemi-title-sp">ゼミ班</h2>
+        <div class="zemi-title-wrap" style="position: relative; max-width: 800px; width: 90%; margin: 0 auto;">
+            <span class="recruit-balloon">希望分野募集中！</span>
+            <h2 class="zemi-title-sp" style="width: 100%; margin: 0;">ゼミ班</h2>
+        </div>
+        
         <section class="zemi-sp" id="zemi-sp">
 
             <div style="padding: 1rem 0; text-align: center;">
@@ -137,9 +151,12 @@
                 
                 <div class="form-wrapper">
 
+                  <p style="color: #ff4d4d; font-weight: bold; text-align: center; margin-bottom: 20px;">
+                      ＊は必須の質問です
+                  </p>
+
                   <div style="background: rgba(204, 255, 0, 0.1); border: 1px dashed #ccff00; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
                       <p style="margin: 0; font-size: 0.95rem; color: #e4e4e7; line-height: 1.6;">
-                          
                           本フォームの送信によって参加が決定するものではございません。また、合宿に参加せずオンラインでゼミに参加することもできますので、少しでも興味のある方は気軽にお答えください！
                       </p>
                   </div>
@@ -149,17 +166,19 @@
                     <label for="input-bunya">提案分野名</label>
                     <input type="text" id="input-bunya" placeholder="例：ランジュバン方程式、ギンツブルグ・ランダウ理論 など">
 
-                    <label style="margin-top: 20px; display: block; font-weight: bold;">提案された分野が該当するジャンルを選んでください（2つまで選択可能）</label>
-                    <div id="genre-buttons" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 5px; margin-bottom: 20px;">
-                        <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '物理')">物理</button>
-                        <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '数学')">数学</button>
-                        <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '化学・生物学')">化学・生物学</button>
-                        <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, 'その他')">その他</button>
-                    </div>
-                    <input type="hidden" id="input-genre" value="">
+                    <div id="hidden-proposal-area" style="display: none;">
+                        <label style="margin-top: 20px; display: block; font-weight: bold;">提案された分野が該当するジャンルを選んでください（2つまで選択可能）</label>
+                        <div id="genre-buttons" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 5px; margin-bottom: 20px;">
+                            <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '物理')">物理</button>
+                            <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '数学')">数学</button>
+                            <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '化学・生物学')">化学・生物学</button>
+                            <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, 'その他')">その他</button>
+                        </div>
+                        <input type="hidden" id="input-genre" value="">
 
-                    <label for="input-gaiyou">提案概要</label>
-                    <textarea id="input-gaiyou" placeholder="この分野でどのようなゼミを行いたいか、概要を記入してください。"></textarea>
+                        <label for="input-gaiyou">提案概要</label>
+                        <textarea id="input-gaiyou" placeholder="この分野でどのようなゼミを行いたいか、概要を記入してください。"></textarea>
+                    </div>
                   </div>
 
                  <div class="form-section">
@@ -201,8 +220,6 @@
 
                   <div class="form-section">
                     <h3>その他の質問</h3>
-                    <p style="color: #ff4d4d; font-weight: bold; margin-bottom: 20px;">＊は必須の質問です</p>
-
                     <label for="input-kyomi" style="font-weight: bold; display: block; margin-bottom: 8px;">
                         どれくらい興味がありますか？ <span style="color: #ff4d4d;">*</span>
                     </label>
@@ -305,6 +322,32 @@
             ]
           });
        });
+    </script>
+
+    <script>
+        let selectedGenres = [];
+        
+        function toggleGenre(btn, genre) {
+            const index = selectedGenres.indexOf(genre);
+            
+            // すでに選択されているボタンを押した場合は「解除」
+            if (index > -1) {
+                selectedGenres.splice(index, 1);
+                btn.classList.remove('active');
+            } else {
+                // 新しく選ぼうとしたとき、すでに2つ選ばれていたらアラートを出してストップ
+                if (selectedGenres.length >= 2) {
+                    alert("ジャンルは2つまでしか選択できません。");
+                    return;
+                }
+                // まだ2つ未満なら「選択」して色を変える
+                selectedGenres.push(genre);
+                btn.classList.add('active');
+            }
+            
+            // 隠しボックスに選んだジャンル（例：「物理, 数学」）を保存する
+            document.getElementById("input-genre").value = selectedGenres.join(", ");
+        }
     </script>
 
     </body>
