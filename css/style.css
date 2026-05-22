@@ -11,8 +11,8 @@ body {
     font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif;
     line-height: 1.7;
     color: black;
-    /* 💡ヘッダー固定に伴う上部余白の追加 */
-    padding-top: 80px; 
+    /* 💡ヘッダーの縦幅を縮めたため、余白も70pxに少し減らしました */
+    padding-top: 70px; 
 }
 a {
     text-decoration: none;
@@ -1160,6 +1160,22 @@ body.r6-sp {
 
 
 /* =========================================================
+   💡今回の修正箇所（ヘッダー幅、ロゴサイズ、すき間など）
+========================================================= */
+.page-header, .page-header-sp {
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+    max-width: none !important;
+    width: 100% !important;
+}
+.head-sp a, .head a {
+    gap: 1.5rem !important;
+}
+.page-header .logo, .page-header-sp .logo {
+    height: 2.5rem !important;
+}
+
+/* =========================================================
    特設ページ（ダークモード）専用の強制上書きデザイン
 ========================================================= */
 
@@ -1173,8 +1189,8 @@ body.r6-sp .page-header-sp .logo-btm {
 /* 特設ページのロゴを光らせる（縁取り） */
 body.r6-sp .page-header-sp .logo {
     border-radius: 50%;
-    /* 💡光の広がりを控えめに修正 */
-    box-shadow: 0 0 8px rgba(204, 255, 0, 0.5); 
+    /* 💡光の広がりを調整（12pxの数字で自在に変更できます） */
+    box-shadow: 0 0 12px rgba(204, 255, 0, 0.7); 
     background-color: #ffffff; /* ロゴの内側が透過している場合の対策 */
 }
 
@@ -1338,4 +1354,19 @@ body.r6-sp .submit-btn {
 /* 💡 送信ボタンホバー時：明るい蛍光グリーンに修正 */
 body.r6-sp .submit-btn:hover {
     background: #e6ff80 !important;
+}
+
+/* =========================================================
+   💡ゼミ班一覧のグリッドレイアウト（PC版横2列）
+========================================================= */
+.zemi-grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+@media (min-width: 1000px) {
+    .zemi-grid-container {
+        grid-template-columns: 1fr 1fr; /* PC版のみ横2列 */
+        gap: 20px;
+    }
 }
