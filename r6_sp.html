@@ -1,217 +1,707 @@
 <!DOCTYPE html>
+
 <html lang="ja">
-<head>
-    <meta charset="utf-8">
+
+    <head>
+
+        <meta charset="utf-8">
+
     <title>りゼミ</title>
+
     <meta name="description" content="高専生・大学生・大学院生のための自主ゼミ合宿">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta property="og:url" content="https://rizemi-official.github.io/rizemi/r6_sp.html">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="りゼミ6th特設ページ">
-    <meta property="og:description" content="りゼミ6th開催！">
-    <meta property="og:image" content="https://rizemi-official.github.io/rizemi/images/りゼミアイコン.png">
-    
-    <link rel="icon" type="image/png" href="images\りゼミアイコン.png">
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="./slick/slick.css">
-    <link rel="stylesheet" href="./slick/slick-theme.css">
-    <link rel="stylesheet" href="./css/style.css?v=23">
-    
-    <style>
-        /* ロゴの光彩設定（ここを書き換えて調整してください） */
-        body.r6-sp .page-header-sp .logo {
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(204, 255, 0, 0.7); /* 💡この数値を大きくすると光が広がります */
-            background-color: #ffffff;
-        }
 
-        /* ヘッダー・ロゴの調整 */
-        .page-header-sp { padding: 0.5rem 1.5rem !important; }
-        .head-sp a { gap: 1.5rem !important; }
-        .page-header-sp .logo { height: 2.5rem !important; }
+        <meta property="og:type" content="website">
+
+        <meta property="og:title" content="りゼミ6th特設ページ">
+
+        <meta property="og:description" content="りゼミ6th開催！">
+
+        <meta property="og:image" content="https://rizemi-official.github.io/rizemi/images/りゼミアイコン.png">
+
         
-        /* 吹き出し用 */
-        .recruit-balloon {
-            position: absolute;
-            top: -25px; right: 0;
-            background: #ccff00; color: #000; font-weight: bold;
-            padding: 2px 8px; border-radius: 6px; font-size: 0.7rem;
-            white-space: nowrap; animation: float 2s ease-in-out infinite;
-        }
-        @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-3px); } 100% { transform: translateY(0); } }
 
-        /* ジャンルボタン */
-        .genre-btn { transition: all 0.3s ease !important; }
-        .genre-btn.active { background: #ccff00 !important; color: #000 !important; border: 2px solid #9e9d24 !important; font-weight: bold; transform: scale(1.05); box-shadow: 0 0 10px rgba(204, 255, 0, 0.5); }
-    </style>
-</head>
+    <link rel="icon" type="image/png" href="images\りゼミアイコン.png">
+
+
+
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap" rel="stylesheet">
+
     
-<body class="r6-sp">
-    <a class="pagetop" href="#"><div class="pagetop__arrow"></div></a>
-    <a class="join" href="https://t.co/LyZBhJqgwZ"></a>
 
-    <header class="page-header-sp wrapper">
-        <h1 class="align-center head-sp">
-            <a href="index.html">
-                <img class="logo" src="images\りゼミアイコン.png" alt="りゼミ　ホーム">
-                <div class="logo-text">
-                    <span class="logo-btm">りゼミ</span>
-                </div>
+    <link rel="stylesheet" href="./slick/slick.css">
+
+        <link rel="stylesheet" href="./slick/slick-theme.css">
+
+        <link rel="stylesheet" href="./css/style.css?v=23"> <style>
+
+        .genre-btn {
+
+            transition: all 0.3s ease !important;
+
+        }
+
+        .genre-btn.active {
+
+            background: #ccff00 !important;
+
+            color: #000 !important;
+
+            border: 2px solid #9e9d24 !important;
+
+            font-weight: bold;
+
+            transform: scale(1.05);
+
+            box-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+
+        }
+
+    </style>
+
+    </head>
+
+    
+
+    <body class="r6-sp">
+
+        <a class="pagetop" href="#"><div class="pagetop__arrow"></div></a>
+
+        <a class="join" href="https://t.co/LyZBhJqgwZ">
+
             </a>
-            <div class="responsive_btn">
-                <div class="menu_line"></div>
-                <div class="menu_line"></div>
-                <div class="menu_line"></div>
-            </div>
-        </h1>
-        <nav>
-            <ul class="main-nav-sp kaisei-opti-regular">
-                <li><a href="index.html">ホーム</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="detail.html">りゼミとは</a></li>
-                <li><a href="history.html">りゼミの歴史</a></li>
-                <div class="main-sns">
-                    <a class="main-sns-link" href="https://x.com/rizemi_official"><img src="images\無題6_20251107002208.png" alt="公式X"></a>
-                    <a class="main-sns-link" href="https://www.instagram.com/rizemi_official/"><img src="images\Instagram_logo_2022.svg.webp" alt="公式Instagram"></a>
-                </div>
-            </ul>
-        </nav>
-    </header>
 
-    <div class="first-logo"><img src="./images/5th/5th_6.jpg"></div>
 
-    <div class="top-sp">
-        <a href="#detail-sp">INFO</a>
-        <a href="#zemi-sp" style="position: relative;">
+
+        <header class="page-header-sp wrapper">
+
+            <h1 class="align-center head-sp">
+
+                <a href="index.html"><img class="logo" src="images\りゼミアイコン.png" alt="りゼミ　ホーム">
+
+                    <div class="logo-text">
+
+                        <span class="logo-btm">りゼミ</span>
+
+                    </div>
+
+                    </a>
+
+                <div class="responsive_btn">
+
+                    <div class="menu_line"></div>
+
+                    <div class="menu_line"></div>
+
+                    <div class="menu_line"></div>
+
+                 </div>
+
+            </h1>
+
+            <nav>
+
+                <ul class="main-nav-sp kaisei-opti-regular">
+
+                    <li><a href="index.html">ホーム</a></li>
+
+                    <li><a href="news.html">News</a></li>
+
+                    <li><a href="detail.html">りゼミとは</a></li>
+
+                    <li><a href="history.html">りゼミの歴史</a></li>
+
+                    
+
+                    <div class="main-sns">
+
+                        <a class="main-sns-link" href="https://x.com/rizemi_official"  ><img src="images\無題6_20251107002208.png" alt="公式X"></a>
+
+                        <a class="main-sns-link" href="https://www.instagram.com/rizemi_official/" ><img src="images\Instagram_logo_2022.svg.webp" alt="公式Instagram"></a>
+
+                    </div>
+
+                </ul>
+
+            </nav>
+
+        </header>
+
+
+
+        <div class="first-logo"><img src="./images/5th/5th_6.jpg"></div>
+
+
+
+        <div class="top-sp">
+
+            <a href="#detail-sp">INFO</a>
+
+            <a href="#zemi-sp">ゼミ班</a>
+
+            <a href="#event-sp">EVENT</a>
+
+        </div>
+
+
+
+        <div class="your-class">
+
+          <div><img src="./images/5th/5th_1.jpg"></div>
+
+          <div><img src="./images/5th/5th_2.jpg"></div>
+
+          <div><img src="./images/5th/5th_3.jpg"></div>
+
+          <div><img src="./images/5th/5th_4.jpg"></div>
+
+          <div><img src="./images/5th/5th_5.jpg"></div>
+
+          <div><img src="./images/5th/5th_7.jpg"></div>
+
+          <div><img src="./images/5th/5th_8.jpg"></div>
+
+        </div>
+
+
+
+        <table class="detail-sp" id="detail-sp">
+
+            <caption>INFORMATION</caption>
+
+
+
+            <tbody>
+
+                <tr>
+
+                    <th>開催日時</th>
+
+                    <td>2026/9/13(日)～9/16(水)</td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <th>開催場所</th>
+
+                    <td>国立中央青少年交流の家<div class="about-text">  <a href="https://fujinosato.niye.go.jp/" target="_blank" rel="noopener noreferrer">(施設のホームページはこちら)</a></div></td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <th>集合場所</th>
+
+                    <td>JR三島駅（みしまえき）</td>
+
+                </tr>   
+
+
+
+                <tr>
+
+                    <th>参加費</th>
+
+                    <td>13,000円前後<div class="about-text">(オンライン参加：0円)<div></div></td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <th>注意事項</th>
+
+                    <td>合宿当日に18歳未満の方は参加できません</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+
+
+ <div>
+
+        <div class="zemi-title-wrap" style="position: relative; max-width: 800px; width: 90%; margin: 0 auto;">
+
             <span class="recruit-balloon">希望分野募集中！</span>
-            ゼミ班
-        </a>
-        <a href="#event-sp">EVENT</a>
-    </div>
 
-    <div class="your-class">
-        <div><img src="./images/5th/5th_1.jpg"></div>
-        <div><img src="./images/5th/5th_2.jpg"></div>
-        <div><img src="./images/5th/5th_3.jpg"></div>
-        <div><img src="./images/5th/5th_4.jpg"></div>
-        <div><img src="./images/5th/5th_5.jpg"></div>
-        <div><img src="./images/5th/5th_7.jpg"></div>
-        <div><img src="./images/5th/5th_8.jpg"></div>
-    </div>
+            <h2 class="zemi-title-sp" style="width: 100%; margin: 0;">ゼミ班</h2>
 
-    <table class="detail-sp" id="detail-sp">
-        <caption>INFORMATION</caption>
-        <tbody>
-            <tr><th>開催日時</th><td>2026/9/13(日)～9/16(水)</td></tr>
-            <tr><th>開催場所</th><td>国立中央青少年交流の家<div class="about-text"><a href="https://fujinosato.niye.go.jp/" target="_blank" rel="noopener noreferrer">(施設のホームページはこちら)</a></div></td></tr>
-            <tr><th>集合場所</th><td>JR三島駅（みしまえき）</td></tr>   
-            <tr><th>参加費</th><td>13,000円前後<div class="about-text">(オンライン参加：0円)</div></td></tr>
-            <tr><th>注意事項</th><td>合宿当日に18歳未満の方は参加できません</td></tr>
-        </tbody>
-    </table>
+        </div>
 
-    <div>
-        <h2 class="zemi-title-sp">ゼミ班</h2>
+        
+
         <section class="zemi-sp" id="zemi-sp">
-            <div id="zemi-results-container"></div>
-            <div style="text-align: center; margin: 4rem 0 2rem 0;">
-                <button onclick="showProposalForm()" class="submit-btn" style="width: 80%; max-width: 400px; margin: 0 auto;">希望調査フォームを開く ▼</button>
+
+
+
+            <div style="padding: 1rem 0; text-align: center;">
+
+                <p style="font-size: 1rem; line-height: 2; color: #cecece; margin-bottom: 1rem;">
+
+                    りゼミ6thは、現在希望分野を募集中です！<br>これまでに提案された分野はこちらです。
+
+                </p>
+
             </div>
+
+
+
+            <div id="zemi-results-container"></div>
+
+
+
+            <div style="text-align: center; margin: 4rem 0 2rem 0;">
+
+                <p style="color: #cecece; margin-bottom: 0.5rem; font-weight: bold; font-size: 1.1rem;">
+
+                    ＼ 自分の希望分野を提案・投票する方はこちら ／
+
+                </p>
+
+                <p style="color: #ccff00; font-size: 0.9rem; margin-bottom: 1.5rem; font-weight: bold;">
+
+                    気になっている分野がある方は、お気軽にどうぞ！
+
+                </p>
+
+                <button onclick="showProposalForm()" class="submit-btn" style="width: 80%; max-width: 400px; margin: 0 auto;">
+
+                    希望調査フォームを開く ▼
+
+                </button>
+
+            </div>
+
+
 
             <div id="proposal-form-area" style="display: none; padding-top: 2rem; border-top: 2px dashed #777;">
+
+                
+
                 <div class="form-wrapper">
-                    <p style="color: #ff4d4d; font-weight: bold; text-align: center; margin-bottom: 20px;">＊は必須の質問です</p>
 
-                    <div style="background: rgba(204, 255, 0, 0.1); border: 1px dashed #ccff00; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
-                        <p style="margin: 0; font-size: 0.95rem; color: #e4e4e7; line-height: 1.6;">本フォームの送信によって参加が決定するものではございません。オンライン参加も可能ですので、気軽にお答えください！</p>
-                    </div>
-                    
-                    <div class="form-section">
-                        <h3>質問1：新たな分野を提案する</h3>
-                        <label for="input-bunya">提案分野名</label>
-                        <input type="text" id="input-bunya" placeholder="例：ランジュバン方程式など">
 
-                        <div id="hidden-proposal-area" style="display: none;">
-                            <label style="margin-top: 20px; display: block; font-weight: bold;">提案された分野が該当するジャンルを選んでください（2つまで選択可能）</label>
-                            <div id="genre-buttons" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 5px; margin-bottom: 20px;">
-                                <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '物理')">物理</button>
-                                <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '数学')">数学</button>
-                                <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '化学・生物学')">化学・生物学</button>
-                                <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, 'その他')">その他</button>
-                            </div>
-                            <input type="hidden" id="input-genre" value="">
-                            <label for="input-gaiyou">提案概要</label>
-                            <textarea id="input-gaiyou" placeholder="概要を記入してください。"></textarea>
+
+                  <p style="color: #ff4d4d; font-weight: bold; text-align: center; margin-bottom: 20px;">
+
+                      ＊は必須の質問です
+
+                  </p>
+
+
+
+                  <div style="background: rgba(204, 255, 0, 0.1); border: 1px dashed #ccff00; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+
+                      <p style="margin: 0; font-size: 0.95rem; color: #e4e4e7; line-height: 1.6;">
+
+                          本フォームの送信によって参加が決定するものではございません。また、合宿に参加せずオンラインでゼミに参加することもできますので、少しでも興味のある方は気軽にお答えください！
+
+                      </p>
+
+                  </div>
+
+                  
+
+                  <div class="form-section">
+
+                    <h3>質問1：新たな分野を提案する</h3>
+
+                    <label for="input-bunya">提案分野名</label>
+
+                    <input type="text" id="input-bunya" placeholder="例：ランジュバン方程式、ギンツブルグ・ランダウ理論 など">
+
+
+
+                    <div id="hidden-proposal-area" style="display: none;">
+
+                        <label style="margin-top: 20px; display: block; font-weight: bold;">提案された分野が該当するジャンルを選んでください（2つまで選択可能）</label>
+
+                        <div id="genre-buttons" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 5px; margin-bottom: 20px;">
+
+                            <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '物理')">物理</button>
+
+                            <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '数学')">数学</button>
+
+                            <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, '化学・生物学')">化学・生物学</button>
+
+                            <button type="button" class="field-btn genre-btn" onclick="toggleGenre(this, 'その他')">その他</button>
+
                         </div>
+
+                        <input type="hidden" id="input-genre" value="">
+
+
+
+                        <label for="input-gaiyou">提案概要</label>
+
+                        <textarea id="input-gaiyou" placeholder="この分野でどのようなゼミを行いたいか、概要を記入してください。"></textarea>
+
                     </div>
 
-                    <div class="form-section">
-                        <h3>質問2：第1希望・第2希望の選択</h3>
-                        <div class="my-proposal-box">
-                            <span class="box-label">自分が提案した分野を選ぶ</span>
-                            <button type="button" id="btn-my-proposal" class="field-btn proposal-btn" onclick="selectField(document.getElementById('input-bunya').value)" disabled>（質問1を入力してください）</button>
-                        </div>
-                        <details><summary>物理学</summary><div id="area-physics"></div></details>
-                        <details><summary>数学</summary><div id="area-math"></div></details>
-                        <details><summary>化学・生物学</summary><div id="area-chem-bio"></div></details>
-                        <details><summary>その他</summary><div id="area-other"></div></details>
-                        <div class="status-box">
-                            <p>▼ あなたの選択状況</p>
-                            <p>第1希望： <span id="disp-kibou1">未選択</span> <button class="clear-btn" onclick="clearField(1)">選び直す</button></p>
-                            <p>第2希望： <span id="disp-kibou2">未選択</span> <button class="clear-btn" onclick="clearField(2)">選び直す</button></p>
-                        </div>
-                    </div>
+                  </div>
 
-                    <div class="form-section">
-                        <h3>その他の質問</h3>
-                        <label for="input-kyomi" style="font-weight: bold;">どれくらい興味がありますか？ <span style="color: #ff4d4d;">＊</span></label>
-                        <select id="input-kyomi">
-                            <option value="">選択してください</option>
-                            <option value="ぜひとも参加したい">ぜひとも参加したい</option>
-                            <option value="参加するかもしれない">参加するかもしれない</option>
-                        </select>
-                        <label for="input-x" style="font-weight: bold; margin-top:20px; display:block;">りゼミのXで希望分野を呼び掛けますか？ <span style="color: #ff4d4d;">＊</span></label>
-                        <select id="input-x" onchange="toggleXDetail()"><option value="">選択してください</option><option value="宣伝する">宣伝する</option><option value="必要ない">必要ない</option></select>
-                        <div id="x-detail-box" style="display: none; margin-top: 10px;"><textarea id="input-x-detail" placeholder="追加説明"></textarea></div>
-                        <label for="input-route" style="font-weight: bold; margin-top:20px; display:block;">どこで知りましたか？ <span style="color: #ff4d4d;">＊</span></label>
-                        <select id="input-route" onchange="toggleRouteOther()"><option value="">選択してください</option><option value="X（旧Twitter）">X（旧Twitter）</option><option value="知人・友人">知人・友人</option><option value="その他">その他</option></select>
-                        <input type="text" id="input-route-other" placeholder="具体的に" style="display: none; margin-top: 10px;">
-                        <label for="input-free" style="font-weight: bold; margin-top:20px; display:block;">自由記述</label>
-                        <textarea id="input-free"></textarea>
-                    </div>
-                    <button id="submit-form-btn" class="submit-btn" onclick="openGoogleForm()">送信画面へ進む</button>
-                </div>
-            </div>
-        </section>
+
+
+                 <div class="form-section">
+
+    <h3>質問2：第1希望・第2希望の選択</h3>
+
+    <p style="font-size: 14px; margin-bottom: 10px;">以下のカテゴリ、またはご自身が提案した分野から選んでください。</p>
+
+
+
+    <div class="my-proposal-box">
+
+      <span class="box-label">自分が提案した分野を選ぶ</span>
+
+      <p style="font-size: 12px; margin: 5px 0 10px 0; color: #555;">質問1に入力した分野名が自動でここに反映され、選択できるようになります。</p>
+
+      <button type="button" id="btn-my-proposal" class="field-btn proposal-btn" onclick="selectField(document.getElementById('input-bunya').value)" disabled>（質問1を入力してください）</button>
+
     </div>
 
-    <footer class="page-footer-sp kaisei-opti-regular">
-        <h3 class="foot-title">INFORMATION</h3>
-        <table class="info">
-            <tr><th><a class="sns" href="https://x.com/rizemi_official">公式X<img src="images\無題6_20251107002208.png" alt="X"></a></th></tr>
-            <tr><th><a class="sns" href="https://www.instagram.com/rizemi_official/">公式Instagram<img src="images\Instagram_logo_2022.svg.webp" alt="Instagram"></a></th></tr>
-        </table>
-        <div class="copyright"><small>&copy; 2025 りゼミ</small></div>
-    </footer>
+
+
+    <details>
+
+      <summary>物理学</summary>
+
+      <div id="area-physics" style="margin-top: 10px;"></div>
+
+    </details>
+
+
+
+    <details>
+
+      <summary>数学</summary>
+
+      <div id="area-math" style="margin-top: 10px;"></div>
+
+    </details>
+
+
+
+    <details>
+
+      <summary>化学・生物学</summary>
+
+      <div id="area-chem-bio" style="margin-top: 10px;"></div>
+
+    </details>
+
+
+
+    <details>
+
+      <summary>その他</summary>
+
+      <div id="area-other" style="margin-top: 10px;"></div>
+
+    </details>
+
+
+
+    <div class="status-box">
+
+      <p>▼ あなたの選択状況</p>
+
+      <p>第1希望： <span id="disp-kibou1">未選択</span> <button class="clear-btn" onclick="clearField(1)">選び直す</button></p>
+
+      <p>第2希望： <span id="disp-kibou2">未選択</span> <button class="clear-btn" onclick="clearField(2)">選び直す</button></p>
+
+    </div>
+
+  </div>
+
+
+
+                  <div class="form-section">
+
+                    <h3>その他の質問</h3>
+
+                    <label for="input-kyomi" style="font-weight: bold; display: block; margin-bottom: 8px;">
+
+                        どれくらい興味がありますか？ <span style="color: #ff4d4d;">*</span>
+
+                    </label>
+
+                    <select id="input-kyomi">
+
+                      <option value="">選択してください</option>
+
+                      <option value="ぜひとも参加したい">ぜひとも参加したい</option>
+
+                      <option value="参加するかもしれない">参加するかもしれない</option>
+
+                      <option value="参加しないかもしれない">参加しないかもしれない</option>
+
+                      <option value="参加しない可能性が高い">参加しない可能性が高い</option>
+
+                    </select>
+
+
+
+                    <label for="input-x" style="font-weight: bold; display: block; margin-top: 20px; margin-bottom: 4px;">
+
+                        りゼミのXアカウントであなたの希望分野を呼び掛けますか？ <span style="color: #ff4d4d;">*</span>
+
+                    </label>
+
+                    <p style="font-size: 12px; color: #666; margin-top: 0; margin-bottom: 8px;">※宣伝する場合、Xの方であなたの第1希望分野について紹介し、参加を募るポストをします。</p>
+
+                    <select id="input-x" onchange="toggleXDetail()">
+
+                      <option value="">選択してください</option>
+
+                      <option value="宣伝する">宣伝する</option>
+
+                      <option value="必要ない">必要ない</option>
+
+                    </select>
+
+                    <div id="x-detail-box" style="display: none; margin-top: 10px;">
+
+                      <label for="input-x-detail" style="font-weight: bold;">追加説明（宣伝するを選んだ場合）</label>
+
+                      <textarea id="input-x-detail" placeholder="例：～という点で興味深い分野なのでぜひ一緒にやりませんか？等"></textarea>
+
+                    </div>
+
+
+
+                    <label for="input-route" style="font-weight: bold; display: block; margin-top: 20px; margin-bottom: 8px;">
+
+                        りゼミをどこで知りましたか？ <span style="color: #ff4d4d;">*</span>
+
+                    </label>
+
+                    <select id="input-route" onchange="toggleRouteOther()">
+
+                      <option value="">選択してください</option>
+
+                      <option value="X（旧Twitter）">X（旧Twitter）</option>
+
+                      <option value="知人・友人">知人・友人</option>
+
+                      <option value="大学掲示ポスター（一部大学）">大学掲示ポスター（一部大学）</option>
+
+                      <option value="その他">その他</option>
+
+                    </select>
+
+                    <input type="text" id="input-route-other" placeholder="その他の場合は具体的にご記入ください" style="display: none; margin-top: 10px;">
+
+
+
+                    <label for="input-free" style="font-weight: bold; display: block; margin-top: 20px; margin-bottom: 8px;">自由記述欄</label>
+
+                    <textarea id="input-free" placeholder="ここに入力してください"></textarea>
+
+                  </div>
+
+
+
+                  <button id="submit-form-btn" class="submit-btn" onclick="openGoogleForm()">入力内容を確認して送信画面へ進む</button>
+
+
+
+                </div>
+
+                </div>
+
+        </section>
+
+        </div>
+
+
+
+
+
+
+
+</div>
+
+<div class="speace-sp">
+
+        <h2 class="zemi-title-sp">EVENT</h2>
+
+        <section class="event-sp" id="event-sp">
+
+            <div style="text-align: center; padding: 2rem 0;">
+
+                <p style="color: #e4e4e7; font-size: 1.1rem; line-height: 1.8;">
+
+                    りゼミ6thのイベント情報は現在未定です。<br>
+
+                    <span style="color: #ccff00; font-weight: bold;">決定次第、こちらでお知らせいたします！</span>
+
+                </p>
+
+            </div>
+
+        </section>
+
+        </div>
+
+
+
+        
+
+        
+
+        <footer class="page-footer-sp kaisei-opti-regular">
+
+            <h3 class="foot-title">INFORMATION</h3>
+
+            <table class="info">
+
+                <tr>
+
+                    <th><a class="sns" href="https://x.com/rizemi_official">公式X<img src="images\無題6_20251107002208.png" alt="X"></a></th>
+
+                </tr>
+
+                <tr>
+
+                    <th><a class="sns" href="https://www.instagram.com/rizemi_official/">公式Instagram<img src="images\Instagram_logo_2022.svg.webp" alt="Instagram"></a></th>
+
+                </tr>
+
+            </table>
+
+           <div class="copyright" style="text-align: center; margin-top: 1rem; padding-bottom: 1rem;">
+
+                <small>&copy; 2025 りゼミ</small>
+
+            </div>
+
+        </footer>
 
     <script src="js/master.js"></script> 
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
     <script type="text/javascript" src="slick/slick.min.js"></script>
+
     <script>
+
         $(document).ready(function(){
-            $('.your-class').slick({ dots: true, slidesToShow: 3, slidesToScroll: 1, autoplay: true, autoplaySpeed: 2000, responsive: [{ breakpoint: 768, settings: { slidesToShow: 1 } }] });
-        });
-        let selectedGenres = [];
-        function toggleGenre(btn, genre) {
-            const index = selectedGenres.indexOf(genre);
-            if (index > -1) { selectedGenres.splice(index, 1); btn.classList.remove('active'); } 
-            else { if (selectedGenres.length >= 2) { alert("ジャンルは2つまでです。"); return; } selectedGenres.push(genre); btn.classList.add('active'); }
-            document.getElementById("input-genre").value = selectedGenres.join(", ");
-        }
+
+        $('.your-class').slick({
+
+            dots: true,
+
+            slidesToShow: 3,
+
+            slidesToScroll: 1,
+
+            autoplay: true,
+
+            autoplaySpeed: 2000,
+
+
+
+            responsive: [
+
+                {
+
+                    breakpoint: 768,
+
+                    settings: {
+
+                        slidesToShow: 1
+
+                    }
+
+                }
+
+            ]
+
+          });
+
+       });
+
     </script>
-</body>
+
+
+
+    <script>
+
+        let selectedGenres = [];
+
+        
+
+        function toggleGenre(btn, genre) {
+
+            const index = selectedGenres.indexOf(genre);
+
+            
+
+            // すでに選択されているボタンを押した場合は「解除」
+
+            if (index > -1) {
+
+                selectedGenres.splice(index, 1);
+
+                btn.classList.remove('active');
+
+            } else {
+
+                // 新しく選ぼうとしたとき、すでに2つ選ばれていたらアラートを出してストップ
+
+                if (selectedGenres.length >= 2) {
+
+                    alert("ジャンルは2つまでしか選択できません。");
+
+                    return;
+
+                }
+
+                // まだ2つ未満なら「選択」して色を変える
+
+                selectedGenres.push(genre);
+
+                btn.classList.add('active');
+
+            }
+
+            
+
+            // 隠しボックスに選んだジャンル（例：「物理, 数学」）を保存する
+
+            document.getElementById("input-genre").value = selectedGenres.join(", ");
+
+        }
+
+    </script>
+
+
+
+    </body>
+
 </html>
