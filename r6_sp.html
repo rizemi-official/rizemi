@@ -22,16 +22,16 @@
     <link rel="stylesheet" href="./css/style.css?v=23">
 
     <style>
-        .genre-btn {
+        /* 💡変更：CSSの優先度を上げて、style.cssの上書きに確実に勝てるようにしました */
+        body.r6-sp .form-wrapper .genre-btn {
             transition: all 0.2s ease !important;
         }
-        .genre-btn.active {
+        body.r6-sp .form-wrapper .genre-btn.active {
             background: #91b825 !important;
-            color: #fff !important;
+            color: #ffffff !important;
             border: 2px solid #596144 !important;
-            font-weight: bold;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            font-weight: bold !important;
+            /* 浮き上がりと光彩のエフェクトは削除しました */
         }
     </style>
 </head>
