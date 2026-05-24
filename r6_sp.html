@@ -142,12 +142,20 @@
             <div id="proposal-form-area" style="display: none; padding-top: 2rem; border-top: 2px dashed #777;">
                 <div class="form-wrapper">
 
-                    <p style="color: #ff4d4d; font-weight: bold; text-align: center; margin-bottom: 20px;">
-                        ＊は必須の質問です
-                    </p>
+                    <!-- 💡 追加：今回の希望調査の方法 -->
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 4px; margin-bottom: 15px; border: 1px solid #e0e0e0; border-left: 4px solid #C0A313;">
+                        <h3 style="margin-top: 0; margin-bottom: 10px; font-size: 1.1rem; color: #333; border-bottom: none; padding-bottom: 0;">💡 今回の希望調査の方法</h3>
+                        <ol style="margin: 0; padding-left: 1.5rem; color: #333; font-size: 0.95rem; line-height: 1.6;">
+                            <li style="margin-bottom: 8px;"><strong>提案する（任意）：</strong> やりたいゼミ班を1つ提案できます。（特設サイトにリアルタイムで公開されます！）</li>
+                            <li><strong>選んで投票<span style="color: #ff4d4d;">（必須）</span>：</strong> みんなの提案一覧の中から、参加したいゼミ（第1・第2希望）を選んでください。</li>
+                        </ol>
+                        <p style="margin: 10px 0 0 0; font-size: 0.85rem; color: #666;">※すでに一覧にやりたいゼミがある場合は、新たな提案はせず「投票」だけでもOKです！</p>
+                    </div>
 
-                    <div style="background: rgba(204, 255, 0, 0.1); border: 1px dashed #ccff00; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
-                        <p style="margin: 0; font-size: 0.95rem; color: #e4e4e7; line-height: 1.6;">
+                    <!-- 💡 追加：免責事項 -->
+                    <div style="background: rgba(204, 255, 0, 0.15); border: 1px dashed #9e9d24; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+                        <p style="margin: 0; font-size: 0.95rem; color: #333; line-height: 1.6;">
+                            <strong>【免責事項】</strong><br>
                             本フォームの送信によって参加が決定するものではございません。また、合宿に参加せずオンラインでゼミに参加することもできますので、少しでも興味のある方は気軽にお答えください！
                         </p>
                     </div>
@@ -173,7 +181,8 @@
                     </div>
 
                     <div class="form-section">
-                        <h3>質問2：参加希望班の選択（必須）</h3>
+                        <!-- 💡 変更：（必須）を赤文字で追加 -->
+                        <h3>質問2：参加希望班の選択 <span style="color: #ff4d4d; font-size: 0.85em;">（必須）</span></h3>
                         <p style="font-size: 14px; margin-bottom: 10px;">すでに提案された以下の分野、またはご自身が提案した分野から選んでください。（※参加が決定するものではありません）</p>
 
                         <div class="my-proposal-box">
@@ -211,8 +220,9 @@
 
                     <div class="form-section">
                         <h3>その他の質問</h3>
+                        <!-- 💡 変更：* を （必須） に変更 -->
                         <label for="input-kyomi" style="font-weight: bold; display: block; margin-bottom: 8px;">
-                            どれくらい興味がありますか？ <span style="color: #ff4d4d;">*</span>
+                            どれくらい興味がありますか？ <span style="color: #ff4d4d;">（必須）</span>
                         </label>
                         <select id="input-kyomi">
                             <option value="">選択してください</option>
@@ -222,8 +232,9 @@
                             <option value="参加しない可能性が高い">参加しない可能性が高い</option>
                         </select>
 
+                        <!-- 💡 変更：* を （必須） に変更 -->
                         <label for="input-x" style="font-weight: bold; display: block; margin-top: 20px; margin-bottom: 4px;">
-                            りゼミのXアカウントであなたの希望分野を呼び掛けますか？ <span style="color: #ff4d4d;">*</span>
+                            りゼミのXアカウントであなたの希望分野を呼び掛けますか？ <span style="color: #ff4d4d;">（必須）</span>
                         </label>
                         <p style="font-size: 12px; color: #666; margin-top: 0; margin-bottom: 8px;">※宣伝する場合、Xの方であなたの第1希望分野について紹介し、参加を募るポストをします。</p>
                         <select id="input-x" onchange="toggleXDetail()">
@@ -236,8 +247,9 @@
                             <textarea id="input-x-detail" placeholder="例：～という点で興味深い分野なのでぜひ一緒にやりませんか？等"></textarea>
                         </div>
 
+                        <!-- 💡 変更：* を （必須） に変更 -->
                         <label for="input-route" style="font-weight: bold; display: block; margin-top: 20px; margin-bottom: 8px;">
-                            りゼミをどこで知りましたか？ <span style="color: #ff4d4d;">*</span>
+                            りゼミをどこで知りましたか？ <span style="color: #ff4d4d;">（必須）</span>
                         </label>
                         <select id="input-route" onchange="toggleRouteOther()">
                             <option value="">選択してください</option>
