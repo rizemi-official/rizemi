@@ -542,7 +542,7 @@ body.r6-sp {
     margin-bottom: 2px;
 }
 .logo-btm {
-    font-size: 2.5rem;
+    font-size: 1.5rem; /* 💡スマホ版でMENUと同サイズの1.5remに変更 */
     line-height: 1.0;
 }
 
@@ -1088,6 +1088,12 @@ body.r6-sp {
         margin-bottom: 10px;  /* 💡「りぜみ」との隙間 */
     }
 
+    /* 💡追加：PC版の「りゼミ」文字サイズをMENU(1.8rem)に合わせる */
+    .page-header .logo-btm,
+    .page-header-sp .logo-btm {
+        font-size: 1.8rem;
+    }
+
     /* NEWSエリア（PC版） */
     .news {
         margin: 2rem auto 0;
@@ -1173,6 +1179,14 @@ body.r6-sp {
 }
 .page-header .logo, .page-header-sp .logo {
     height: 2.5rem !important;
+}
+
+/* 💡PC版のみ：左右に余白を作ってロゴとMENUを中央に寄せる */
+@media (min-width: 1000px) {
+    .page-header, .page-header-sp {
+        padding-left: 8vw !important;
+        padding-right: 8vw !important;
+    }
 }
 
 /* =========================================================
