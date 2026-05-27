@@ -536,9 +536,12 @@ body.r6-sp {
     justify-content: center;
     line-height: 1.0; /* 全体の無駄な行間を一度ゼロにします */
 }
+
+/* 💡サブタイトル（デフォルト＝スマホ版では非表示） */
 .logo-top {
+    display: none; 
     font-size: 0.6rem;
-    line-height: 1.4;   /* 💡「～のための〜」が2行に折り返した時の行間を作ります */
+    line-height: 1.4;   
     margin-bottom: 2px;
 }
 .logo-btm {
@@ -1082,12 +1085,6 @@ body.r6-sp {
         line-height: 1.0; /* 全体の無駄な行間をリセット */
     }
 
-    .page-header .logo-top,
-    .page-header-sp .logo-top {
-        font-size: 1rem;
-        margin-bottom: 10px;  /* 💡「りぜみ」との隙間 */
-    }
-
     /* NEWSエリア（PC版） */
     .news {
         margin: 2rem auto 0;
@@ -1180,7 +1177,7 @@ body.r6-sp {
     font-size: 1.5rem !important; 
 }
 
-/* 💻 PC版のみ：中央寄せ、ロゴ拡大、文字拡大 */
+/* 💻 PC版のみ：中央寄せ、ロゴ拡大、文字拡大、💡サブタイトル再表示 */
 @media (min-width: 1000px) {
     .page-header, .page-header-sp {
         padding-left: 8vw !important;
@@ -1195,7 +1192,9 @@ body.r6-sp {
     .page-header .logo-btm, .page-header-sp .logo-btm {
         font-size: 2.1rem !important; 
     }
+    /* 💡PC版のみサブタイトルを表示する設定 */
     .page-header .logo-top, .page-header-sp .logo-top {
+        display: block !important;
         margin-bottom: 4px !important;
     }
 }
@@ -1382,7 +1381,7 @@ body.r6-sp .submit-btn:hover {
 }
 
 /* =========================================================
-   💡ゼミ班一覧のグリッドレイアウト（PC版横2列）
+   ゼミ班一覧のグリッドレイアウト（PC版横2列）
 ========================================================= */
 .zemi-grid-container {
     display: grid;
