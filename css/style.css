@@ -1088,12 +1088,6 @@ body.r6-sp {
         margin-bottom: 10px;  /* 💡「りぜみ」との隙間 */
     }
 
-    /* 💡追加：PC版の「りゼミ」文字サイズをMENU(1.8rem)に合わせる */
-    .page-header .logo-btm,
-    .page-header-sp .logo-btm {
-        font-size: 1.8rem;
-    }
-
     /* NEWSエリア（PC版） */
     .news {
         margin: 2rem auto 0;
@@ -1174,20 +1168,38 @@ body.r6-sp {
     max-width: none !important;
     width: 100% !important;
 }
+
+/* 📱 スマホ版：ロゴと文字の間隔を狭く、ロゴの基本サイズ */
 .head-sp a, .head a {
-    gap: 1.5rem !important;
+    gap: 0.5rem !important; 
 }
 .page-header .logo, .page-header-sp .logo {
-    height: 2.5rem !important;
+    height: 2.2rem !important; 
+}
+.page-header .logo-btm, .page-header-sp .logo-btm {
+    font-size: 1.5rem !important; 
 }
 
-/* 💡PC版のみ：左右に余白を作ってロゴとMENUを中央に寄せる */
+/* 💻 PC版のみ：中央寄せ、ロゴ拡大、文字拡大 */
 @media (min-width: 1000px) {
     .page-header, .page-header-sp {
         padding-left: 8vw !important;
         padding-right: 8vw !important;
     }
+    .head-sp a, .head a {
+        gap: 1.2rem !important; 
+    }
+    .page-header .logo, .page-header-sp .logo {
+        height: 3.0rem !important; 
+    }
+    .page-header .logo-btm, .page-header-sp .logo-btm {
+        font-size: 2.1rem !important; 
+    }
+    .page-header .logo-top, .page-header-sp .logo-top {
+        margin-bottom: 4px !important;
+    }
 }
+
 
 /* =========================================================
    特設ページ（ダークモード）専用の強制上書きデザイン
@@ -1291,7 +1303,6 @@ body.r6-sp .form-wrapper summary {
 body.r6-sp .form-wrapper summary::-webkit-details-marker {
     display: none;
 }
-/* 💡summary::before（＋ / －の表示）を削除しました */
 
 body.r6-sp .field-btn {
     display: inline-block;
