@@ -9,14 +9,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!--OGPの設定-->
-        <meta property="og:url" content="https://example.com/history.html">
+        <meta property="og:url" content="https://rizemi-official.github.io/rizemi/history.html">
         <meta property="og:type" content="website">
         <meta property="og:title" content="りゼミの歴史">
         <meta property="og:description" content="りゼミでこれまでどこに行きどのようなゼミが開かれたのか等の記録です">
-        <meta property="og:iamge" content="https://example.com/images/りゼミアイコン.png">
+        <meta property="og:image" content="https://rizemi-official.github.io/rizemi/images/りゼミアイコン.png">
         
     <!-- ファビコン -->
-        <link rel="icon" type="image/png" href="images\りゼミアイコン.png">
+        <link rel="icon" type="image/png" href="images/りゼミアイコン.png">
 
     <!--リセットCSS-->
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
@@ -27,7 +27,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap" rel="stylesheet">
 
     <!-- オリジナルCSS -->
-        <link rel="stylesheet" href="./css/style.css?v=12">
+        <link rel="stylesheet" href="./css/style.css?v=25">
     </head>
 
     <body>
@@ -39,7 +39,9 @@
 
         <header class="page-header wrapper">
             <h1 class="align-center head">
-                <a href="index.html"><img class="logo" src="images\りゼミアイコン.png" alt="りゼミ　ホーム">
+                <!-- 💡 統一ヘッダー -->
+                <a href="index.html">
+                    <img class="logo" src="images/りゼミアイコン.png" alt="りゼミ ホーム">
                     <div class="logo-text">
                         <span class="logo-top">高専生・大学生・大学院生のための<span class="about-text">自主ゼミ合宿</span></span>
                         <span class="logo-btm">りゼミ</span>
@@ -49,7 +51,7 @@
                     <div class="menu_line"></div>
                     <div class="menu_line"></div>
                     <div class="menu_line"></div>
-                 </div>    
+                 </div>   
             </h1>
             <nav>
                 <ul class="main-nav kaisei-opti-regular">
@@ -60,14 +62,12 @@
                     <li><a href="history.html">りゼミの歴史</a></li>
 
                     <div class="main-sns">
-                        <a class="main-sns-link" href="https://x.com/rizemi_official"  ><img src="images\無題6_20251107002208.png" alt="公式X"></a>
-                        <a class="main-sns-link" href="https://www.instagram.com/rizemi_official/" ><img src="images\Instagram_logo_2022.svg.webp" alt="公式Instagram"></a>
+                        <a class="main-sns-link" href="https://x.com/rizemi_official"  ><img src="images/無題6_20251107002208.png" alt="公式X"></a>
+                        <a class="main-sns-link" href="https://www.instagram.com/rizemi_official/" ><img src="images/Instagram_logo_2022.svg.webp" alt="公式Instagram"></a>
                     </div>
                 </ul>
             </nav>
         </header>
-
-
 
         
         
@@ -78,56 +78,75 @@
 
         <!-- ニュースの中身 -->
         <section class="news" style="max-height: none; overflow-y: visible; max-width: 800px; border: none; background-color: transparent;">
-            <ul style="padding-left: 0;">
+            <ul style="padding-left: 0; list-style: none;">
                 
-                <!-- 1件目 -->
-                <li style="border-bottom: 1px solid #c9c2bc; padding: 1.5rem 0;">
-                    <span style="color: #333; font-weight: bold;">2026/05/04</span><br>
-
-                    りゼミ6th開催決定！<br>
+                <!-- 1件目（最新情報） -->
+                <li style="background: #f8f9fa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <span style="color: #555; font-weight: bold; font-size: 0.9rem;">2026/05/26</span><br>
+                    <strong style="font-size: 1.1rem; color: #333;">【りゼミ6th 分野希望調査に関するお知らせ】</strong><br>
                     
                     <p style="margin-top: 0.8rem; margin-bottom: 0; line-height: 1.8;">
-                        <br>開催地：国立中央青少年交流の家（静岡県御殿場市）
+                        まもなく6thの特設サイトがオープンします。<br>
+                        <br>
+                        今回の分野希望調査は特設サイト上で実施し，新たに<br>
+                        <strong style="font-size: 1.1em; color: #333;">「リアルタイム提案 ＆ 投票システム」</strong><br>
+                        を導入します！<br>
+                        <br>
+                        １．あなたが勉強したい分野をフォームに入力して<strong>提案</strong>（１回の回答につき１つまで）<br>
+                        <br>
+                        ２．特設サイト上のリストに提案がリアルタイムで反映<br>
+                        <br>
+                        ３．これまで提案された分野の中から参加したいゼミを選んで<strong>投票</strong><br>
+                        <br>
+                        ４．希望者が多い分野からゼミ班を決定<br>
+                        <br>
+                        
+                        <span style="font-size: 0.9em; color: #555;">※この調査は参加を決定するものではありません。ぜひ気軽にご回答ください。</span><br>
+                        <br>
+                        分野希望調査までもうしばらくお待ちください！
+                    </p>
+                </li>
+
+                <!-- 2件目 -->
+                <li style="background: #f8f9fa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <span style="color: #555; font-weight: bold; font-size: 0.9rem;">2026/05/04</span><br>
+                    <strong style="font-size: 1.1rem; color: #333;">りゼミ6th開催決定！</strong><br>
+                    
+                    <p style="margin-top: 0.8rem; margin-bottom: 0; line-height: 1.8;">
+                        開催地：国立中央青少年交流の家（静岡県御殿場市）
                         <a href="https://fujinosato.niye.go.jp/" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline;">(施設のホームページはこちら)</a><br>
                         日程：9/13(日)～9/16(水)<br>
                         <br>
                         希望調査開始までしばらくお待ちください。
                     </p>
-
-
-                    
-                </li>
-
-                <!-- 2件目 -->
-                <li style="border-bottom: 1px solid #c9c2bc; padding: 1.5rem 0;">
-                    <span style="font-weight: bold;">2026/03/02～05</span><br>
-                    りゼミ5thが開催されました。
                 </li>
 
                 <!-- 3件目 -->
-                <li style="border-bottom: 1px solid #c9c2bc; padding: 1.5rem 0;">
-                    <span style="font-weight: bold;">2025/12/08</span><br>
-                    りゼミ公式ホームページができました。
+                <li style="background: #f8f9fa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <span style="color: #555; font-weight: bold; font-size: 0.9rem;">2026/03/02～05</span><br>
+                    <strong style="font-size: 1.1rem; color: #333;">りゼミ5thが開催されました。</strong>
                 </li>
 
-                <!-- 4件目（Twitter埋め込み） -->
-                <li style="border-bottom: 1px solid #c9c2bc; padding: 1.5rem 0;">
-                    <span style="font-weight: bold;">2025/11/14</span><br>
-                    りゼミ5thの希望分野調査が始まりました。<br>
-                    <blockquote class="twitter-tweet">
-                        <p lang="ja" dir="ltr"><a href="https://twitter.com/hashtag/%E3%82%8A%E3%82%BC%E3%83%9F5th?src=hash&amp;ref_src=twsrc%5Etfw">#りゼミ5th</a> を開催します🎉<br><br>りゼミの自主ゼミ班は参加希望の皆さんの意見から決めています<br><br>そこで希望分野の調査を行います‼️<br>参加を決定するものではないので気軽にどうぞ！<br>幅広い分野案をお待ちしてます👍<br><br>↓希望分野調査フォーム↓<a href="https://t.co/oJdFmrM1Vp">https://t.co/oJdFmrM1Vp</a><br><br>↓ツリーに詳細あります！ <a href="https://t.co/xK98AFhk7H">pic.twitter.com/xK98AFhk7H</a></p>&mdash; りゼミ (@rizemi_official) <a href="https://twitter.com/rizemi_official/status/1989262220837183953?ref_src=twsrc%5Etfw">November 14, 2025</a>
-                    </blockquote> 
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <!-- 4件目 -->
+                <li style="background: #f8f9fa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <span style="color: #555; font-weight: bold; font-size: 0.9rem;">2025/12/08</span><br>
+                    <strong style="font-size: 1.1rem; color: #333;">りゼミ公式ホームページができました。</strong>
+                </li>
+
+                <!-- 5件目（Twitter埋め込み） -->
+                <li style="background: #f8f9fa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <span style="color: #555; font-weight: bold; font-size: 0.9rem;">2025/11/14</span><br>
+                    <strong style="font-size: 1.1rem; color: #333;">りゼミ5thの希望分野調査が始まりました。</strong><br>
+                    <div style="margin-top: 1rem;">
+                        <blockquote class="twitter-tweet">
+                            <p lang="ja" dir="ltr"><a href="https://twitter.com/hashtag/%E3%82%8A%E3%82%BC%E3%83%9F5th?src=hash&amp;ref_src=twsrc%5Etfw">#りゼミ5th</a> を開催します🎉<br><br>りゼミの自主ゼミ班は参加希望の皆さんの意見から決めています<br><br>そこで希望分野の調査を行います‼️<br>参加を決定するものではないので気軽にどうぞ！<br>幅広い分野案をお待ちしてます👍<br><br>↓希望分野調査フォーム↓<a href="https://t.co/oJdFmrM1Vp">https://t.co/oJdFmrM1Vp</a><br><br>↓ツリーに詳細あります！ <a href="https://t.co/xK98AFhk7H">pic.twitter.com/xK98AFhk7H</a></p>&mdash; りゼミ (@rizemi_official) <a href="https://twitter.com/rizemi_official/status/1989262220837183953?ref_src=twsrc%5Etfw">November 14, 2025</a>
+                        </blockquote> 
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
                 </li>
 
             </ul>
         </section>
-
-
-
-
-
-
 
         
 
@@ -135,10 +154,10 @@
             <h3 class="foot-title">INFORMATION</h3>
             <table class="info">
                 <tr>
-                    <th><a class="sns" href="https://x.com/rizemi_official">公式X<img src="images\無題6_20251107002208.png" alt="X"></a></th>
+                    <th><a class="sns" href="https://x.com/rizemi_official">公式X<img src="images/無題6_20251107002208.png" alt="X"></a></th>
                 </tr>
                 <tr>
-                    <th><a class="sns" href="https://www.instagram.com/rizemi_official/">公式Instagram<img src="images\Instagram_logo_2022.svg.webp" alt="Instagram"></a></th>
+                    <th><a class="sns" href="https://www.instagram.com/rizemi_official/">公式Instagram<img src="images/Instagram_logo_2022.svg.webp" alt="Instagram"></a></th>
                 </tr>
             </table>
             <div class="copyright" style="text-align: center; margin-top: 1rem; padding-bottom: 1rem;">
