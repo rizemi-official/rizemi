@@ -1195,6 +1195,7 @@ body.r6-sp {
     /* 💡PC版のみサブタイトルを表示する設定 */
     .page-header .logo-top, .page-header-sp .logo-top {
         display: block !important;
+        font-size: 0.9rem !important; /* 💡ここを追加！PC用の読みやすいサイズに */
         margin-bottom: 4px !important;
     }
 }
