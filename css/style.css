@@ -212,6 +212,7 @@ body.r6-sp {
     gap: 0.8rem;
     color: #cecece;
     position: relative;
+    transition: 0.3s;
 }
 .top-sp a:not(:last-child)::after {
     content: "";
@@ -223,8 +224,9 @@ body.r6-sp {
     background: #fff;
     opacity: 0.4;
 }
+/* 💡優しい緑色にホバー色を変更 */
 .top-sp a:hover {
-    color: #C0A313;
+    color: #91B825;
 }
 
 /* INFORMATION */
@@ -1394,4 +1396,50 @@ body.r6-sp .submit-btn:hover {
         grid-template-columns: 1fr 1fr; /* PC版のみ横2列 */
         gap: 20px;
     }
+}
+
+/* =========================================================
+   💡 特設ページトップの画像レイアウト（左：A版ポスター、右：施設画像）
+========================================================= */
+.hero-layout {
+    display: grid;
+    grid-template-columns: 5.5fr 4.5fr; /* 左(ポスター)と右(施設)の幅の比率 */
+    gap: 12px;
+    max-width: 900px;
+    width: 95%;
+    margin: 1rem auto 2rem;
+}
+.hero-poster img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.hero-facility {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.hero-facility img {
+    width: 100%;
+    height: 100%; /* 左のポスターの高さに合わせて自動で伸び縮みします */
+    object-fit: cover; /* 画像の比率を崩さずに綺麗に切り抜く */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    min-height: 0; /* Flexboxの仕様によるはみ出しを防止 */
+}
+
+/* 極端に狭いスマホ画面では縦に並べる保険 */
+@media (max-width: 500px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   💡 INFO・ゼミ班・EVENTリンクのホバー色（優しい緑）
+========================================================= */
+body.r6-sp .top-sp a:hover {
+    color: #91b825 !important;
 }
