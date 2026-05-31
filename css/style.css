@@ -121,8 +121,8 @@ img {
 
 /* 本体ダークモード */
 body.r6-sp {
-    background-color: #121214; /* 💡深い黒寄りのグレー */
-    color: #e4e4e7;            /* 💡文字をスッキリした白へ */
+    background-color: #121214; 
+    color: #e4e4e7;            
 }
 
 /* 特設ヘッダー */
@@ -130,7 +130,6 @@ body.r6-sp {
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #c9c2bc;
-    /* 💡ヘッダー固定化 */
     position: fixed !important;
     top: 0;
     left: 0;
@@ -190,7 +189,7 @@ body.r6-sp {
 .first-logo {
     max-width: 900px;
     margin: 1rem auto 0;
-    width: 95%; /* 蛇足の削除済 */
+    width: 95%; 
 }
 
 /* サイト内リンク */
@@ -224,50 +223,49 @@ body.r6-sp {
     background: #fff;
     opacity: 0.4;
 }
-/* 💡優しい緑色にホバー色を変更 */
 .top-sp a:hover {
     color: #91B825;
 }
 
-/* 💡 タブ用の小さい吹き出し（分野希望調査中）を追加 */
+/* 💡 タブ用の吹き出し（分野希望調査中）位置・サイズ変更 */
 .tab-balloon {
     position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: -45px;         /* 💡 上に少し移動（大きくした分） */
+    right: -25px;       /* 💡 右にずらす */
     background: #ccff00;
     color: #000;
-    font-size: 0.7rem;
+    font-size: 0.95rem; /* 💡 文字を大きく */
     font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 6px;
+    padding: 6px 14px;  /* 💡 吹き出しの余白を大きく */
+    border-radius: 8px;
     white-space: nowrap;
-    line-height: 1.2;
-    animation: float 2s ease-in-out infinite;
+    line-height: 1.3;
+    animation: float-tab 2s ease-in-out infinite;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 .tab-balloon::after {
     content: "";
     position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 5px 5px 0;
+    bottom: -6px;
+    left: 15px;         /* 💡 しっぽを左寄りに配置 */
+    border-width: 6px 6px 0;
     border-style: solid;
     border-color: #ccff00 transparent transparent transparent;
 }
-@keyframes float {
-    0% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-5px); }
-    100% { transform: translateX(-50%) translateY(0); }
+/* 新しいアニメーション（X軸の移動をなくして純粋に上下のみに） */
+@keyframes float-tab {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
 }
 
-/* 💡 ページ内リンクで飛んだ時にヘッダーに隠れないようにする設定を追加 */
+/* ページ内リンクで飛んだ時にヘッダーに隠れないようにする設定 */
 #detail-sp,
 #zemi-sp,
 #event-sp {
-    scroll-margin-top: 120px; /* ヘッダーの高さ分ずらす */
+    scroll-margin-top: 120px; 
 }
+
 
 /* INFORMATION */
 .detail-sp {
@@ -507,20 +505,18 @@ body.r6-sp {
     font-size: 1rem;
 }
 
-/* 特設フッター 💡白ベースに修正 */
+/* 特設フッター */
 .page-footer-sp {
     background-color: #ffffff;
     color: #333333;
     margin-top: 2rem;
 }
-/* 特設フッター内のリンク色修正（白背景で読めるように） */
 .page-footer-sp .info a {
     color: #333333;
 }
 .page-footer-sp .info a:hover {
     color: #ccff00;
 }
-/* コピーライト部分も白フッターに合わせて明るく */
 .page-footer-sp .copyright {
     background-color: #f5f5f5;
     color: #333333;
@@ -540,7 +536,6 @@ body.r6-sp {
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid #c9c2bc;
-    /* 💡ヘッダー固定化 */
     position: fixed !important;
     top: 0;
     left: 0;
@@ -571,10 +566,9 @@ body.r6-sp {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    line-height: 1.0; /* 全体の無駄な行間を一度ゼロにします */
+    line-height: 1.0; 
 }
 
-/* 💡サブタイトル（デフォルト＝スマホ版では非表示） */
 .logo-top {
     display: none; 
     font-size: 0.6rem;
@@ -582,7 +576,7 @@ body.r6-sp {
     margin-bottom: 2px;
 }
 .logo-btm {
-    font-size: 1.5rem; /* 💡スマホ版でMENUと同サイズの1.5remに変更 */
+    font-size: 1.5rem; 
     line-height: 1.0;
 }
 
