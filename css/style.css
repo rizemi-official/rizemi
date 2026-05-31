@@ -484,7 +484,7 @@ body.r6-sp {
 
 /* 特設フッター 💡白に近い灰色に修正 */
 .page-footer-sp {
-    background-color: #f4f4f4; /* 白寄りの優しい灰色 */
+    background-color: #e6e6e6; /* 白寄りの優しい灰色 */
     color: #333333;
     margin-top: 2rem;
 }
@@ -496,7 +496,7 @@ body.r6-sp {
 }
 /* コピーライト部分 */
 .page-footer-sp .copyright {
-    background-color: #e6e6e6; /* 少しだけ濃い灰色にして区切りをつける */
+    background-color: #cccccc; /* 少しだけ濃い灰色にして区切りをつける */
     color: #333333;
     text-align: center;
     padding: 2rem 0;
