@@ -101,7 +101,8 @@ img {
 .banner-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  /* 💡 0.55から0.75に変更し、背景の黒いフィルターを濃くしました */
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -359,6 +360,29 @@ body.r6-sp {
   width: 70%;
   height: 2px;
   background: #cecece;
+}
+
+/* 希望分野募集中の吹き出し（削除済・念のため残し） */
+.recruit-balloon {
+    position: absolute;
+    top: -30px; 
+    right: 10%; 
+    background: #ccff00; 
+    color: #000;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    animation: float 2s ease-in-out infinite; 
+}
+.recruit-balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 20px;
+    border-width: 6px 6px 0;
+    border-style: solid;
+    border-color: #ccff00 transparent transparent transparent;
 }
 
 /* ゼミ班-アコーディオン */
