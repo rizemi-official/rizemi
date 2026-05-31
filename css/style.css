@@ -229,6 +229,46 @@ body.r6-sp {
     color: #91B825;
 }
 
+/* 💡 タブ用の小さい吹き出し（分野希望調査中）を追加 */
+.tab-balloon {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ccff00;
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    line-height: 1.2;
+    animation: float 2s ease-in-out infinite;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.tab-balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px 5px 0;
+    border-style: solid;
+    border-color: #ccff00 transparent transparent transparent;
+}
+@keyframes float {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* 💡 ページ内リンクで飛んだ時にヘッダーに隠れないようにする設定を追加 */
+#detail-sp,
+#zemi-sp,
+#event-sp {
+    scroll-margin-top: 120px; /* ヘッダーの高さ分ずらす */
+}
+
 /* INFORMATION */
 .detail-sp {
   width: 90%;
@@ -323,7 +363,7 @@ body.r6-sp {
   background: #cecece;
 }
 
-/* 💡希望分野募集中の吹き出し */
+/* 希望分野募集中の吹き出し（削除済・念のため残し） */
 .recruit-balloon {
     position: absolute;
     top: -30px; 
@@ -344,11 +384,6 @@ body.r6-sp {
     border-width: 6px 6px 0;
     border-style: solid;
     border-color: #ccff00 transparent transparent transparent;
-}
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
 }
 
 /* ゼミ班-アコーディオン */
