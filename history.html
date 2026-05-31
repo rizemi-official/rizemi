@@ -9,14 +9,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!--OGPの設定-->
-        <meta property="og:url" content="https://example.com/history.html">
+        <meta property="og:url" content="https://rizemi-official.github.io/history.html">
         <meta property="og:type" content="website">
         <meta property="og:title" content="りゼミの歴史">
         <meta property="og:description" content="りゼミでこれまでどこに行きどのようなゼミが開かれたのか等の記録です">
-        <meta property="og:iamge" content="https://example.com/images/りゼミアイコン.png">
+        <meta property="og:image" content="https://rizemi-official.github.io/images/りゼミアイコン.png">
+        
+        <!-- 💡 追加：Googleにサイト名を正確に伝えるコード -->
+        <meta property="og:site_name" content="りゼミ">
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "りゼミ",
+          "url": "https://rizemi-official.github.io/"
+        }
+        </script>
         
     <!-- ファビコン -->
-        <link rel="icon" type="image/png" href="images\りゼミアイコン.png">
+        <link rel="icon" type="image/png" href="images/りゼミアイコン.png">
 
     <!--リセットCSS-->
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
@@ -27,7 +38,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap" rel="stylesheet">
 
     <!-- オリジナルCSS -->
-        <link rel="stylesheet" href="./css/style.css?v=12">
+        <link rel="stylesheet" href="./css/style.css?v=27">
     </head>
 
     <body>
@@ -39,7 +50,7 @@
 
         <header class="page-header wrapper">
             <h1 class="align-center head">
-                <a href="index.html"><img class="logo" src="images\りゼミアイコン.png" alt="りゼミ　ホーム">
+                <a href="index.html"><img class="logo" src="images/りゼミアイコン.png" alt="りゼミ ホーム">
                     <div class="logo-text">
                         <span class="logo-top">高専生・大学生・大学院生のための<span class="about-text">自主ゼミ合宿</span></span>
                         <span class="logo-btm">りゼミ</span>
@@ -49,19 +60,19 @@
                     <div class="menu_line"></div>
                     <div class="menu_line"></div>
                     <div class="menu_line"></div>
-                 </div>    
+                 </div>   
             </h1>
             <nav>
                 <ul class="main-nav kaisei-opti-regular">
-                    <div class="main-top main-menu">MENU</div>
+                    <!-- 💡 ここにあった MENU の文字を削除しました -->
                     <li><a href="index.html">ホーム</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="detail.html">りゼミとは</a></li>
                     <li><a href="history.html">りゼミの歴史</a></li>
 
                     <div class="main-sns">
-                        <a class="main-sns-link" href="https://x.com/rizemi_official"  ><img src="images\無題6_20251107002208.png" alt="公式X"></a>
-                        <a class="main-sns-link" href="https://www.instagram.com/rizemi_official/" ><img src="images\Instagram_logo_2022.svg.webp" alt="公式Instagram"></a>
+                        <a class="main-sns-link" href="https://x.com/rizemi_official"  ><img src="images/無題6_20251107002208.png" alt="公式X"></a>
+                        <a class="main-sns-link" href="https://www.instagram.com/rizemi_official/" ><img src="images/Instagram_logo_2022.svg.webp" alt="公式Instagram"></a>
                     </div>
                 </ul>
             </nav>
@@ -96,10 +107,10 @@
             <h3 class="foot-title">INFORMATION</h3>
             <table class="info">
                 <tr>
-                    <th><a class="sns" href="https://x.com/rizemi_official">公式X<img src="images\無題6_20251107002208.png" alt="X"></a></th>
+                    <th><a class="sns" href="https://x.com/rizemi_official">公式X<img src="images/無題6_20251107002208.png" alt="X"></a></th>
                 </tr>
                 <tr>
-                    <th><a class="sns" href="https://www.instagram.com/rizemi_official/">公式Instagram<img src="images\Instagram_logo_2022.svg.webp" alt="Instagram"></a></th>
+                    <th><a class="sns" href="https://www.instagram.com/rizemi_official/">公式Instagram<img src="images/Instagram_logo_2022.svg.webp" alt="Instagram"></a></th>
                 </tr>
             </table>
             <div class="copyright" style="text-align: center; margin-top: 1rem; padding-bottom: 1rem;">
