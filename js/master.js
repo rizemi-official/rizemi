@@ -92,12 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 let borderColor = '#555'; 
                 let badgeHtml = '';
 
-                if (first >= 5) {
+                // 💡変更：4人以上で「候補！」に変更
+                if (first >= 4) {
                     borderColor = '#ff6b6b'; 
-                    badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">成立！</span>';
+                    badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">候補！</span>';
                 } else if (first >= 3) {
                     borderColor = '#91b825'; 
-                    badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もうすぐ！</span>';
+                    badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もう少し！</span>';
                 }
 
                 // 💡PC横2列対応のため margin-bottom を消し、height: 100% と box-sizing を追加
