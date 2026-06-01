@@ -101,7 +101,8 @@ img {
 .banner-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  /* 💡 0.55から0.75に変更し、背景の黒いフィルターを濃くしました */
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,8 +122,8 @@ img {
 
 /* 本体ダークモード */
 body.r6-sp {
-    background-color: #121214; /* 💡深い黒寄りのグレー */
-    color: #e4e4e7;            /* 💡文字をスッキリした白へ */
+    background-color: #121214; 
+    color: #e4e4e7;            
 }
 
 /* 特設ヘッダー */
@@ -130,7 +131,6 @@ body.r6-sp {
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #c9c2bc;
-    /* 💡ヘッダー固定化 */
     position: fixed !important;
     top: 0;
     left: 0;
@@ -190,7 +190,7 @@ body.r6-sp {
 .first-logo {
     max-width: 900px;
     margin: 1rem auto 0;
-    width: 95%; /* 蛇足の削除済 */
+    width: 95%; 
 }
 
 /* サイト内リンク */
@@ -212,6 +212,7 @@ body.r6-sp {
     gap: 0.8rem;
     color: #cecece;
     position: relative;
+    transition: 0.3s;
 }
 .top-sp a:not(:last-child)::after {
     content: "";
@@ -224,8 +225,48 @@ body.r6-sp {
     opacity: 0.4;
 }
 .top-sp a:hover {
-    color: #C0A313;
+    color: #91B825;
 }
+
+/* 💡 タブ用の吹き出し（分野希望調査中）位置・サイズ変更 */
+.tab-balloon {
+    position: absolute;
+    top: -45px;         
+    right: -25px;       
+    background: #ccff00;
+    color: #000;
+    font-size: 0.95rem; 
+    font-weight: bold;
+    padding: 6px 14px;  
+    border-radius: 8px;
+    white-space: nowrap;
+    line-height: 1.3;
+    animation: float-tab 2s ease-in-out infinite;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.tab-balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 15px;         
+    border-width: 6px 6px 0;
+    border-style: solid;
+    border-color: #ccff00 transparent transparent transparent;
+}
+/* 新しいアニメーション（X軸の移動をなくして純粋に上下のみに） */
+@keyframes float-tab {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+/* ページ内リンクで飛んだ時にヘッダーに隠れないようにする設定 */
+#detail-sp,
+#zemi-sp,
+#event-sp {
+    scroll-margin-top: 120px; 
+}
+
 
 /* INFORMATION */
 .detail-sp {
@@ -321,7 +362,7 @@ body.r6-sp {
   background: #cecece;
 }
 
-/* 💡希望分野募集中の吹き出し */
+/* 希望分野募集中の吹き出し（削除済・念のため残し） */
 .recruit-balloon {
     position: absolute;
     top: -30px; 
@@ -342,11 +383,6 @@ body.r6-sp {
     border-width: 6px 6px 0;
     border-style: solid;
     border-color: #ccff00 transparent transparent transparent;
-}
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
 }
 
 /* ゼミ班-アコーディオン */
@@ -470,22 +506,21 @@ body.r6-sp {
     font-size: 1rem;
 }
 
-/* 特設フッター 💡白ベースに修正 */
+/* 特設フッター 💡白に近い灰色に修正 */
 .page-footer-sp {
-    background-color: #ffffff;
+    background-color: #e6e6e6; /* 白寄りの優しい灰色 */
     color: #333333;
     margin-top: 2rem;
 }
-/* 特設フッター内のリンク色修正（白背景で読めるように） */
 .page-footer-sp .info a {
     color: #333333;
 }
 .page-footer-sp .info a:hover {
-    color: #ccff00;
+    color: #91b825; /* 💡リンクホバー時も優しい緑に統一 */
 }
-/* コピーライト部分も白フッターに合わせて明るく */
+/* コピーライト部分 */
 .page-footer-sp .copyright {
-    background-color: #f5f5f5;
+    background-color: #cccccc; /* 少しだけ濃い灰色にして区切りをつける */
     color: #333333;
     text-align: center;
     padding: 2rem 0;
@@ -503,7 +538,6 @@ body.r6-sp {
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid #c9c2bc;
-    /* 💡ヘッダー固定化 */
     position: fixed !important;
     top: 0;
     left: 0;
@@ -534,10 +568,9 @@ body.r6-sp {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    line-height: 1.0; /* 全体の無駄な行間を一度ゼロにします */
+    line-height: 1.0; 
 }
 
-/* 💡サブタイトル（デフォルト＝スマホ版では非表示） */
 .logo-top {
     display: none; 
     font-size: 0.6rem;
@@ -545,7 +578,7 @@ body.r6-sp {
     margin-bottom: 2px;
 }
 .logo-btm {
-    font-size: 1.5rem; /* 💡スマホ版でMENUと同サイズの1.5remに変更 */
+    font-size: 1.5rem; 
     line-height: 1.0;
 }
 
@@ -1394,4 +1427,33 @@ body.r6-sp .submit-btn:hover {
         grid-template-columns: 1fr 1fr; /* PC版のみ横2列 */
         gap: 20px;
     }
+}
+
+/* =========================================================
+   💡 特設ページトップの画像レイアウト（ポスター1枚を中央70%）
+========================================================= */
+.hero-poster-single {
+    text-align: center;
+    margin: 2rem auto 0; /* 下の余白をゼロにして、すぐタブが来るように設定 */
+}
+.hero-poster-single img {
+    width: 70%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* スマホ画面では70%だと小さすぎるため、90%に広げます */
+@media (max-width: 768px) {
+    .hero-poster-single img {
+        width: 90%;
+    }
+}
+
+/* =========================================================
+   💡 INFO・ゼミ班・EVENTリンクのホバー色（優しい緑）
+========================================================= */
+body.r6-sp .top-sp a:hover {
+    color: #91b825 !important;
 }

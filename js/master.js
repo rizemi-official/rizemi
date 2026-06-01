@@ -38,9 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(csvText => {
             const allRows = parseCSV(csvText);
             
+            // 💡ここで「第1希望順 → 第2希望順」の辞書式ソートを行います
             const dataRows = allRows.slice(1)
                 .filter(row => row[0]) 
-                .sort((a, b) => Number(b[1]) - Number(a[1]));
+                .sort((a, b) => {
+                    const firstA = Number(a[1]) || 0;
+                    const firstB = Number(b[1]) || 0;
+                    const secondA = Number(a[2]) || 0;
+                    const secondB = Number(b[2]) || 0;
+                    
+                    if (firstB !== firstA) {
+                        return firstB - firstA; // 第1希望で比較
+                    }
+                    return secondB - secondA;   // 同数なら第2希望で比較
+                });
 
             let top3Html = '';
             let otherHtml = '';
@@ -81,12 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 let borderColor = '#555'; 
                 let badgeHtml = '';
 
-                if (first >= 5) {
+                // 💡変更：4人以上で「候補！」に変更
+                if (first >= 4) {
                     borderColor = '#ff6b6b'; 
-                    badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">成立！</span>';
+                    badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">候補！</span>';
                 } else if (first >= 3) {
                     borderColor = '#91b825'; 
-                    badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もうすぐ！</span>';
+                    badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もう少し！</span>';
                 }
 
                 // 💡PC横2列対応のため margin-bottom を消し、height: 100% と box-sizing を追加
@@ -340,7 +352,6 @@ function openGoogleForm() {
     route = document.getElementById("input-route-other") ? document.getElementById("input-route-other").value : "";
   }
 
- 
   let targetUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdi0qReWcpA1bV4G844RfWvjuudknDhM6O-fB663S6uXLpoGQ/viewform?usp=pp_url&entry.669942318=DUMMY_BUNYA&entry.930125208=DUMMY_GENRE&entry.2097477009=DUMMY_GAIYOU&entry.1542851026=DUMMY_KIBOU1&entry.45651459=DUMMY_KIBOU2&entry.45918589=DUMMY_KYOMI&entry.1192163566=DUMMY_X&entry.2036668219=DUMMY_XDETAIL&entry.375378926=DUMMY_ROUTE&entry.405628407=DUMMY_FREE";
 
   targetUrl = targetUrl.replace("DUMMY_BUNYA", encodeURIComponent(bunya));
