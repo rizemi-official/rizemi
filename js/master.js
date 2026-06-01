@@ -110,7 +110,34 @@ window.renderZemiPage = function(page) {
         return;
     }
 
-    let html = '<div class="zemi-grid-container">';
+    let html = '';
+
+    // 💡 ページネーション（前へ・次へボタン）を「一覧の上」に生成
+    if (totalPages > 1) {
+        let paginationHtml = '<div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 1.5rem;">';
+        
+        // 前へボタン
+        if (page > 1) {
+            paginationHtml += `<button onclick="renderZemiPage(${page - 1})" style="background: #555; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.95rem;">&lt; 前へ</button>`;
+        } else {
+            paginationHtml += `<button style="background: #333; color: #777; border: none; padding: 8px 16px; border-radius: 4px; cursor: not-allowed; font-weight: bold; font-size: 0.95rem;" disabled>&lt; 前へ</button>`;
+        }
+
+        // 現在のページ / 全ページ
+        paginationHtml += `<span style="color: #cecece; font-weight: bold; font-size: 1.1rem;">${page} / ${totalPages}</span>`;
+
+        // 次へボタン
+        if (page < totalPages) {
+            paginationHtml += `<button onclick="renderZemiPage(${page + 1})" style="background: #555; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.95rem;">次へ &gt;</button>`;
+        } else {
+            paginationHtml += `<button style="background: #333; color: #777; border: none; padding: 8px 16px; border-radius: 4px; cursor: not-allowed; font-weight: bold; font-size: 0.95rem;" disabled>次へ &gt;</button>`;
+        }
+
+        paginationHtml += '</div>';
+        html += paginationHtml; // カード一覧より先にHTMLに追加する
+    }
+
+    html += '<div class="zemi-grid-container">';
 
     pageData.forEach(row => {
         const fieldName = row[0];
@@ -152,31 +179,6 @@ window.renderZemiPage = function(page) {
     });
 
     html += '</div>'; // グリッドの終了
-
-    // 💡 ページネーション（前へ・次へボタン）の生成
-    if (totalPages > 1) {
-        let paginationHtml = '<div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 2rem;">';
-        
-        // 前へボタン
-        if (page > 1) {
-            paginationHtml += `<button onclick="renderZemiPage(${page - 1})" style="background: #555; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.95rem;">&lt; 前へ</button>`;
-        } else {
-            paginationHtml += `<button style="background: #333; color: #777; border: none; padding: 8px 16px; border-radius: 4px; cursor: not-allowed; font-weight: bold; font-size: 0.95rem;" disabled>&lt; 前へ</button>`;
-        }
-
-        // 現在のページ / 全ページ
-        paginationHtml += `<span style="color: #cecece; font-weight: bold; font-size: 1.1rem;">${page} / ${totalPages}</span>`;
-
-        // 次へボタン
-        if (page < totalPages) {
-            paginationHtml += `<button onclick="renderZemiPage(${page + 1})" style="background: #555; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.95rem;">次へ &gt;</button>`;
-        } else {
-            paginationHtml += `<button style="background: #333; color: #777; border: none; padding: 8px 16px; border-radius: 4px; cursor: not-allowed; font-weight: bold; font-size: 0.95rem;" disabled>次へ &gt;</button>`;
-        }
-
-        paginationHtml += '</div>';
-        html += paginationHtml;
-    }
 
     container.innerHTML = html;
 };
