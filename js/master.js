@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (areaPhysics) areaPhysics.innerHTML = '';
     if (areaMath) areaMath.innerHTML = '';
-    if (areaChemBio) areaChemBio.innerHTML = ''; // 💡ここも統合
+    if (areaChemBio) areaChemBio.innerHTML = ''; 
     if (areaOther) areaOther.innerHTML = '';
 
     fetch(sheetUrl)
@@ -53,21 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     return secondB - secondA;   // 同数なら第2希望で比較
                 });
 
-            let top3Html = '';
-            let otherHtml = '';
-
-            dataRows.forEach((row, index) => {
+            // 💡 質問2のフォーム用のボタン生成（全件一括で実行）
+            dataRows.forEach(row => {
                 const fieldName = row[0];
-                const first = row[1] || 0;
-                const second = row[2] || 0;
-                
-                let description = (row[3] || '').trim();
-                if (description === '' || description === '#N/A') {
-                    description = '概要はまだありません。';
-                }
-
                 const tagsField = row[4] || '';
-
                 const btnHtml = `<button type="button" class="field-btn" onclick="selectField('${fieldName}')">${fieldName}</button> `;
                 
                 let hasMainTag = false; 
@@ -80,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     areaMath.insertAdjacentHTML('beforeend', btnHtml);
                     hasMainTag = true;
                 }
-                // 💡化学または生物が含まれていれば、統合エリアに入れる
                 if ((tagsField.includes('化学') || tagsField.includes('生物')) && areaChemBio) {
                     areaChemBio.insertAdjacentHTML('beforeend', btnHtml);
                     hasMainTag = true;
@@ -88,76 +76,118 @@ document.addEventListener('DOMContentLoaded', () => {
                 if ((tagsField.includes('その他') || !hasMainTag) && areaOther) {
                     areaOther.insertAdjacentHTML('beforeend', btnHtml);
                 }
-
-                let borderColor = '#555'; 
-                let badgeHtml = '';
-
-                // 💡変更：4人以上で「候補！」に変更
-                if (first >= 4) {
-                    borderColor = '#ff6b6b'; 
-                    badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">候補！</span>';
-                } else if (first >= 3) {
-                    borderColor = '#91b825'; 
-                    badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もう少し！</span>';
-                }
-
-                // 💡PC横2列対応のため margin-bottom を消し、height: 100% と box-sizing を追加
-                const cardHtml = `
-                <div class="zemi-card-sp" style="background: rgba(255,255,255,0.05); border: 2px solid ${borderColor}; border-radius: 8px; padding: 1rem; height: 100%; box-sizing: border-box;">
-                    <h3 style="margin: 0 0 0.8rem 0; font-size: 1.1rem; color: #fff;">
-                        ${fieldName} ${badgeHtml}
-                    </h3>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem;">
-                        <span style="background: #e6b422; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第1希望: ${first}人</span>
-                        <span style="background: #999; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第2希望: ${second}人</span>
-                    </div>
-                    <details style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
-                        <summary style="cursor: pointer; font-weight: bold; color: #cecece; font-size: 0.9rem; outline: none;">概要を見る</summary>
-                        <p style="margin-top: 0.5rem; margin-bottom: 0; color: #bbb; font-size: 0.85rem; line-height: 1.5;">
-                            ${description.replace(/\n/g, '<br>')}
-                        </p>
-                    </details>
-                </div>`;
-
-                // 💡PC表示で最初は横並び1行分（2件）にする設定
-                if (index < 2) {
-                    top3Html += cardHtml;
-                } else {
-                    otherHtml += cardHtml;
-                }
             });
 
-            // 💡カード全体をCSSのグリッド用の箱（zemi-grid-container）で囲む
-            let finalHtml = `<div class="zemi-grid-container">${top3Html}</div>`;
-            if (otherHtml !== '') {
-                finalHtml += `
-                    <div id="other-zemi-fields" class="zemi-grid-container" style="display: none; margin-top: 20px;">${otherHtml}</div>
-                    <div style="text-align: center; margin-top: 1.5rem;">
-                        <button id="toggle-zemi-btn" class="btn" style="font-size: 0.9rem; padding: 0.5rem 1rem; background: #555;">
-                            もっと見る
-                        </button>
-                    </div>
-                `;
-            }
+            // 💡 ページネーション（ページ切り替え）用にデータを保存して1ページ目を描画
+            window.zemiDataRows = dataRows;
+            renderZemiPage(1);
 
-            container.innerHTML = finalHtml || '<p style="text-align: center; color: #cecece;">現在、希望分野はまだありません。</p>';
-
-            const toggleBtn = document.getElementById('toggle-zemi-btn');
-            const otherFields = document.getElementById('other-zemi-fields');
-            if (toggleBtn && otherFields) {
-                toggleBtn.addEventListener('click', () => {
-                    const isHidden = otherFields.style.display === 'none';
-                    // 💡もっと見るを押したときの表示も「block」ではなく「grid」にする
-                    otherFields.style.display = isHidden ? 'grid' : 'none';
-                    toggleBtn.textContent = isHidden ? '閉じる' : 'もっと見る';
-                });
-            }
         })
         .catch(error => {
             console.error('Error:', error);
             container.innerHTML = '<p style="text-align: center; color: #cecece;">データの読み込みに失敗しました。</p>';
         });
 });
+
+// 💡 指定したページ番号のゼミ一覧を描画する関数
+window.renderZemiPage = function(page) {
+    const container = document.getElementById('zemi-results-container');
+    if (!container || !window.zemiDataRows) return;
+
+    const itemsPerPage = 10; // 💡 1ページあたりの表示数（10個）
+    const totalPages = Math.ceil(window.zemiDataRows.length / itemsPerPage) || 1;
+
+    // ページ番号が範囲外にならないように補正
+    if (page < 1) page = 1;
+    if (page > totalPages) page = totalPages;
+
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const pageData = window.zemiDataRows.slice(startIndex, endIndex);
+
+    if (window.zemiDataRows.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: #cecece;">現在、希望分野はまだありません。</p>';
+        return;
+    }
+
+    let html = '';
+    let paginationHtml = ''; // 上下で使い回すために変数を外に出します
+
+    // 💡 ページネーション（前へ・次へボタン）の生成
+    if (totalPages > 1) {
+        paginationHtml += '<div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 1.5rem;">';
+        
+        // 前へボタン
+        if (page > 1) {
+            paginationHtml += `<button onclick="renderZemiPage(${page - 1})" style="background: #555; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.95rem;">&lt; 前へ</button>`;
+        } else {
+            paginationHtml += `<button style="background: #333; color: #777; border: none; padding: 8px 16px; border-radius: 4px; cursor: not-allowed; font-weight: bold; font-size: 0.95rem;" disabled>&lt; 前へ</button>`;
+        }
+
+        // 現在のページ / 全ページ
+        paginationHtml += `<span style="color: #cecece; font-weight: bold; font-size: 1.1rem;">${page} / ${totalPages}</span>`;
+
+        // 次へボタン
+        if (page < totalPages) {
+            paginationHtml += `<button onclick="renderZemiPage(${page + 1})" style="background: #555; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.95rem;">次へ &gt;</button>`;
+        } else {
+            paginationHtml += `<button style="background: #333; color: #777; border: none; padding: 8px 16px; border-radius: 4px; cursor: not-allowed; font-weight: bold; font-size: 0.95rem;" disabled>次へ &gt;</button>`;
+        }
+
+        paginationHtml += '</div>';
+        html += paginationHtml; // 💡カード一覧の「上」にHTMLを追加する
+    }
+
+    html += '<div class="zemi-grid-container">';
+
+    pageData.forEach(row => {
+        const fieldName = row[0];
+        const first = Number(row[1]) || 0;
+        const second = Number(row[2]) || 0;
+        
+        let description = (row[3] || '').trim();
+        if (description === '' || description === '#N/A') {
+            description = '概要はまだありません。';
+        }
+
+        let borderColor = '#555'; 
+        let badgeHtml = '';
+
+        if (first >= 4) {
+            borderColor = '#ff6b6b'; 
+            badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">班成立！</span>';
+        } else if (first >= 3) {
+            borderColor = '#91b825'; 
+            badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もう少し！</span>';
+        }
+
+        html += `
+        <div class="zemi-card-sp" style="background: rgba(255,255,255,0.05); border: 2px solid ${borderColor}; border-radius: 8px; padding: 1rem; height: 100%; box-sizing: border-box;">
+            <h3 style="margin: 0 0 0.8rem 0; font-size: 1.1rem; color: #fff;">
+                ${fieldName} ${badgeHtml}
+            </h3>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem;">
+                <span style="background: #e6b422; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第1希望: ${first}人</span>
+                <span style="background: #999; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">第2希望: ${second}人</span>
+            </div>
+            <details style="background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 4px;">
+                <summary style="cursor: pointer; font-weight: bold; color: #cecece; font-size: 0.9rem; outline: none;">概要を見る</summary>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #bbb; font-size: 0.85rem; line-height: 1.5;">
+                    ${description.replace(/\n/g, '<br>')}
+                </p>
+            </details>
+        </div>`;
+    });
+
+    html += '</div>'; // グリッドの終了
+
+    // 💡カード一覧の「下」にも同じボタンを追加する（余白設定だけ調整）
+    if (totalPages > 1) {
+        html += paginationHtml.replace('margin-bottom: 1.5rem;', 'margin-top: 1.5rem; margin-bottom: 0;');
+    }
+
+    container.innerHTML = html;
+};
 
 // CSVパース関数
 function parseCSV(str) {
