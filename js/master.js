@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const areaPhysics = document.getElementById('area-physics');
     const areaMath = document.getElementById('area-math');
-    const areaChemBio = document.getElementById('area-chem-bio'); // 💡化学と生物を統合
+    const areaChemBio = document.getElementById('area-chem-bio'); 
     const areaOther = document.getElementById('area-other');
 
     if (areaPhysics) areaPhysics.innerHTML = '';
@@ -155,7 +155,7 @@ window.renderZemiPage = function(page) {
 
         if (first >= 4) {
             borderColor = '#ff6b6b'; 
-            badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">班成立！</span>';
+            badgeHtml = '<span style="background: #ff6b6b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">候補！</span>';
         } else if (first >= 3) {
             borderColor = '#91b825'; 
             badgeHtml = '<span style="background: #91b825; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem;">もう少し！</span>';
@@ -245,10 +245,24 @@ setupAccordion('.accordion-header-sp', '.accordion-item-sp', '.accordion-content
 let kibou1 = "";
 let kibou2 = "";
 
+// 💡 追加：自動連動用のフラグ変数
+let isKibou1Proposal = false;
+let isKibou2Proposal = false;
+
 document.addEventListener("DOMContentLoaded", () => {
   const inputBunya = document.getElementById("input-bunya");
   if (inputBunya) {
     inputBunya.addEventListener("input", updateProposalButton);
+  }
+
+  // 💡 HTML側の onclick ではなく、JS側で「自分が提案したフラグ」付きのクリック処理を設定する
+  const btnMyProposal = document.getElementById("btn-my-proposal");
+  if (btnMyProposal) {
+    btnMyProposal.removeAttribute("onclick");
+    btnMyProposal.addEventListener("click", () => {
+      const val = document.getElementById("input-bunya").value.trim();
+      selectField(val, true); // true = 自分が提案した分野であることを示す
+    });
   }
 
   // 必須項目のリアルタイム監視設定
@@ -298,14 +312,13 @@ function checkRequiredFields() {
   }
 }
 
-// 💡 提案分野が入力されたら、ジャンル選択・概要入力欄を表示する処理
+// 💡 提案分野が入力されたら、ジャンル選択・概要入力欄を表示し、かつ連動させる処理
 function updateProposalButton() {
   const val = document.getElementById("input-bunya").value.trim();
   const btn = document.getElementById("btn-my-proposal");
-  const hiddenArea = document.getElementById("hidden-proposal-area"); // HTMLで追加した隠しエリアのID
+  const hiddenArea = document.getElementById("hidden-proposal-area"); 
 
   if (val) {
-    // 文字が1文字でも入力されていれば表示＆ボタン有効化
     if (btn) {
       btn.innerText = `「${val}」を希望に設定する`;
       btn.disabled = false;
@@ -314,7 +327,6 @@ function updateProposalButton() {
       hiddenArea.style.display = "block";
     }
   } else {
-    // 文字が消されて空っぽになったら隠す＆ボタン無効化
     if (btn) {
       btn.innerText = "（質問1を入力してください）";
       btn.disabled = true;
@@ -323,16 +335,33 @@ function updateProposalButton() {
       hiddenArea.style.display = "none";
     }
   }
+
+  // 💡 追加：「自分が提案した分野」が希望として選ばれている場合、入力を自動反映させる
+  let changed = false;
+  if (isKibou1Proposal) {
+    kibou1 = val;
+    changed = true;
+  }
+  if (isKibou2Proposal) {
+    kibou2 = val;
+    changed = true;
+  }
+  if (changed) {
+    updateDisplay();
+  }
 }
 
-function selectField(fieldName) {
+// 💡 追加：第2引数(isProposal)で、提案ボタンから選ばれたか判定できるように修正
+function selectField(fieldName, isProposal = false) {
   if (!fieldName || fieldName.trim() === "") return;
   fieldName = fieldName.trim();
 
   if (!kibou1) {
     kibou1 = fieldName;
+    isKibou1Proposal = isProposal; // 第1希望が提案ボタン経由か記録
   } else if (!kibou2 && kibou1 !== fieldName) {
     kibou2 = fieldName;
+    isKibou2Proposal = isProposal; // 第2希望が提案ボタン経由か記録
   } else if (kibou1 === fieldName || kibou2 === fieldName) {
     alert("その分野はすでに選択されています。");
   } else {
@@ -342,8 +371,14 @@ function selectField(fieldName) {
 }
 
 function clearField(num) {
-  if (num === 1) kibou1 = "";
-  if (num === 2) kibou2 = "";
+  if (num === 1) {
+    kibou1 = "";
+    isKibou1Proposal = false; // 💡 選び直した場合は連動を解除
+  }
+  if (num === 2) {
+    kibou2 = "";
+    isKibou2Proposal = false; // 💡 選び直した場合は連動を解除
+  }
   updateDisplay();
 }
 
