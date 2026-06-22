@@ -22,7 +22,7 @@ img {
 }
 @font-face {
     font-family: "AinoteFont";
-    src: url("./fonts/AinoteFont.otf") format('otf');
+    src: url("../fonts/AinoteFont.otf") format('otf');
     font-weight: normal;
     font-style: normal;
 }
@@ -61,7 +61,7 @@ img {
 }
 
 /* =========================================
-   特設ページ（共通・スマホベース）
+   特設ページへの誘導（index.htmlで使用）
 ========================================= */
 .floating-banner {
   position: fixed;
@@ -101,7 +101,6 @@ img {
 .banner-overlay {
   position: absolute;
   inset: 0;
-  /* 💡 0.55から0.75に変更し、背景の黒いフィルターを濃くしました */
   background: rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
@@ -119,6 +118,10 @@ img {
   font-weight: bold;
   margin-top: 10px;
 }
+
+/* =========================================
+   特設ページ（共通・スマホベース）
+========================================= */
 
 /* 本体ダークモード */
 body.r6-sp {
@@ -228,42 +231,11 @@ body.r6-sp {
     color: #91B825;
 }
 
-/* 💡 タブ用の吹き出し（分野希望調査中）位置・サイズ変更 */
-.tab-balloon {
-    position: absolute;
-    top: -45px;         
-    right: -25px;       
-    background: #ccff00;
-    color: #000;
-    font-size: 0.95rem; 
-    font-weight: bold;
-    padding: 6px 14px;  
-    border-radius: 8px;
-    white-space: nowrap;
-    line-height: 1.3;
-    animation: float-tab 2s ease-in-out infinite;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-.tab-balloon::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 15px;         
-    border-width: 6px 6px 0;
-    border-style: solid;
-    border-color: #ccff00 transparent transparent transparent;
-}
-/* 新しいアニメーション（X軸の移動をなくして純粋に上下のみに） */
-@keyframes float-tab {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-    100% { transform: translateY(0); }
-}
-
 /* ページ内リンクで飛んだ時にヘッダーに隠れないようにする設定 */
 #detail-sp,
 #zemi-sp,
-#event-sp {
+#event-sp,
+#apply-sp {
     scroll-margin-top: 120px; 
 }
 
@@ -323,7 +295,7 @@ body.r6-sp {
     color: #C0A313;
 }
 
-/* ゼミ班 */
+/* ゼミ班共通 */
 .speace-sp {
   margin: 1rem auto 0;
 }
@@ -362,82 +334,44 @@ body.r6-sp {
   background: #cecece;
 }
 
-/* 希望分野募集中の吹き出し（削除済・念のため残し） */
-.recruit-balloon {
-    position: absolute;
-    top: -30px; 
-    right: 10%; 
-    background: #ccff00; 
-    color: #000;
-    font-weight: bold;
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    animation: float 2s ease-in-out infinite; 
+/* ゼミ班一覧のグリッドレイアウト（PC版横2列） */
+.zemi-grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
 }
-.recruit-balloon::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 20px;
-    border-width: 6px 6px 0;
-    border-style: solid;
-    border-color: #ccff00 transparent transparent transparent;
+@media (min-width: 1000px) {
+    .zemi-grid-container {
+        grid-template-columns: 1fr 1fr; /* PC版のみ横2列 */
+        gap: 20px;
+        align-items: start; /* 💡 隣のカードが伸びるのを防ぐ設定 */
+    }
 }
 
-/* ゼミ班-アコーディオン */
-.accordion-item-sp:not(:last-child) {
-  margin-bottom: 1rem;
+/* ゼミ班の開閉ボタン（アコーディオン）のCSS */
+.zemi-details summary {
+    cursor: pointer;
+    outline: none;
+    list-style: none; /* デフォルトの黒い三角を消す */
+    position: relative;
+    padding-right: 2rem; /* ▼マークと文字が被らないように余白を作る */
 }
-.accordion-header-sp {
-  width: 100%;
-  color: #cecece;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: left;
-  align-items: center;
+.zemi-details summary::-webkit-details-marker {
+    display: none; /* Safari用の三角消し */
 }
-.accordion-header-sp:not(:last-child) {
-  border-bottom: 1px solid #cecece;
-}
-.accordion-icon-sp {
+.toggle-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid #cecece;
-    border-bottom: 2px solid #cecece; 
-    transform: rotate(45deg);     
     transition: transform 0.3s ease;
+    font-size: 0.9rem;
+    color: #91b825;
 }
-.accordion-content-sp {
-  max-height: 0;
-  overflow: hidden;
-  padding: 0 1.2rem;
-  transition: max-height 0.4s ease;
-  will-change: max-height;      
-}
-.accordion-item-sp.active .accordion-content-sp {
-  padding: 1rem 1.2rem;
-}
-.accordion-item-sp.active .accordion-icon-sp {
-  transform: rotate(225deg); 
-}
-.zemi-detail-top {
-    font-size: 1.2rem;
-}
-.zemi-detail-text {
-    margin: 1rem;
-}
-.zemi-detail-text p {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-.zemi-detail-text div {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
+/* 開いた時に▼を▲に回転させる */
+.zemi-details[open] summary .toggle-icon {
+    transform: translateY(-50%) rotate(180deg);
 }
 
 /* EVENT */
@@ -489,7 +423,7 @@ body.r6-sp {
     transform: translateY(20%) rotate(-45deg);
 }
 
-/* 参加申し込み */
+/* 古い参加申し込みボタン（index.html等で使われている場合） */
 .join {
     position: fixed;
     left: 5px;
@@ -506,7 +440,45 @@ body.r6-sp {
     font-size: 1rem;
 }
 
-/* 特設フッター 💡白に近い灰色に修正 */
+/* 右下の追従申し込みボタン（r6_sp.htmlで使用） */
+.floating-apply-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    z-index: 1000;
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+    text-align: center;
+    line-height: 1.4;
+}
+.floating-apply-btn:hover {
+    transform: scale(1.05);
+    background-color: #ff5252;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+/* PC版（画面幅768px以上）の時に申し込みボタンを大きくする設定 */
+@media screen and (min-width: 768px) {
+    .floating-apply-btn {
+        bottom: 40px;
+        right: 40px;
+        padding: 18px 40px;
+        font-size: 1.3rem; 
+        line-height: 1.5;
+        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5); 
+    }
+}
+
+
+/* 特設フッター */
 .page-footer-sp {
     background-color: #e6e6e6; /* 白寄りの優しい灰色 */
     color: #333333;
@@ -516,7 +488,7 @@ body.r6-sp {
     color: #333333;
 }
 .page-footer-sp .info a:hover {
-    color: #91b825; /* 💡リンクホバー時も優しい緑に統一 */
+    color: #91b825; /* リンクホバー時も優しい緑に統一 */
 }
 /* コピーライト部分 */
 .page-footer-sp .copyright {
@@ -800,31 +772,31 @@ body.r6-sp {
     color: white;
 }
 .r1 {
-    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(..//images/1st/1st_1.jpg);
+    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(../images/1st/1st_1.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
 }
 .r2 {
-    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(..//images/2nd/2nd_1.png);
+    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(../images/2nd/2nd_1.png);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
 }
 .r3 {
-    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(..//images/3rd/3rd_1.jpg);
+    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(../images/3rd/3rd_1.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
 }
 .r4 {
-    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(..//images/4th/4th_1.jpg);
+    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(../images/4th/4th_1.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
 }
 .r5 {
-    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(..//images/5th/5th_4.jpg);
+    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(../images/5th/5th_4.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -867,7 +839,7 @@ body.r6-sp {
   color: #000;
 }
 
-/* アコーディオン（ゼミ班通常） */
+/* アコーディオン（通常） */
 .seminars {
   margin: 3rem auto;
   padding: 1rem;
@@ -1190,7 +1162,7 @@ body.r6-sp {
 
 
 /* =========================================================
-   💡今回の修正箇所（ヘッダー幅、ロゴサイズ、すき間など）
+   ヘッダー幅、ロゴサイズ、すき間など
 ========================================================= */
 .page-header, .page-header-sp {
     padding-top: 0.8rem !important;
@@ -1210,7 +1182,7 @@ body.r6-sp {
     font-size: 1.5rem !important; 
 }
 
-/* 💻 PC版のみ：中央寄せ、ロゴ拡大、文字拡大、💡サブタイトル再表示 */
+/* 💻 PC版のみ：中央寄せ、ロゴ拡大、文字拡大、サブタイトル再表示 */
 @media (min-width: 1000px) {
     .page-header, .page-header-sp {
         padding-left: 8vw !important;
@@ -1225,10 +1197,9 @@ body.r6-sp {
     .page-header .logo-btm, .page-header-sp .logo-btm {
         font-size: 2.1rem !important; 
     }
-    /* 💡PC版のみサブタイトルを表示する設定 */
     .page-header .logo-top, .page-header-sp .logo-top {
         display: block !important;
-        font-size: 0.9rem !important; /* 💡ここを追加！PC用の読みやすいサイズに */
+        font-size: 0.9rem !important; 
         margin-bottom: 4px !important;
     }
 }
@@ -1248,7 +1219,6 @@ body.r6-sp .page-header-sp .logo-btm {
 /* 特設ページのロゴを光らせる（縁取り） */
 body.r6-sp .page-header-sp .logo {
     border-radius: 50%;
-    /* 💡光の広がりを調整（12pxの数字で自在に変更できます） */
     box-shadow: 0 0 12px rgba(204, 255, 0, 0.7); 
     background-color: #ffffff; /* ロゴの内側が透過している場合の対策 */
 }
@@ -1258,179 +1228,13 @@ body.r6-sp .menu_line {
     background: #ccff00 !important; /* 💡ここも蛍光グリーンへ */
 }
 
-
-/* =========================================================
-   提案フォームのスマホ・PCレイアウト崩れ修正（強制力MAX）
-========================================================= */
-body.r6-sp .form-wrapper {
-    background: #ffffff !important;
-    padding: 25px 20px !important;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    max-width: 600px;
-    margin: 3rem auto;
-    box-sizing: border-box;
-}
-
-body.r6-sp .form-wrapper h3,
-body.r6-sp .form-wrapper label,
-body.r6-sp .form-wrapper p,
-body.r6-sp .form-wrapper span,
-body.r6-sp .form-wrapper summary,
-body.r6-sp .form-wrapper details {
-    color: #333333 !important;
-}
-
-body.r6-sp .form-section {
-    background: #f8f9fa !important;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    border: 1px solid #e0e0e0;
-}
-
-body.r6-sp .form-section h3 {
-    border-bottom: 2px solid #C0A313 !important;
-    padding-bottom: 8px;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-}
-
-/* スマホで入力欄が透明になるバグを防ぐ */
-body.r6-sp .form-wrapper input[type="text"], 
-body.r6-sp .form-wrapper textarea, 
-body.r6-sp .form-wrapper select {
-    width: 100% !important;
-    padding: 12px !important;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc !important;
-    border-radius: 6px;
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    font-size: 1rem;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    box-sizing: border-box;
-}
-
-body.r6-sp .form-wrapper textarea {
-    height: 120px;
-    resize: vertical;
-}
-
-body.r6-sp .form-wrapper details {
-    background: #ffffff !important;
-    border: 1px solid #ddd !important;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    padding: 12px;
-}
-body.r6-sp .form-wrapper summary {
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
-    font-size: 1.1rem;
-}
-body.r6-sp .form-wrapper summary::-webkit-details-marker {
-    display: none;
-}
-
-body.r6-sp .field-btn {
-    display: inline-block;
-    background: #e0f7fa !important;
-    border: 1px solid #00bcd4 !important;
-    color: #00796b !important;
-    padding: 8px 14px;
-    margin: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: 0.2s;
-}
-body.r6-sp .field-btn:hover:not(:disabled) {
-    background: #b2ebf2 !important;
-}
-
-body.r6-sp .my-proposal-box {
-    background: #f0f4c3 !important;
-    border: 1px solid #d4e157 !important;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-body.r6-sp .proposal-btn {
-    background: #d4e157 !important;
-    border: 1px solid #9e9d24 !important;
-    color: #33691e !important;
-    font-weight: bold;
-}
-body.r6-sp .proposal-btn:disabled {
-    background: #e0e0e0 !important;
-    border-color: #bdbdbd !important;
-    color: #9e9e9e !important;
-    cursor: not-allowed;
-}
-
-body.r6-sp .status-box {
-    background: #fff3e0 !important;
-    border: 1px solid #ffcc80 !important;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-body.r6-sp .status-box span {
-    font-weight: bold;
-    color: #e65100 !important;
-}
-body.r6-sp .clear-btn {
-    background: #e0e0e0 !important;
-    border: none;
-    padding: 4px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
-    font-size: 0.85rem;
-    color: #333333 !important;
-}
-
-/* 💡 送信ボタン：蛍光グリーンベースに修正 */
-body.r6-sp .submit-btn {
-    background: #ccff00 !important;
-    color: #000000 !important;
-    width: 100%;
-    padding: 15px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none !important;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: .3s;
-}
-/* 💡 送信ボタンホバー時：明るい蛍光グリーンに修正 */
-body.r6-sp .submit-btn:hover {
-    background: #e6ff80 !important;
+/* INFO・ゼミ班・EVENTリンクのホバー色 */
+body.r6-sp .top-sp a:hover {
+    color: #91b825 !important;
 }
 
 /* =========================================================
-   ゼミ班一覧のグリッドレイアウト（PC版横2列）
-========================================================= */
-.zemi-grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-}
-@media (min-width: 1000px) {
-    .zemi-grid-container {
-        grid-template-columns: 1fr 1fr; /* PC版のみ横2列 */
-        gap: 20px;
-    }
-}
-
-/* =========================================================
-   💡 特設ページトップの画像レイアウト（ポスター1枚を中央70%）
+   特設ページ トップ画像レイアウト
 ========================================================= */
 .hero-poster-single {
     text-align: center;
@@ -1452,8 +1256,19 @@ body.r6-sp .submit-btn:hover {
 }
 
 /* =========================================================
-   💡 INFO・ゼミ班・EVENTリンクのホバー色（優しい緑）
+   ゼミ班の「扱う本の例」の画像レイアウト
 ========================================================= */
-body.r6-sp .top-sp a:hover {
-    color: #91b825 !important;
+.book-images {
+    display: flex;
+    justify-content: center; /* 1冊なら中央、2冊なら中央寄りで横並び */
+    gap: 15px; /* 画像同士の隙間 */
+    margin-top: 15px;
+}
+.book-images img {
+    width: 45%; /* 横に2つ並ぶように幅を制限 */
+    max-width: 140px; /* PCなどで大きくなりすぎないように最大幅を設定 */
+    height: auto;
+    border-radius: 4px; /* 角を少し丸く */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* 本に少し影をつける */
+    object-fit: cover;
 }
