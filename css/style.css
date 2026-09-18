@@ -801,6 +801,14 @@ body.r6-sp {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.r6 {
+    background :linear-gradient(rgba(0, 0, 0, .4),  rgba(0, 0, 0, .4)),url(../images/6th/6th_7.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .comingsoon {
     text-align: center;
     font-size: 1rem;
