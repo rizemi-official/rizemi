@@ -32,6 +32,71 @@
     <link rel="stylesheet" href="./slick/slick.css">
         <link rel="stylesheet" href="./slick/slick-theme.css">
         <link rel="stylesheet" href="./css/style.css?v=27">
+
+        <style>
+            /* 💡 通常ページ用のゼミカード（茶色枠・白背景）専用CSS */
+            .history-zemi-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 15px;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 0 1rem;
+            }
+            @media (min-width: 1000px) {
+                .history-zemi-grid {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 20px;
+                    align-items: start; /* 隣のカードが伸びるのを防ぐ */
+                }
+            }
+            .history-zemi-card {
+                background: #ffffff; /* 白背景 */
+                border: 2px solid #C0A313; /* 落ち着いた茶色（テーマカラー） */
+                border-radius: 8px;
+                padding: 1.2rem;
+                box-sizing: border-box;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 軽い影 */
+            }
+            .history-zemi-card summary {
+                cursor: pointer;
+                outline: none;
+                list-style: none;
+                position: relative;
+                padding-right: 2rem;
+                margin: 0;
+                font-size: 1.2rem;
+                color: #333; /* 黒文字 */
+                font-weight: bold;
+            }
+            .history-zemi-card summary::-webkit-details-marker {
+                display: none;
+            }
+            .history-zemi-card .toggle-icon {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                display: inline-block;
+                transition: transform 0.3s ease;
+                font-size: 0.9rem;
+                color: #C0A313; /* アイコンも茶色 */
+            }
+            .history-zemi-card[open] summary .toggle-icon {
+                transform: translateY(-50%) rotate(180deg);
+            }
+            .history-zemi-content {
+                margin-top: 1rem;
+                border-top: 1px dashed #ccc; /* 薄いグレーの点線 */
+                padding-top: 1rem;
+            }
+            .history-zemi-content p {
+                margin: 0;
+                color: #555; /* 濃いグレー文字 */
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+        </style>
     </head>
     
     <body>
@@ -109,117 +174,155 @@
             </div>
         </section>
 
-        <section class="seminars">
+        <section class="seminars" style="margin-top: 4rem;">
             <h2 class="heading-large">自主ゼミ班</h2>
 
-            <div class="accordion">
+            <!-- 💡 6th用のゼミ班一覧（グリッドカード形式） -->
+            <div class="history-zemi-grid">
 
-                <div class="accordion-item">
-                    <button class="accordion-header">圏論<span class="accordion-icon">＋</span></button>
-                    <div class="accordion-content">
-                        <p style="margin-bottom: 1.5rem;">
-                            T.レンスター (著)<br>
-                            「ベーシック圏論」
+                <details class="history-zemi-card">
+                    <summary>
+                        計算論的精神医学
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            「心」という複雑なシステムを数式や情報理論を使って解き明かすことを目指します。物理や情報科学の数理モデルを駆使し，精神疾患の仕組み（脳の計算メカニズムの破綻など）の解明に挑む，非常に刺激的で未開拓な分野です。
                         </p>
                     </div>
-                </div>
+                </details>
 
-                <div class="accordion-item">
-                    <button class="accordion-header">数理論理学<span class="accordion-icon">＋</span></button>
-                    <div class="accordion-content">
-                        <p style="margin-bottom: 1.5rem;">
-                            嘉田勝 (著)<br>
-                            「数理論理学」
+                <details class="history-zemi-card">
+                    <summary>
+                        量子情報
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            量子力学では状態の重ね合わせや測定の効果，量子もつれといった古典力学では奇妙だと思われることが起こります。これらを「不思議な現象だ」と理解を留めるのではなく，計算や通信・暗号，物理法則そのものの理解に使うのが量子情報です。
                         </p>
                     </div>
-                </div>
+                </details>
 
-                <div class="accordion-item">
-                    <button class="accordion-header">作用素環論<span class="accordion-icon">＋</span></button>
-                    <div class="accordion-content">
-                        <p style="margin-bottom: 1.5rem;">
-                            戸松玲治 (著)<br>
-                            「作用素環論入門」
+                <details class="history-zemi-card">
+                    <summary>
+                        相転移・臨界現象とくりこみ群
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            物性物理では強磁性相転移や超伝導相転移など、さまざまな相転移現象を扱います。それらを普遍的に説明するランダウ理論やスケーリング理論，およびくりこみ群について学べる，物性物理における最重要分野の１つです！
                         </p>
                     </div>
-                </div>
-                
-                <div class="accordion-item">
-                    <button class="accordion-header">量子力学<span class="accordion-icon">＋</span></button>
-                    <div class="accordion-content">
-                        <p style="margin-bottom: 1.5rem;">
-                            須藤靖 (著)<br>
-                            「解析力学・量子論」
-                        </p>
-                    </div>
-                </div>
+                </details>
 
-                <div class="accordion-item">
-                    <button class="accordion-header">物性物理学<span class="accordion-icon">＋</span></button>
-                    <div class="accordion-content">
-                        <p style="margin-bottom: 1.5rem;">
-                            1班　小形正男 (著)<br>
-                            「物性物理のための場の理論・グリーン関数」
-                        </p>
-                        
-                        <p style="margin-bottom: 1.5rem;">
-                            2班　 田島裕之 (著)<br>
-                            「凝縮系における場の量子論」
+                <details class="history-zemi-card">
+                    <summary>
+                        統計力学
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            統計力学はミクロな粒子の集団からマクロな熱力学的性質がどう現れるかを説明する分野です。個々の粒子は単純に動いていても膨大な数が集まると相転移や臨界現象のような全く新しい振る舞いが現れます。物性物理，化学，情報，生命現象にまでつながるかなり射程の広い分野です。
                         </p>
                     </div>
-                </div>
+                </details>
 
-                <div class="accordion-item">
-                    <button class="accordion-header">場の量子論<span class="accordion-icon">＋</span></button>
-                    <div class="accordion-content">
-                        <p style="margin-bottom: 1.5rem;">
-                            1班　Mark Srednicki (著)<br>
-                            「Quantum Field Theory」
-                        </p>
-                        <p style="margin-bottom: 1.5rem;">
-                            2班　九後 汰一郎 (著)<br>
-                            「ゲージ場の量子論 (1)」
-                        </p>
-                        <p style="margin-bottom: 1.5rem;">
-                            3班　Matthew D. Schwartz (著)<br>
-                            「Quantum Field Theory and the Standard Model」
-                        </p>
-                        <p style="margin-bottom: 1.5rem;">
-                            4班　Michael E. Peskin (著)<br>
-                            「An Introduction To Quantum Field Theory」
+                <details class="history-zemi-card">
+                    <summary>
+                        解析力学
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            古典力学の主張を最も統一的な記法であるラグランジアンに落とし込む分野です。その内容は，その後対称性と保存則，量子力学，場の理論，統計力学へ直結するものであり，現代物理学の共通言語を成しています。
                         </p>
                     </div>
-                </div>
+                </details>
 
-                <div class="accordion-item">
-                    <button class="accordion-header">位相的場の量子論<span class="accordion-icon">＋</span></button>
-                    <div class="accordion-content">
-                        <p style="margin-bottom: 1.5rem;">
-                            E.Witten (著)<br>
-                            「Quantum field theory and the Jones polynomial」
+                <details class="history-zemi-card">
+                    <summary>
+                        光化学
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            「分子光化学の原理」(丸善出版)という本で有機分子系の光化学について学びます。光の吸収・発光に関わる諸過程の定性的解釈や，光吸収で起きる様々な反応を含む光物理過程について追う予定です。
                         </p>
                     </div>
-                </div>
+                </details>
 
-                <div class="accordion-item">
-                    <button class="accordion-header">一般相対性理論<span class="accordion-icon">＋</span></button>
-                    <div class="accordion-content">
-                        <p style="margin-bottom: 1.5rem;">
-                            Sean.M.Carroll (著)<br>
-                            「Spacetime and Geometry」
+                <details class="history-zemi-card">
+                    <summary>
+                        熱力学
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            マクロな系を支配する原理として平衡熱力学を学びます。どの本を取り扱うかは未定ですが，基礎的なところから丁寧に追いたいと考えています。そのため，前提知識は特にありません。初学者の方も大歓迎です！
                         </p>
                     </div>
-                </div>
+                </details>
 
-                <div class="accordion-item">
-                    <button class="accordion-header">錯体化学<span class="accordion-icon">＋</span></button>
-                    <div class="accordion-content">
-                        <p style="margin-bottom: 1.5rem;">
-                            北川進 (著)<br>
-                            「集積型金属錯体」
+                <details class="history-zemi-card">
+                    <summary>
+                        非平衡統計力学
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            平衡状態で確立された統計力学を、非平衡状態でも扱えないかと拡張されたのが非平衡統計力学です。いまだ完成された理論はないものの，確率過程や情報理論の手法を用いた非平衡系の記述について学ぶことができます。
                         </p>
                     </div>
-                </div>
+                </details>
+
+                <details class="history-zemi-card">
+                    <summary>
+                        数理論理学
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            数学において証明された命題は「正しい」として扱われるが，逆に正しい命題はすべて「証明できる」のであろうか？証明と論理を扱い，数学を批判的にとらえるのが数理論理学です。1つの帰結である不完全性定理の理解を目指します。
+                        </p>
+                    </div>
+                </details>
+
+                <details class="history-zemi-card">
+                    <summary>
+                        集合と位相
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            数学で扱う対象を厳密に説明するものが集合で，集合に「開集合」の概念を導入し，連続性や収束について扱うのが位相空間論です。現代数学の基礎を構築し，解析学や幾何学の土台となる分野ですが，位相空間自体の面白さをぜひ味わいましょう！
+                        </p>
+                    </div>
+                </details>
+
+                <details class="history-zemi-card">
+                    <summary>
+                        粗幾何学
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            粗幾何学は空間の局所的な構造ではなく，大きなスケールで見た時の幾何学的性質を考える分野です。応用先は広く，解析する手段も様々なものを用いることができる注目の分野ですね！
+                        </p>
+                    </div>
+                </details>
+
+                <details class="history-zemi-card">
+                    <summary>
+                        ベトナム語
+                        <span class="toggle-icon">▼</span>
+                    </summary>
+                    <div class="history-zemi-content">
+                        <p>
+                            ベトナム語はベトナムの公用語で，話者数は約9000万人と言われています。音の種類や声調が豊かで，歌のように喋る言語とも形容されます。
+                        </p>
+                    </div>
+                </details>
 
             </div>
         </section>
